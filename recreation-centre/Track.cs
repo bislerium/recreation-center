@@ -10,7 +10,13 @@ namespace Backend
 {
     namespace Auth
     {
-        sealed class User
+        public enum UserGroup { 
+            Admin,
+            CheckinStaff,
+            CheckoutStaff,
+        }
+
+        public class User
         {
             public int UserID { get; set; }
 
@@ -18,17 +24,17 @@ namespace Backend
 
             public int HashedPassword { get; set; }
 
-            public bool IsAdmin { get; set; }
+            public UserGroup UserGroup { get; set; }
 
             public int HashedRecoveryCode { get; set; }
 
             public override string ToString()
             {
-                return $"{UserID}, {UserName}, {HashedPassword}, {IsAdmin}, {HashedRecoveryCode}";
+                return $"{UserID}, {UserName}, {HashedPassword}, {UserGroup}, {HashedRecoveryCode}";
             }
         }
 
-        class Auth
+        public class Auth
         {
             private readonly string fileSource;
             private Dictionary<int, User> Credentials;
@@ -283,7 +289,7 @@ namespace Backend
         OLD_ADULT = 45     
     }
 
-    class Visitor
+    public class Visitor
     {
         public int Identifier { get; set; }
 
@@ -299,7 +305,9 @@ namespace Backend
 
         public DateTime InTime { get; set; }
 
-        public DateTime? OutTime { get; set; }
+        public DateTime OutTime { get; set; }
+
+        public Price bill { get; set; }
 
         public override string ToString()
         {
@@ -311,12 +319,13 @@ namespace Backend
                     groupof = { string.Join( " | ", GroupOf.Select(x => x.Key + " : " + x.Value).ToList()) },
                     day = { Day },
                     intime = { InTime },
-                    outTime = { OutTime }
+                    outTime = { OutTime },
+                    Price = {bill}
                 ";
         }
     }
 
-    class Ticket
+    public class Ticket
     {
         public int BasePrice { get; set; }
 
@@ -357,7 +366,7 @@ namespace Backend
         }
     }
 
-    class TicketProcess 
+    public class TicketProcess 
     {
 
         Ticket ticket;
@@ -424,7 +433,7 @@ namespace Backend
             }
         }
 
-        public Price? GenerateBill(Visitor visitor)
+        public Price GenerateBill(Visitor visitor)
         {
             decimal initialPrice = ticket.BasePrice;
             DiscountPrice cad = ticket.GetAgeDiscount((short)AgeGroupE.CHILD, initialPrice * visitor.GroupOf[AgeGroupE.CHILD]);
@@ -448,7 +457,7 @@ namespace Backend
             decimal groupDRate = gd.DiscountRate;
             decimal groupDiscout = gd.Discount;
             decimal afterGD = gd.DiscountedPrice;
-            decimal duration = (decimal)(visitor.OutTime - visitor.InTime)?.TotalHours;
+            decimal duration = (decimal)(visitor.OutTime - visitor.InTime).TotalHours;
             DiscountPrice dnd = ticket.GetDurationDiscount((short)duration, afterGD * duration);
             decimal durationDRate = dnd.DiscountRate;
             decimal durationDiscount = dnd.Discount;
@@ -487,7 +496,7 @@ namespace Backend
         }
     }
 
-    class VisitorProcess
+    public class VisitorProcess
     {
 
         Dictionary<int, Visitor> visitors;
@@ -535,7 +544,7 @@ namespace Backend
 
         public bool WriteVisitors(Visitor visitor)
         {
-            visitors.Add(visitor.Identifier, visitor);
+            visitors[visitor.Identifier] = visitor;
             try
             {
                 using (FileStream fs = new FileStream(fileSource, FileMode.Create, FileAccess.Write))

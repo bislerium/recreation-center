@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace recreation_centre
 {
-    public partial class Staff : Form
+    public partial class CheckinStaff : Form
     {
-        public Staff()
+        public CheckinStaff()
         {
             InitializeComponent();
         }
