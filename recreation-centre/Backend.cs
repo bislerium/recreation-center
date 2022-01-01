@@ -118,6 +118,8 @@ namespace Backend
                 }
             }
 
+            public String getFileSource() => fileSource;
+
             public Dictionary<int, User> GetCredentials() => Credentials;
 
             public bool HasUser(int userID) => Credentials.ContainsKey(userID);
@@ -369,12 +371,13 @@ namespace Backend
     public class TicketProcess 
     {
 
-        Ticket ticket;
-        readonly String fileSource;
+        private Ticket ticket;
+        private readonly String fileSource;
 
         public TicketProcess(string fileSource = "D:\\ticket.json")
         {
             this.fileSource = fileSource;
+            ticket = new Ticket();
         }
 
         public bool ReadTicket()
@@ -411,7 +414,7 @@ namespace Backend
             }
         }
 
-        public bool WriteTicket(Ticket ticket_)
+        public bool WriteTicket()
         {
             try
             {
@@ -420,10 +423,9 @@ namespace Backend
                     using (StreamWriter sw = new StreamWriter(fs))
                     {
                         JsonSerializer serializer = new JsonSerializer();
-                        serializer.Serialize(sw, ticket_);
+                        serializer.Serialize(sw, ticket);
                     }
                 }
-                ticket = ticket_;
                 return true;
             }
             catch (Exception e)
@@ -432,6 +434,10 @@ namespace Backend
                 return false;
             }
         }
+
+        public Ticket GetTicket() => ticket;
+
+        public String getFileSource() => fileSource;
 
         public Price GenerateBill(Visitor visitor)
         {
@@ -577,6 +583,8 @@ namespace Backend
                 if (!HasVisitor(id)) return id;
             }            
         }
+
+        public String getFileSource() => fileSource;
 
         public Dictionary<int, Visitor> GetVisitors() => visitors;
 

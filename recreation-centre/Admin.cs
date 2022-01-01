@@ -15,13 +15,14 @@ namespace recreation_centre
     {
         private readonly VisitorProcess visitorProcess;
         private readonly TicketProcess ticketProcess;
-        private Ticket ticket;
+        private readonly Ticket ticket;
 
         public Admin(VisitorProcess visitorProcess, TicketProcess ticketProcess)
         {
             InitializeComponent();
             this.visitorProcess = visitorProcess;
             this.ticketProcess = ticketProcess;
+            ticket = ticketProcess.GetTicket();
         }
 
         private void logoutB_Click(object sender, EventArgs e)
@@ -80,6 +81,68 @@ namespace recreation_centre
             String value = holidaysTB.Text.Trim();
             saturdayTB.Text = value;
             sundayTB.Text = value;
+        }
+
+        private void setBasePriceB_Click(object sender, EventArgs e)
+        {
+            String basePrice = basePriceMTB.Text.Trim();
+            ticket.BasePrice = int.Parse( basePrice);
+        }
+
+        private void setAgeGroupB_Click(object sender, EventArgs e)
+        {
+            string childPriceRate = childTB.Text.Trim();
+            string youngAdultPriceRate = youngAdultTB.Text.Trim();
+            string middleAdultPriceRate = middleAdultTB.Text.Trim();
+            string oldAdultPriceRate = oldAdultTB.Text.Trim();
+            if (string.IsNullOrWhiteSpace(childPriceRate) || string.IsNullOrWhiteSpace(youngAdultPriceRate)
+                || string.IsNullOrWhiteSpace(middleAdultPriceRate) || string.IsNullOrWhiteSpace(oldAdultPriceRate))
+            {
+                MessageBox.Show("Please, fill All the AgeGroup Fields!", "Error: Empty Field(s)", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            ticket.Age[AgeGroupE.CHILD] = decimal.Parse(childPriceRate);
+            ticket.Age[AgeGroupE.YOUNG_ADULT] = decimal.Parse(youngAdultPriceRate);
+            ticket.Age[AgeGroupE.MIDDLE_ADULT] = decimal.Parse(middleAdultPriceRate);
+            ticket.Age[AgeGroupE.OLD_ADULT] = decimal.Parse(oldAdultPriceRate);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (ticketProcess.WriteTicket())
+            {
+                MessageBox.Show($"Successfully, flushed Ticket Data locally at:\n\"{ticketProcess.getFileSource()}\"", "Ticket Flush", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else 
+            {
+                MessageBox.Show("Something went Wrong!", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            String sundayPriceRate = sundayTB.Text.Trim();
+            String mondayPriceRate = sundayTB.Text.Trim();
+            String tuesdayPriceRate = sundayTB.Text.Trim();
+            String wednesdayPriceRate = sundayTB.Text.Trim();
+            String thrusdayPriceRate = sundayTB.Text.Trim();
+            String fridayPriceRate = sundayTB.Text.Trim();
+            String saturdayPriceRate = sundayTB.Text.Trim();
+            if (string.IsNullOrWhiteSpace(sundayPriceRate) || string.IsNullOrWhiteSpace(mondayPriceRate)
+                || string.IsNullOrWhiteSpace(tuesdayPriceRate) || string.IsNullOrWhiteSpace(wednesdayPriceRate)
+                || string.IsNullOrWhiteSpace(thrusdayPriceRate) || string.IsNullOrWhiteSpace(fridayPriceRate)
+                || string.IsNullOrWhiteSpace(saturdayPriceRate))
+            {
+                MessageBox.Show("Please, don't leave any Day-Fields Empty", "Error: Empty Field(s)", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            ticket.Day[DayOfWeek.Sunday] = decimal.Parse(sundayPriceRate);
+            ticket.Day[DayOfWeek.Monday] = decimal.Parse(mondayPriceRate);
+            ticket.Day[DayOfWeek.Tuesday] = decimal.Parse(tuesdayPriceRate);
+            ticket.Day[DayOfWeek.Wednesday] = decimal.Parse(wednesdayPriceRate);
+            ticket.Day[DayOfWeek.Thursday] = decimal.Parse(thrusdayPriceRate);
+            ticket.Day[DayOfWeek.Friday] = decimal.Parse(fridayPriceRate);
+            ticket.Day[DayOfWeek.Saturday] = decimal.Parse(saturdayPriceRate);
         }
     }
 }
