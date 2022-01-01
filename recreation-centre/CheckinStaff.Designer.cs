@@ -40,7 +40,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.dayMTB = new System.Windows.Forms.TextBox();
             this.syncCurTimeB = new System.Windows.Forms.Button();
-            this.intimeDTP = new System.Windows.Forms.DateTimePicker();
+            this.inDateTimeDTP = new System.Windows.Forms.DateTimePicker();
             this.phoneMTB = new System.Windows.Forms.MaskedTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -108,7 +108,7 @@
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.dayMTB);
             this.panel2.Controls.Add(this.syncCurTimeB);
-            this.panel2.Controls.Add(this.intimeDTP);
+            this.panel2.Controls.Add(this.inDateTimeDTP);
             this.panel2.Controls.Add(this.phoneMTB);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label12);
@@ -127,50 +127,51 @@
             // 
             // oldAdultMTB
             // 
+            this.oldAdultMTB.BeepOnError = true;
             this.oldAdultMTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.oldAdultMTB.Location = new System.Drawing.Point(272, 225);
             this.oldAdultMTB.Mask = "000";
             this.oldAdultMTB.Name = "oldAdultMTB";
             this.oldAdultMTB.Size = new System.Drawing.Size(224, 27);
             this.oldAdultMTB.TabIndex = 29;
-            this.oldAdultMTB.Text = "0";
             this.oldAdultMTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // middleAdultMTB
             // 
+            this.middleAdultMTB.BeepOnError = true;
             this.middleAdultMTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.middleAdultMTB.Location = new System.Drawing.Point(270, 168);
             this.middleAdultMTB.Mask = "000";
             this.middleAdultMTB.Name = "middleAdultMTB";
             this.middleAdultMTB.Size = new System.Drawing.Size(226, 27);
             this.middleAdultMTB.TabIndex = 28;
-            this.middleAdultMTB.Text = "0";
             this.middleAdultMTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // youngAdultMTB
             // 
+            this.youngAdultMTB.BeepOnError = true;
             this.youngAdultMTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.youngAdultMTB.Location = new System.Drawing.Point(270, 117);
             this.youngAdultMTB.Mask = "000";
             this.youngAdultMTB.Name = "youngAdultMTB";
             this.youngAdultMTB.Size = new System.Drawing.Size(226, 27);
             this.youngAdultMTB.TabIndex = 27;
-            this.youngAdultMTB.Text = "0";
             this.youngAdultMTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // childMTB
             // 
+            this.childMTB.BeepOnError = true;
             this.childMTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.childMTB.Location = new System.Drawing.Point(270, 66);
             this.childMTB.Mask = "000";
             this.childMTB.Name = "childMTB";
             this.childMTB.Size = new System.Drawing.Size(226, 27);
             this.childMTB.TabIndex = 26;
-            this.childMTB.Text = "0";
             this.childMTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // ageMTB
             // 
+            this.ageMTB.BeepOnError = true;
             this.ageMTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ageMTB.Location = new System.Drawing.Point(17, 162);
             this.ageMTB.Mask = "000";
@@ -191,10 +192,10 @@
             // 
             // dayMTB
             // 
-            this.dayMTB.Enabled = false;
             this.dayMTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dayMTB.Location = new System.Drawing.Point(17, 338);
             this.dayMTB.Name = "dayMTB";
+            this.dayMTB.ReadOnly = true;
             this.dayMTB.Size = new System.Drawing.Size(227, 27);
             this.dayMTB.TabIndex = 23;
             this.dayMTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -212,21 +213,24 @@
             this.syncCurTimeB.UseVisualStyleBackColor = false;
             this.syncCurTimeB.Click += new System.EventHandler(this.syncCurTimeB_Click);
             // 
-            // intimeDTP
+            // inDateTimeDTP
             // 
-            this.intimeDTP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.intimeDTP.Location = new System.Drawing.Point(17, 229);
-            this.intimeDTP.Name = "intimeDTP";
-            this.intimeDTP.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.intimeDTP.Size = new System.Drawing.Size(227, 27);
-            this.intimeDTP.TabIndex = 21;
+            this.inDateTimeDTP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.inDateTimeDTP.Location = new System.Drawing.Point(17, 229);
+            this.inDateTimeDTP.Name = "inDateTimeDTP";
+            this.inDateTimeDTP.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.inDateTimeDTP.Size = new System.Drawing.Size(227, 27);
+            this.inDateTimeDTP.TabIndex = 21;
+            this.inDateTimeDTP.ValueChanged += new System.EventHandler(this.calenderDate_click);
             // 
             // phoneMTB
             // 
+            this.phoneMTB.BeepOnError = true;
             this.phoneMTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.phoneMTB.Location = new System.Drawing.Point(17, 99);
             this.phoneMTB.Mask = "\\98|00000000";
             this.phoneMTB.Name = "phoneMTB";
+            this.phoneMTB.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.phoneMTB.Size = new System.Drawing.Size(227, 27);
             this.phoneMTB.TabIndex = 20;
             this.phoneMTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -257,9 +261,9 @@
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(13, 206);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(78, 20);
+            this.label9.Size = new System.Drawing.Size(118, 20);
             this.label9.TabIndex = 11;
-            this.label9.Text = "In-Time:";
+            this.label9.Text = "In-DateTime:";
             // 
             // label8
             // 
@@ -361,6 +365,7 @@
             this.logoutB.Text = "LOGOUT";
             this.logoutB.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.logoutB.UseVisualStyleBackColor = false;
+            this.logoutB.Click += new System.EventHandler(this.logoutB_Click);
             // 
             // minimizeB
             // 
@@ -371,6 +376,7 @@
             this.minimizeB.Size = new System.Drawing.Size(40, 40);
             this.minimizeB.TabIndex = 8;
             this.minimizeB.UseVisualStyleBackColor = true;
+            this.minimizeB.Click += new System.EventHandler(this.minimizeB_Click);
             // 
             // closeB
             // 
@@ -381,6 +387,7 @@
             this.closeB.Size = new System.Drawing.Size(40, 40);
             this.closeB.TabIndex = 7;
             this.closeB.UseVisualStyleBackColor = true;
+            this.closeB.Click += new System.EventHandler(this.closeB_Click);
             // 
             // CheckinStaff
             // 
@@ -427,7 +434,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.MaskedTextBox phoneMTB;
         private System.Windows.Forms.Button syncCurTimeB;
-        private System.Windows.Forms.DateTimePicker intimeDTP;
+        private System.Windows.Forms.DateTimePicker inDateTimeDTP;
         private System.Windows.Forms.MaskedTextBox oldAdultMTB;
         private System.Windows.Forms.MaskedTextBox middleAdultMTB;
         private System.Windows.Forms.MaskedTextBox youngAdultMTB;

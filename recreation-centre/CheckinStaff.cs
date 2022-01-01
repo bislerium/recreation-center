@@ -21,6 +21,9 @@ namespace recreation_centre
             InitializeComponent();
             this.visitorProcess = visitorProcess;
             loginUserTB.Text = loginUser;
+            inDateTimeDTP.Format = DateTimePickerFormat.Custom;
+            inDateTimeDTP.CustomFormat = "dd/MM/yyyy, hh:mm tt ";
+            dayMTB.Text = DateTime.Now.DayOfWeek.ToString();
         }
 
         private void syncCurTimeB_Click(object sender, EventArgs e)
@@ -42,19 +45,28 @@ namespace recreation_centre
             String numYAdult = youngAdultMTB.Text.Trim();
             String numMAdult = middleAdultMTB.Text.Trim();
             String numOAdult = oldAdultMTB.Text.Trim();
-            DateTime inTime = intimeDTP.Value;
+            DateTime inTime = inDateTimeDTP.Value;
             String day = dayMTB.Text;
-            if (name == "" || phone == "" || age == "" || numChild == "" 
-                || numYAdult == "" || numMAdult == "" || numOAdult == "")
+            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(phone) || string.IsNullOrWhiteSpace(age) || (string.IsNullOrWhiteSpace(numChild)
+                && string.IsNullOrWhiteSpace(numYAdult) && string.IsNullOrWhiteSpace(numMAdult) && string.IsNullOrWhiteSpace(numOAdult)))
             {
-                MessageBox.Show("Please, don't leave any Field Empty!", "Error: Empty Field", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please, don't leave required Field Empty!", "Error: Empty Field(s)", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (phone.Length != 10) {
+                MessageBox.Show("Please, enter Valid PhoneNumber!", "Error: Invalid PhoneNumber)", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (inTime.AddMinutes(5) < DateTime.Now)
+            {
+                MessageBox.Show("DateTime must be Recent!", "Error: Old DateTime", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             var ageGroup = new Dictionary<AgeGroupE, short>() {
-                { AgeGroupE.CHILD, short.Parse(numChild) },
-                { AgeGroupE.YOUNG_ADULT, short.Parse(numYAdult) },
-                { AgeGroupE.MIDDLE_ADULT, short.Parse(numMAdult) },
-                { AgeGroupE.OLD_ADULT, short.Parse(numOAdult) },
+                { AgeGroupE.CHILD, short.Parse(string.IsNullOrWhiteSpace(numChild) ? "0" : numChild) },
+                { AgeGroupE.YOUNG_ADULT, short.Parse(string.IsNullOrWhiteSpace(numYAdult) ? "0" : numYAdult) },
+                { AgeGroupE.MIDDLE_ADULT, short.Parse(string.IsNullOrWhiteSpace(numMAdult) ? "0" : numMAdult) },
+                { AgeGroupE.OLD_ADULT, short.Parse(string.IsNullOrWhiteSpace(numOAdult) ? "0" : numOAdult) },
             };
             Visitor v = new Visitor()
             {
@@ -68,7 +80,7 @@ namespace recreation_centre
                 OutTime = null,
                 Bill = null,
             };
-            if (MessageBox.Show($"Check-in {name.Split(' ')[0]}?\n\"Make sure the Check-in details are correct!\"\n\n[Visitor Ticket Code: {v.TicketCode}]",
+            if (MessageBox.Show($"Check-in {name.Split(' ')[0]}?\n\"Make sure the Check-in details are correct!\"\n\n[ Visitor Ticket Code: {v.TicketCode} ]",
                 "Check-in Confirm",
                 MessageBoxButtons.OKCancel,
                 MessageBoxIcon.Question) == DialogResult.OK)
@@ -78,10 +90,26 @@ namespace recreation_centre
             }            
         }
 
+        private void minimizeB_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void logoutB_Click(object sender, EventArgs e)
+        {
+            new Login();
+            this.Dispose();
+        }
+
+        private void calenderDate_click(object sender, EventArgs e) 
+        {
+            dayMTB.Text = inDateTimeDTP.Value.DayOfWeek.ToString();
+        }
+
         private void syncDateTime()
         {
             DateTime now = DateTime.Now;
-            intimeDTP.Value = now;
+            inDateTimeDTP.Value = now;
             dayMTB.Text = now.DayOfWeek.ToString();
         }
 
@@ -95,6 +123,11 @@ namespace recreation_centre
             middleAdultMTB.Text = "";
             oldAdultMTB.Text = "";
             syncDateTime();
+        }
+
+        private void closeB_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

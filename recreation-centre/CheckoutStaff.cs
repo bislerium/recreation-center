@@ -38,18 +38,19 @@ namespace recreation_centre
 
         private void logoutB_Click(object sender, EventArgs e)
         {
-            new Admin();
+            new Login();
             this.Dispose();            
         }
 
         private void calculateB_Click(object sender, EventArgs e)
         {
-            if (vistorTicketCodeMTB.Text.Length == 0) {
-                MessageBox.Show("Please, enter a User Ticket Id!", "Error: Empty Field", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            String ticketCode = vistorTicketCodeMTB.Text;
+            if (string.IsNullOrWhiteSpace(ticketCode)) {
+                MessageBox.Show("Please, enter a Visitor Ticket Id!", "Error: Empty Field", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            int visitorTicketCode = int.Parse(vistorTicketCodeMTB.Text.Trim());
-            if (visitorProcess.HasVisitor(visitorTicketCode)) 
+            int visitorTicketCode = int.Parse(ticketCode);
+            if (!visitorProcess.HasVisitor(visitorTicketCode)) 
             {
                 MessageBox.Show("Given User Ticet ID not Found!", "Error: Invalid ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
