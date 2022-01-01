@@ -44,17 +44,17 @@ namespace recreation_centre
 
         private void calculateB_Click(object sender, EventArgs e)
         {
-            if (userTicketIDMTB.Text.Length == 0) {
-                MessageBox.Show("Please enter a User Ticket Id!", "Error: Empty Field", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            if (vistorTicketCodeMTB.Text.Length == 0) {
+                MessageBox.Show("Please, enter a User Ticket Id!", "Error: Empty Field", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            int userTicketID = int.Parse(userTicketIDMTB.Text.Trim());
-            if (visitorProcess.HasVisitor(userTicketID)) 
+            int visitorTicketCode = int.Parse(vistorTicketCodeMTB.Text.Trim());
+            if (visitorProcess.HasVisitor(visitorTicketCode)) 
             {
                 MessageBox.Show("Given User Ticet ID not Found!", "Error: Invalid ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            visitor = visitorProcess.GetVisitor(userTicketID);
+            visitor = visitorProcess.GetVisitor(visitorTicketCode);
             if (visitor.Bill.HasValue)
             {
                 MessageBox.Show("Given User Ticket ID was already Checked-out!", "Error: Checked-out", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -81,7 +81,7 @@ namespace recreation_centre
         {
             if (visitor == null)
             {
-                MessageBox.Show("Please Calculate Bill before you Check-out!", "Error: No Bill", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please, Calculate Bill before you Check-out!", "Error: No Bill", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             visitorProcess.WriteVisitors(visitor);
@@ -100,7 +100,7 @@ namespace recreation_centre
 
         private void clearFields()
         {
-            userTicketIDMTB.Text = "";
+            vistorTicketCodeMTB.Text = "";
             billTBM.Text = "";
             nameTB.Text = "";
             childTB.Text = "";

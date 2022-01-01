@@ -291,7 +291,7 @@ namespace Backend
 
     public class Visitor
     {
-        public int Identifier { get; set; }
+        public int TicketCode { get; set; }
 
         public String Name { get; set; }
 
@@ -312,7 +312,7 @@ namespace Backend
         public override string ToString()
         {
             return $@"
-                    id = { Identifier},
+                    id = { TicketCode},
                     name = { Name },
                     phone = { Phone },
                     age = { Age },
@@ -499,13 +499,15 @@ namespace Backend
     public class VisitorProcess
     {
 
-        Dictionary<int, Visitor> visitors;
-        readonly String fileSource;
+        private Dictionary<int, Visitor> visitors;
+        private readonly String fileSource;
+        private Random random;
 
         public VisitorProcess(string fileSource = "D:\\visitors.json")
         {
             this.fileSource = fileSource;
             visitors = new Dictionary<int, Visitor>();
+            random = new Random();
         }
 
         public bool ReadVisitors()
@@ -544,7 +546,7 @@ namespace Backend
 
         public bool WriteVisitors(Visitor visitor)
         {
-            visitors[visitor.Identifier] = visitor;
+            visitors[visitor.TicketCode] = visitor;
             try
             {
                 using (FileStream fs = new FileStream(fileSource, FileMode.Create, FileAccess.Write))
@@ -560,19 +562,20 @@ namespace Backend
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                visitors.Remove(visitor.Identifier);
+                visitors.Remove(visitor.TicketCode);
                 return false;
             }
         }
 
-        public int GenerateID()
+        public int GenerateID(int length)
         {
-            StringBuilder builder = new StringBuilder();
-            Enumerable
-                .Range(0, 9)
-                .OrderBy(e => Guid.NewGuid())
-                .ToList().ForEach(e => builder.Append(e));
-            return int.Parse(builder.ToString());
+            var min = (int)Math.Pow(10, length - 1);
+            var max = (int)Math.Pow(10, length) - 1;
+            while (true)
+            {                
+                int id = random.Next(min, max);
+                if (!HasVisitor(id)) return id;
+            }            
         }
 
         public Dictionary<int, Visitor> GetVisitors() => visitors;
@@ -601,13 +604,13 @@ namespace Backend
             return true;
         }
 
-        static void Main(string[] args)
+/*        static void Main(string[] args)
         {
             VisitorProcess vs = new VisitorProcess();
             Console.WriteLine(vs.ReadVisitors());
             Visitor v = new Visitor()
             {
-                Identifier = vs.GenerateID(),
+                TicketCode = vs.GenerateID(),
                 Name = "bishal",
                 Phone = "97798007465839",
                 Age = 34,
@@ -621,8 +624,8 @@ namespace Backend
             Console.WriteLine(v.OutTime);
             Console.WriteLine(v.OutTime == null);
             vs.GetVisitors().Select(a => a.Key + " " + a.Value).ToList().ForEach(Console.WriteLine);
-/*            if (vs.IsEmpty()) vs.Initialize(); */
+*//*            if (vs.IsEmpty()) vs.Initialize(); *//*
             Console.WriteLine(vs.WriteVisitors(v));
-        }
+        }*/
     }
 }
