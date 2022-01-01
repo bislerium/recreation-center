@@ -305,9 +305,9 @@ namespace Backend
 
         public DateTime InTime { get; set; }
 
-        public DateTime OutTime { get; set; }
+        public DateTime? OutTime { get; set; }
 
-        public Price bill { get; set; }
+        public Price? Bill { get; set; }
 
         public override string ToString()
         {
@@ -320,7 +320,7 @@ namespace Backend
                     day = { Day },
                     intime = { InTime },
                     outTime = { OutTime },
-                    Price = {bill}
+                    Price = {Bill}
                 ";
         }
     }
@@ -457,7 +457,7 @@ namespace Backend
             decimal groupDRate = gd.DiscountRate;
             decimal groupDiscout = gd.Discount;
             decimal afterGD = gd.DiscountedPrice;
-            decimal duration = (decimal)(visitor.OutTime - visitor.InTime).TotalHours;
+            decimal duration = (decimal)(visitor.OutTime - visitor.InTime)?.TotalHours;
             DiscountPrice dnd = ticket.GetDurationDiscount((short)duration, afterGD * duration);
             decimal durationDRate = dnd.DiscountRate;
             decimal durationDiscount = dnd.Discount;

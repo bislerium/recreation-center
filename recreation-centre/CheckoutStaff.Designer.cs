@@ -59,6 +59,8 @@
             this.dayTB = new System.Windows.Forms.TextBox();
             this.checkoutB = new System.Windows.Forms.Button();
             this.allclearB = new System.Windows.Forms.Button();
+            this.loginUserTB = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -135,6 +137,7 @@
             this.userTicketIDMTB.Size = new System.Drawing.Size(260, 27);
             this.userTicketIDMTB.TabIndex = 0;
             this.userTicketIDMTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.userTicketIDMTB.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.userTicketIDMTB_MaskInputRejected);
             // 
             // label2
             // 
@@ -376,10 +379,30 @@
             this.allclearB.UseVisualStyleBackColor = false;
             this.allclearB.Click += new System.EventHandler(this.allclearB_Click);
             // 
+            // loginUserTB
+            // 
+            this.loginUserTB.Enabled = false;
+            this.loginUserTB.Location = new System.Drawing.Point(298, 612);
+            this.loginUserTB.Name = "loginUserTB";
+            this.loginUserTB.Size = new System.Drawing.Size(249, 22);
+            this.loginUserTB.TabIndex = 5;
+            this.loginUserTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(189, 615);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(103, 16);
+            this.label13.TabIndex = 6;
+            this.label13.Text = "Logged-in User:";
+            // 
             // CheckoutStaff
             // 
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(560, 617);
+            this.ClientSize = new System.Drawing.Size(560, 643);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.loginUserTB);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.logoutB);
@@ -428,5 +451,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button checkoutB;
         private System.Windows.Forms.Button allclearB;
+        private System.Windows.Forms.TextBox loginUserTB;
+        private System.Windows.Forms.Label label13;
     }
 }

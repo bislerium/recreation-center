@@ -18,11 +18,12 @@ namespace recreation_centre
         private readonly TicketProcess ticketProcess;
         private Visitor visitor;
 
-        public CheckoutStaff(VisitorProcess visitorProcess, TicketProcess ticketProcess)
+        public CheckoutStaff(VisitorProcess visitorProcess, TicketProcess ticketProcess, String loginUser)
         {
             InitializeComponent();
             this.visitorProcess = visitorProcess;
             this.ticketProcess = ticketProcess;
+            loginUserTB.Text = loginUser;
         }
 
         private void closeB_Click(object sender, EventArgs e)
@@ -54,12 +55,12 @@ namespace recreation_centre
                 return;
             }
             visitor = visitorProcess.GetVisitor(userTicketID);
-            if (visitor.bill == null)
+            if (visitor.Bill.HasValue)
             {
                 MessageBox.Show("Given User Ticket ID was already Checked-out!", "Error: Checked-out", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            visitor.bill = ticketProcess.GenerateBill(visitor);
+            visitor.Bill = ticketProcess.GenerateBill(visitor);
             String bill = $@"
 
                 
@@ -92,6 +93,11 @@ namespace recreation_centre
             clearFields();
         }
 
+        private void userTicketIDMTB_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+            clearFields();
+        }
+
         private void clearFields()
         {
             userTicketIDMTB.Text = "";
@@ -105,6 +111,7 @@ namespace recreation_centre
             durationFromTB.Text = "";
             durationToTB.Text = "";
             dayTB.Text = "";
+            visitor = null;
         }
     }
 }
