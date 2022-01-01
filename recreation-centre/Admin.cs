@@ -15,6 +15,7 @@ namespace recreation_centre
     {
         private readonly VisitorProcess visitorProcess;
         private readonly TicketProcess ticketProcess;
+        private Ticket ticket;
 
         public Admin(VisitorProcess visitorProcess, TicketProcess ticketProcess)
         {
@@ -62,6 +63,23 @@ namespace recreation_centre
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
+        }
+
+        private void weekdaysTB_KeyUp(object sender, KeyEventArgs e)
+        {
+            String value = weekdaysTB.Text.Trim();
+            mondayTB.Text = value;
+            tuesdayTB.Text = value;
+            wednesdayTB.Text = value;
+            thrusdayTB.Text = value;
+            fridayTB.Text = value;
+        }
+
+        private void holidaysTB_KeyUp(object sender, KeyEventArgs e)
+        {
+            String value = holidaysTB.Text.Trim();
+            saturdayTB.Text = value;
+            sundayTB.Text = value;
         }
     }
 }
