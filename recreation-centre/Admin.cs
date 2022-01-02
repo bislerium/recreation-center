@@ -13,16 +13,16 @@ namespace recreation_centre
 {
     public partial class Admin : Form
     {
-        private readonly VisitorProcess visitorProcess;
-        private readonly TicketProcess ticketProcess;
-        private readonly Ticket ticket;
+        private VisitorProcess visitorProcess;
+        private TicketProcess ticketProcess;
+        private Ticket ticket;
 
         public Admin(VisitorProcess visitorProcess, TicketProcess ticketProcess)
         {
             InitializeComponent();
             this.visitorProcess = visitorProcess;
             this.ticketProcess = ticketProcess;
-            ticket = ticketProcess.GetTicket();
+            initializeTicket();
         }
 
         private void logoutB_Click(object sender, EventArgs e)
@@ -40,7 +40,6 @@ namespace recreation_centre
         {
             this.WindowState = FormWindowState.Minimized;
         }
-        bool flag = false;
 
         private bool mouseDown;
         private Point lastLocation;
@@ -186,7 +185,12 @@ namespace recreation_centre
 
         private void deleteGroupB_Click(object sender, EventArgs e)
         {
-            short id = short.Parse(peopleCountCB.Text);
+            string peopleCount = peopleCountCB.Text;
+            if (checkEmptyFields("Please, Select or Enter the People Count value!", peopleCount))
+            {
+                return ;
+            }
+            short id = short.Parse(peopleCount);
             if (!ticket.Group.ContainsKey(id))
             {
                 MessageBox.Show("Sorry, The Group entry was not Found!", "Error: Invalid Group", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -235,7 +239,12 @@ namespace recreation_centre
 
         private void deleteDurationB_Click(object sender, EventArgs e)
         {
-            short id = short.Parse(hourDurationCB.Text);
+            string hourDuration = hourDurationCB.Text;
+            if (checkEmptyFields("Please, Select or Enter the Hour Duration value!", hourDuration))
+            {
+                return;
+            }
+            short id = short.Parse(hourDuration);
             if (!ticket.Duration.ContainsKey(id)) 
             {
                 MessageBox.Show("Sorry, The Duration entry was not Found!", "Error: Invalid Duration", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -321,10 +330,6 @@ namespace recreation_centre
             {
                 return;
             }
-            foreach(decimal d in values)
-                { 
-                Console.WriteLine(d);
-            }
             ticket.Day[DayOfWeek.Sunday] = values[0];
             ticket.Day[DayOfWeek.Monday] = values[1];
             ticket.Day[DayOfWeek.Tuesday] = values[2];
@@ -335,6 +340,60 @@ namespace recreation_centre
             setDefaultFieldBackColor(sundayTB, mondayTB, tuesdayTB, wednesdayTB,
                 thrusdayTB, fridayTB, saturdayTB);
             MessageBox.Show($"PriceRate for Days added successfully!", "Error: Invalid Group", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        private void initializeTicket() 
+        {
+            ticket = ticketProcess.GetTicket();
+            loadDurationCB();
+            loadGroupCB();
+            basePriceMTB.Text = ticket.BasePrice.ToString();
+            childTB.Text = ticket.Age[AgeGroupE.CHILD].ToString();
+            youngAdultTB.Text = ticket.Age[AgeGroupE.YOUNG_ADULT].ToString();
+            middleAdultTB.Text = ticket.Age[AgeGroupE.MIDDLE_ADULT].ToString();
+            oldAdultTB.Text = ticket.Age[AgeGroupE.OLD_ADULT].ToString();
+            sundayTB.Text = ticket.Day[DayOfWeek.Sunday].ToString();
+            mondayTB.Text = ticket.Day[DayOfWeek.Monday].ToString();
+            tuesdayTB.Text = ticket.Day[DayOfWeek.Tuesday].ToString();
+            wednesdayTB.Text = ticket.Day[DayOfWeek.Wednesday].ToString();
+            thrusdayTB.Text = ticket.Day[DayOfWeek.Thursday].ToString();
+            fridayTB.Text = ticket.Day[DayOfWeek.Friday].ToString();
+            saturdayTB.Text = ticket.Day[DayOfWeek.Saturday].ToString();
+        }
+
+        private void exportTicketB_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog exportTicketDialogBox = new SaveFileDialog();
+
+            exportTicketDialogBox.Filter = "json file (*.json)|*.json";
+            exportTicketDialogBox.InitialDirectory = @"C:\";
+            exportTicketDialogBox.Title = "Export Ticket";
+
+            if (exportTicketDialogBox.ShowDialog() == DialogResult.OK)
+            {
+                TicketProcess tk = new TicketProcess(exportTicketDialogBox.FileName, ticket);
+                tk.WriteTicket();
+            }
+        }
+
+        private void importTicketB_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog importTicketDialogBox = new OpenFileDialog
+            {
+                InitialDirectory = @"C:\",
+                Title = "Import Ticket",
+                CheckFileExists = true,
+                CheckPathExists = true,
+                Filter = "json file (*.json)|*.json",
+                ReadOnlyChecked = true,
+                ShowReadOnly = true
+            };
+
+            if (importTicketDialogBox.ShowDialog() == DialogResult.OK)
+            {
+                ticketProcess = new TicketProcess(importTicketDialogBox.FileName);
+                ticketProcess.ReadTicket();
+                initializeTicket();
+            }
         }
     }
 }

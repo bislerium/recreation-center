@@ -379,12 +379,34 @@ namespace Backend
             this.fileSource = fileSource;
             ticket = new Ticket()
             {
+                BasePrice = 0,
                 Group = new SortedDictionary<short, decimal>(),
                 Duration = new SortedDictionary<short, decimal>(),
-                Age = new SortedDictionary<AgeGroupE, decimal>(),
-                Day = new SortedDictionary<DayOfWeek, decimal>(),
+                Age = new SortedDictionary<AgeGroupE, decimal>()
+                {
+                    {AgeGroupE.CHILD, 0 },
+                    {AgeGroupE.YOUNG_ADULT, 0 },
+                    {AgeGroupE.MIDDLE_ADULT, 0 },
+                    {AgeGroupE.OLD_ADULT, 0 },
+                },
+                Day = new SortedDictionary<DayOfWeek, decimal>()
+                {
+                    {DayOfWeek.Sunday, 0 },
+                    {DayOfWeek.Monday, 0 },
+                    {DayOfWeek.Tuesday, 0 },
+                    {DayOfWeek.Wednesday, 0 },
+                    {DayOfWeek.Thursday, 0 },
+                    {DayOfWeek.Friday, 0 },
+                    {DayOfWeek.Saturday, 0 },
+                },
             };
+        }
 
+        // For writing a specific ticket to a specific location
+        public TicketProcess(string fileSource, Ticket ticket)
+        { 
+            this.fileSource = fileSource;
+            this.ticket = ticket;
         }
 
         public bool ReadTicket()
