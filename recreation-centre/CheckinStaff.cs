@@ -21,6 +21,7 @@ namespace recreation_centre
             InitializeComponent();
             this.visitorProcess = visitorProcess;
             loginUserTB.Text = loginUser;
+            initializeVisitors();
         }
 
         private void syncCurTimeB_Click(object sender, EventArgs e)
@@ -139,7 +140,7 @@ namespace recreation_centre
 
         private void initializeVisitors()
         {
-            if (visitorProcess.ReadVisitors())
+            if (!visitorProcess.ReadVisitors())
             {
                 MessageBox.Show($"Could'nt Read Visitors!\n\"Try deleting {visitorProcess.getFileSource()}\"", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

@@ -103,6 +103,7 @@ namespace recreation_centre
             this.visitorDataGrid = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.dailyReportDataGrid = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl7.SuspendLayout();
@@ -117,6 +118,8 @@ namespace recreation_centre
             this.tabPage5.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.visitorDataGrid)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dailyReportDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -905,7 +908,6 @@ namespace recreation_centre
             this.visitorDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.visitorDataGrid.Location = new System.Drawing.Point(6, 56);
             this.visitorDataGrid.Name = "visitorDataGrid";
-            this.visitorDataGrid.ReadOnly = true;
             this.visitorDataGrid.RowHeadersWidth = 51;
             this.visitorDataGrid.RowTemplate.Height = 24;
             this.visitorDataGrid.Size = new System.Drawing.Size(756, 576);
@@ -913,6 +915,7 @@ namespace recreation_centre
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.dailyReportDataGrid);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -930,6 +933,18 @@ namespace recreation_centre
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Weekly Report";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // dailyReportDataGrid
+            // 
+            this.dailyReportDataGrid.AllowUserToDeleteRows = false;
+            this.dailyReportDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dailyReportDataGrid.Location = new System.Drawing.Point(22, 62);
+            this.dailyReportDataGrid.Name = "dailyReportDataGrid";
+            this.dailyReportDataGrid.ReadOnly = true;
+            this.dailyReportDataGrid.RowHeadersWidth = 51;
+            this.dailyReportDataGrid.RowTemplate.Height = 24;
+            this.dailyReportDataGrid.Size = new System.Drawing.Size(240, 150);
+            this.dailyReportDataGrid.TabIndex = 0;
             // 
             // Admin
             // 
@@ -968,6 +983,8 @@ namespace recreation_centre
             this.tabPage5.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.visitorDataGrid)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dailyReportDataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1048,5 +1065,6 @@ namespace recreation_centre
         private System.Windows.Forms.Button importVisitorsB;
         private System.Windows.Forms.TabPage tabPage3;
         private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.DataGridView dailyReportDataGrid;
     }
 }

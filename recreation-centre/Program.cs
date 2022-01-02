@@ -20,8 +20,8 @@ namespace User
             /*Application.SetCompatibleTextRenderingDefault(false);*/
             Application.Run(new Admin(new Backend.VisitorProcess(), new Backend.TicketProcess()));
             Application.Run(new CheckinStaff(new Backend.VisitorProcess(), "fuck you nigga"));
-            /*            Application.Run(new CheckoutStaff(new Backend.VisitorProcess(), new Backend.TicketProcess(), "Fuck your ass"));
-            */
+            Application.Run(new CheckoutStaff(new Backend.VisitorProcess(), new Backend.TicketProcess(), "Fuck your ass"));
+
         }
     }
 }

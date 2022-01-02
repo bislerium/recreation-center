@@ -24,6 +24,7 @@ namespace recreation_centre
             this.visitorProcess = visitorProcess;
             this.ticketProcess = ticketProcess;
             loginUserTB.Text = loginUser;
+            initialize();
         }
 
         private void closeB_Click(object sender, EventArgs e)
@@ -63,17 +64,40 @@ namespace recreation_centre
                 return;
             }
             visitor = visitorProcess.GetVisitor(visitorTicketCode);
-            if (visitor.Bill.HasValue)
+            visitor.OutTime = checkoutDateTime.Value;
+/*            if (visitor.Bill.HasValue)
             {
                 MessageBox.Show("Given User Ticket ID was already Checked-out!", "Error: Checked-out", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
-            }
-            visitor.Bill = ticketProcess.GenerateBill(visitor);
-            String bill = $@"
+            }*/
+            Bill bill = ticketProcess.GenerateBill(visitor);
+            visitor.Bill = bill;
 
-                
-                ";
-            billTBM.Text = bill;
+            bPrice.Text = bill.InitialPrice.ToString();
+            cRE.Text = bill.C_AgeRate.ToString();
+            cRG.Text = bill.C_AgeRating.ToString();
+            cRP.Text = bill.AfterCAR.ToString();
+            yRE.Text = bill.Y_AgeRate.ToString();
+            yRG.Text = bill.Y_AgeRating.ToString();
+            yRP.Text = bill.AfterYAR.ToString();
+            mRE.Text = bill.M_AgeRate.ToString();
+            mRG.Text = bill.M_AgeRating.ToString();
+            mRP.Text = bill.AfterMAR.ToString();
+            oRE.Text = bill.O_AgeRate.ToString();
+            oRG.Text = bill.O_AgeRating.ToString();
+            oRP.Text = bill.AfterOAR.ToString();
+            aGP.Text = bill.TotalAgeGroupPrice.ToString();
+            gRE.Text = bill.GroupRate.ToString();
+            gRG.Text = bill.GroupRating.ToString();
+            gRP.Text = bill.AfterGR.ToString();
+            dRE.Text = bill.DurationRate.ToString();
+            dRG.Text = bill.DurationRating.ToString();
+            dRP.Text = bill.AfterDNR.ToString();
+            dYR.Text = bill.DayRate.ToString();
+            dYG.Text = bill.DayRating.ToString();
+            dYP.Text = bill.AfterDYR.ToString();
+            tBill.Text = bill.FinalPrice.ToString();
+
             nameTB.Text = visitor.Name;
             childTB.Text = visitor.GroupOf[AgeGroupE.CHILD].ToString();
             youngAdultTB.Text = visitor.GroupOf[AgeGroupE.YOUNG_ADULT].ToString();
@@ -94,6 +118,7 @@ namespace recreation_centre
             }
             visitorProcess.WriteVisitor(visitor);
             clearFields();
+            loadVisitors();
         }
 
         private void allclearB_Click(object sender, EventArgs e)
@@ -109,7 +134,6 @@ namespace recreation_centre
         private void clearFields()
         {
             vistorTicketCodeMTB.Text = "";
-            billTBM.Text = "";
             nameTB.Text = "";
             childTB.Text = "";
             youngAdultTB.Text = "";
@@ -119,7 +143,93 @@ namespace recreation_centre
             durationFromTB.Text = "";
             durationToTB.Text = "";
             dayTB.Text = "";
+            bPrice.Text = "";
+            cRE.Text = "";
+            cRG.Text = "";
+            cRP.Text = "";
+            yRE.Text = "";
+            yRG.Text = "";
+            yRP.Text = "";
+            mRE.Text = "";
+            mRG.Text = "";
+            mRP.Text = "";
+            oRE.Text = "";
+            oRG.Text = "";
+            oRP.Text = "";
+            aGP.Text = "";
+            gRE.Text = "";
+            gRG.Text = "";
+            gRP.Text = "";
+            dRE.Text = "";
+            dRG.Text = "";
+            dRP.Text = "";
+            dYR.Text = "";
+            dYG.Text = "";
+            dYP.Text = "";
+            tBill.Text = "";
             visitor = null;
+
+        }
+
+        private void syncDateTime_Click(object sender, EventArgs e)
+        {
+            checkoutDateTime.Value = DateTime.Now;
+        }
+
+        private bool mouseDown;
+        private Point lastLocation;
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point(
+                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+
+                this.Update();
+            }
+        }
+
+        private void Form1_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
+        }
+
+        private void initialize()
+        {
+            checkoutDateTime.Format = DateTimePickerFormat.Custom;
+            checkoutDateTime.CustomFormat = "dd/MM/yy, hh:mm tt ";
+            if (!visitorProcess.ReadVisitors())
+            {
+                MessageBox.Show($"Could'nt Read Visitors!\n\"Try deleting {visitorProcess.getFileSource()}\"", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!ticketProcess.ReadTicket())
+            {
+                MessageBox.Show($"Could'nt Read Ticket!\n\"Try deleting {ticketProcess.getFileSource()}\"", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            loadVisitors();
+        }
+
+
+
+        private void loadVisitors()
+        {
+            checkedOutDataGrid.DataSource = visitorProcess.GetVisitors()
+                                                          .Values
+                                                          .ToArray()
+                                                          .Where(x => x.Bill.HasValue);
+        }
+
+        private void syncDataGrid_Click(object sender, EventArgs e)
+        {
+            loadVisitors();
         }
     }
 }

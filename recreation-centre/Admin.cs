@@ -477,5 +477,26 @@ namespace recreation_centre
         {
             commonExportDialog(RWMode.visitors);
         }
+
+        private void generateDailyReport()
+        {
+            var currList = visitors.Values.ToList().Where(x => x.Bill.HasValue && x.InTime.Date.Equals(DateTime.Now.Date));
+            var groupByGroup = currList.GroupBy(x => x.Bill?.GroupRate)
+                                      .Select(g => new { visitorGroupOf = g.Key,
+                                          Total_Visitors = g.Count()})
+                                      .ToList();
+            var groupByAge = new List<dynamic>(currList.Select(g => g.GroupOf
+                                                    .Select(x => new {
+                                                                    ageGroup = x.Key,
+                                                                    groupCount = x.Value})).ToList())
+                                                    .GroupBy(x => x.ageGroup)
+                                                    .Select(g => new
+                                                    {
+                                                        ageGroup = g.Key,
+                                                        total_age = g.Sum(x => x.groupCount)
+                                                    })
+                                                    .ToList();
+            dailyReportDataGrid.DataSource = groupByGroup;
+        }
     }
 }

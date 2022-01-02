@@ -213,7 +213,7 @@ namespace Backend
         public decimal DurationRating { get; }
         public decimal AfterDNR { get; }
         public decimal DayRate { get; }
-        public decimal DayPricing { get; }
+        public decimal DayRating { get; }
         public decimal AfterDYR { get; }
         public decimal FinalPrice { get; }
 
@@ -221,7 +221,7 @@ namespace Backend
             decimal y_AgeRate, decimal y_AgeRating, decimal afterYAR, decimal ageRate, decimal ageRating,
             decimal afterMAR, decimal o_AgeRate, decimal o_AgeRating, decimal afterOAR, decimal totalAgeGroupPrice,
             decimal groupRate, decimal groupRating, decimal afterGR, decimal durationRate, decimal durationRating,
-            decimal afterDNR, decimal dayRate, decimal dayPricing, decimal afterDYR, decimal finalPrice)
+            decimal afterDNR, decimal dayRate, decimal dayRating, decimal afterDYR, decimal finalPrice)
         {
             InitialPrice = initialPrice;
             C_AgeRate = c_AgeRate;
@@ -244,7 +244,7 @@ namespace Backend
             DurationRating = durationRating;
             AfterDNR = afterDNR;
             DayRate = dayRate;
-            DayPricing = dayPricing;
+            DayRating = dayRating;
             AfterDYR = afterDYR;
             FinalPrice = finalPrice;
         }
@@ -323,28 +323,28 @@ namespace Backend
         public Price GetGroupDiscount(short groupOf, decimal basePrice)
         {
             short appropriateGroup = Group.Keys.Aggregate((x, y) => (groupOf >= x && groupOf < y) ? x : y);
-            decimal rating = Group[appropriateGroup]/100 * basePrice;
-            return new Price(Group[appropriateGroup], rating, basePrice - rating);
+            decimal rating = (Group[appropriateGroup]/100) * basePrice;
+            return new Price(Group[appropriateGroup], rating, basePrice + rating);
         }
 
         public Price GetDurationDiscount(short durationInHour, decimal basePrice)
         {
             short appropriateDuration = Duration.Keys.Aggregate((x, y) => (durationInHour >= x && durationInHour < y) ? x : y);
-            decimal rating = Duration[appropriateDuration]/100 * basePrice;
-            return new Price(Duration[appropriateDuration], rating, basePrice - rating);
+            decimal rating = (Duration[appropriateDuration]/100) * basePrice;
+            return new Price(Duration[appropriateDuration], rating, basePrice + rating);
         }
 
         public Price GetAgeDiscount(short age, decimal basePrice)
         {
             AgeGroupE appropriateAge = Age.Keys.Aggregate((x, y) => (age >= (short)x && age < (short)y) ? x : y);
-            decimal rating = Age[appropriateAge]/100 * basePrice;
-            return new Price(Age[appropriateAge], rating, basePrice - rating);
+            decimal rating = (Age[appropriateAge]/100) * basePrice;
+            return new Price(Age[appropriateAge], rating, basePrice + rating);
         }
 
         public Price GetDayDiscount(DayOfWeek day, decimal basePrice)
         {
-            decimal raing = Day[day]/100 * basePrice;
-            return new Price(Day[day], raing, basePrice - raing);
+            decimal rating = (Day[day]/100) * basePrice;
+            return new Price(Day[day], rating, basePrice + rating);
         }
 
         public override string ToString()
@@ -487,7 +487,7 @@ namespace Backend
             decimal groupDRate = gd.Rate;
             decimal groupDiscout = gd.Rating;
             decimal afterGD = gd.RatedPrice;
-            decimal duration = (decimal)(visitor.OutTime - visitor.InTime)?.TotalHours;
+            decimal duration = Math.Abs((decimal)(visitor.OutTime - visitor.InTime)?.TotalHours);
             Price dnd = ticket.GetDurationDiscount((short)duration, afterGD * duration);
             decimal durationDRate = dnd.Rate;
             decimal durationDiscount = dnd.Rating;
@@ -521,7 +521,7 @@ namespace Backend
                 dayDRate,
                 dayDiscount,
                 afterDYD,
-                finalPrice
+                Math.Round(finalPrice)
             );
         }
     }
@@ -630,23 +630,6 @@ namespace Backend
 
         public bool HasVisitor(int identifier) => visitors.ContainsKey(identifier);
 
-        
-        public bool GenerateDailyReport()
-        {
-            if (IsEmpty()) {
-                return false;
-            }
-            return true;
-        }
-
-        public bool GenerateWeeklyReport()
-        {
-            if (IsEmpty())
-            {
-                return false;
-            }
-            return true;
-        }
 
 /*        static void Main(string[] args)
         {
