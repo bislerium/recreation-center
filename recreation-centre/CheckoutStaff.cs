@@ -85,7 +85,7 @@ namespace recreation_centre
                 MessageBox.Show("Please, Calculate Bill before you Check-out!", "Error: No Bill", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            visitorProcess.WriteVisitors(visitor);
+            visitorProcess.WriteVisitor(visitor);
             clearFields();
         }
 

@@ -85,7 +85,10 @@ namespace recreation_centre
                 MessageBoxButtons.OKCancel,
                 MessageBoxIcon.Question) == DialogResult.OK)
             {
-                visitorProcess.WriteVisitors(v);
+                if (!visitorProcess.WriteVisitor(v))
+                { 
+                    MessageBox.Show("Could'nt Write!", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
                 clearFields();
             }            
         }

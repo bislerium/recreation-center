@@ -16,7 +16,7 @@ namespace recreation_centre
         private VisitorProcess visitorProcess;
         private TicketProcess ticketProcess;
         private Ticket ticket;
-        private List<Visitor> visitors;
+        private Dictionary<int, Visitor> visitors;
 
         public Admin(VisitorProcess visitorProcess, TicketProcess ticketProcess)
         {
@@ -24,7 +24,7 @@ namespace recreation_centre
             this.visitorProcess = visitorProcess;
             this.ticketProcess = ticketProcess;
             initializeTicket();
-            initializeVisitor();
+            initializeVisitors();
         }
 
         private void logoutB_Click(object sender, EventArgs e)
@@ -373,25 +373,12 @@ namespace recreation_centre
 
         private void exportTicketB_Click(object sender, EventArgs e)
         {
-            SaveFileDialog exportTicketDialogBox = new SaveFileDialog();
-
-            exportTicketDialogBox.Filter = "json file (*.json)|*.json";
-            exportTicketDialogBox.InitialDirectory = @"C:\";
-            exportTicketDialogBox.Title = "Export Ticket";
-
-            if (exportTicketDialogBox.ShowDialog() == DialogResult.OK)
-            {
-                TicketProcess tk = new TicketProcess(exportTicketDialogBox.FileName, ticket);
-                if (!tk.WriteTicket())
-                { 
-                MessageBox.Show("Could'nt Write!", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+            commonExportDialog(RWMode.ticket);
         }
 
         private void importTicketB_Click(object sender, EventArgs e)
         {
-            commonDialog(RWMode.ticket);
+            commonImportDialog(RWMode.ticket);
         }
 
         enum RWMode
@@ -400,30 +387,59 @@ namespace recreation_centre
             ticket
         }
 
-        private void commonDialog(RWMode mode)
+        private void commonImportDialog(RWMode mode)
         {
-            OpenFileDialog importTicketDialogBox = new OpenFileDialog
+            OpenFileDialog importDialogBox = new OpenFileDialog
             {
                 InitialDirectory = @"C:\",
                 CheckFileExists = true,
                 CheckPathExists = true,
                 Filter = "json file (*.json)|*.json",
                 ReadOnlyChecked = true,
-                ShowReadOnly = true
+                ShowReadOnly = true,
+                Title = (mode == RWMode.ticket) ? "Import Ticket" : "Import Visitors",
             };
-            importTicketDialogBox.Title = (mode == RWMode.ticket) ? "Import Ticket" : "Import Visitors";
-            if (importTicketDialogBox.ShowDialog() == DialogResult.OK)
+            if (importDialogBox.ShowDialog() == DialogResult.OK)
             {
                 if (mode == RWMode.ticket)
                 {
-                    ticketProcess = new TicketProcess(importTicketDialogBox.FileName);
+                    ticketProcess = new TicketProcess(importDialogBox.FileName);
                     initializeTicket();
                 }
                 else
                 {
-                    visitorProcess = new VisitorProcess(importTicketDialogBox.FileName);
-                    initializeTicket();
+                    visitorProcess = new VisitorProcess(importDialogBox.FileName);
+                    initializeVisitors();
                 }                
+            }
+        }
+
+        private void commonExportDialog(RWMode mode)
+        {
+            SaveFileDialog exportDialogBox = new SaveFileDialog
+            {
+                Filter = "json file (*.json)|*.json",
+                InitialDirectory = @"C:\",
+                Title = mode == RWMode.ticket ? "Export Ticket" : "Export Visitors"
+            };
+
+            if (exportDialogBox.ShowDialog() == DialogResult.OK)
+            {
+                bool success;
+                if (mode == RWMode.ticket)
+                {
+                    TicketProcess tp = new TicketProcess(exportDialogBox.FileName, ticket);
+                    success = tp.WriteTicket();
+                }
+                else
+                {
+;                   VisitorProcess vp = new VisitorProcess(exportDialogBox.FileName, visitors);
+                    success = vp.WriteVisitors();
+                }
+                if (!success)
+                {
+                    MessageBox.Show("Could'nt Write!", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -432,29 +448,29 @@ namespace recreation_centre
             visitorDataGrid.DataSource = visitors;
         }
 
-        private void initializeVisitor()
+        private void initializeVisitors()
         {
             if (!visitorProcess.ReadVisitors())
             {
                 MessageBox.Show($"Could'nt Read!\n\"Try deleting {visitorProcess.getFileSource()}\"", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            visitors = new List<Visitor>(visitorProcess.GetVisitors().Values);
+            visitors = visitorProcess.GetVisitors();
         }
 
         private void autoSyncVisitorData_Tick(object sender, EventArgs e)
         {
-            visitorDataGrid.DataSource = visitors;
+            visitorDataGrid.DataSource = visitors.Values.ToArray();
         }
 
         private void importVisitorsB_Click(object sender, EventArgs e)
         {
-            commonDialog(RWMode.visitors);
+            commonImportDialog(RWMode.visitors);
         }
 
         private void exportVisitorsB_Click(object sender, EventArgs e)
         {
-
+            commonExportDialog(RWMode.visitors);
         }
     }
 }

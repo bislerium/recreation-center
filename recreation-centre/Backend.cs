@@ -414,9 +414,8 @@ namespace Backend
         }
 
         // For writing a specific ticket to a specific location
-        public TicketProcess(string fileSource, Ticket ticket)
-        { 
-            this.fileSource = fileSource;
+        public TicketProcess(string fileSource, Ticket ticket) : this(fileSource)
+        {
             this.ticket = ticket;
         }
 
@@ -555,6 +554,10 @@ namespace Backend
             visitors = new Dictionary<int, Visitor>();
             random = new Random();
         }
+        public VisitorProcess(string fileSource, Dictionary<int, Visitor> visitors): this(fileSource)
+        {
+            this.visitors = visitors;
+        }
 
         public bool ReadVisitors()
         {
@@ -575,7 +578,6 @@ namespace Backend
                             visitors = visitors_;
                         }
                     }
-                    Console.WriteLine(visitors);
                     return true;
                 }
                 catch (Exception e)
@@ -590,9 +592,19 @@ namespace Backend
             }
         }
 
-        public bool WriteVisitors(Visitor visitor)
-        {
+        public bool WriteVisitor(Visitor visitor)
+        { 
             visitors[visitor.TicketCode] = visitor;
+            bool success = WriteVisitors();
+            if (!success)
+            {
+                visitors.Remove(visitor.TicketCode);
+            }
+            return success;
+        }
+            
+        public bool WriteVisitors()
+        {
             try
             {
                 using (FileStream fs = new FileStream(fileSource, FileMode.Create, FileAccess.Write))
@@ -608,7 +620,6 @@ namespace Backend
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                visitors.Remove(visitor.TicketCode);
                 return false;
             }
         }
