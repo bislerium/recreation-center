@@ -16,6 +16,7 @@ namespace recreation_centre
         private VisitorProcess visitorProcess;
         private TicketProcess ticketProcess;
         private Ticket ticket;
+        private List<Visitor> visitors;
 
         public Admin(VisitorProcess visitorProcess, TicketProcess ticketProcess)
         {
@@ -23,6 +24,7 @@ namespace recreation_centre
             this.visitorProcess = visitorProcess;
             this.ticketProcess = ticketProcess;
             initializeTicket();
+            initializeVisitor();
         }
 
         private void logoutB_Click(object sender, EventArgs e)
@@ -389,22 +391,70 @@ namespace recreation_centre
 
         private void importTicketB_Click(object sender, EventArgs e)
         {
+            commonDialog(RWMode.ticket);
+        }
+
+        enum RWMode
+        { 
+            visitors,
+            ticket
+        }
+
+        private void commonDialog(RWMode mode)
+        {
             OpenFileDialog importTicketDialogBox = new OpenFileDialog
             {
                 InitialDirectory = @"C:\",
-                Title = "Import Ticket",
                 CheckFileExists = true,
                 CheckPathExists = true,
                 Filter = "json file (*.json)|*.json",
                 ReadOnlyChecked = true,
                 ShowReadOnly = true
             };
-
+            importTicketDialogBox.Title = (mode == RWMode.ticket) ? "Import Ticket" : "Import Visitors";
             if (importTicketDialogBox.ShowDialog() == DialogResult.OK)
             {
-                ticketProcess = new TicketProcess(importTicketDialogBox.FileName);
-                initializeTicket();
+                if (mode == RWMode.ticket)
+                {
+                    ticketProcess = new TicketProcess(importTicketDialogBox.FileName);
+                    initializeTicket();
+                }
+                else
+                {
+                    visitorProcess = new VisitorProcess(importTicketDialogBox.FileName);
+                    initializeTicket();
+                }                
             }
+        }
+
+        private void syncDataGrid_Click(object sender, EventArgs e)
+        {
+            visitorDataGrid.DataSource = visitors;
+        }
+
+        private void initializeVisitor()
+        {
+            if (!visitorProcess.ReadVisitors())
+            {
+                MessageBox.Show($"Could'nt Read!\n\"Try deleting {visitorProcess.getFileSource()}\"", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            visitors = new List<Visitor>(visitorProcess.GetVisitors().Values);
+        }
+
+        private void autoSyncVisitorData_Tick(object sender, EventArgs e)
+        {
+            visitorDataGrid.DataSource = visitors;
+        }
+
+        private void importVisitorsB_Click(object sender, EventArgs e)
+        {
+            commonDialog(RWMode.visitors);
+        }
+
+        private void exportVisitorsB_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

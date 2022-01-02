@@ -123,4 +123,7 @@
 -&gt; Use '-' to represent Ticket Price Discount.
 -&gt; Click 'Flush Ticket' to locally save Ticket.</value>
   </data>
+  <metadata name="autoSyncVisitorData.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

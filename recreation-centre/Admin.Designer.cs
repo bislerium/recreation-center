@@ -29,6 +29,7 @@ namespace recreation_centre
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin));
             this.label1 = new System.Windows.Forms.Label();
             this.logoutB = new System.Windows.Forms.Button();
@@ -36,7 +37,6 @@ namespace recreation_centre
             this.closeB = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.exportTicketB = new System.Windows.Forms.Button();
             this.importTicketB = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -97,6 +97,12 @@ namespace recreation_centre
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.syncDataGrid = new System.Windows.Forms.Button();
+            this.visitorDataGrid = new System.Windows.Forms.DataGridView();
+            this.autoSyncVisitorData = new System.Windows.Forms.Timer(this.components);
+            this.importVisitorsB = new System.Windows.Forms.Button();
+            this.exportVisitorsB = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl7.SuspendLayout();
@@ -109,6 +115,8 @@ namespace recreation_centre
             this.tabPage6.SuspendLayout();
             this.tabControl3.SuspendLayout();
             this.tabPage5.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.visitorDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -165,7 +173,7 @@ namespace recreation_centre
             this.tabControl1.Location = new System.Drawing.Point(12, 64);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(776, 683);
+            this.tabControl1.Size = new System.Drawing.Size(776, 667);
             this.tabControl1.TabIndex = 27;
             // 
             // tabPage1
@@ -182,20 +190,10 @@ namespace recreation_centre
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(768, 654);
+            this.tabPage1.Size = new System.Drawing.Size(768, 638);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Ticket";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(768, 654);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Visitor";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // exportTicketB
             // 
@@ -853,12 +851,76 @@ namespace recreation_centre
             this.label5.TabIndex = 7;
             this.label5.Text = "Child (0-16):";
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.exportVisitorsB);
+            this.tabPage2.Controls.Add(this.importVisitorsB);
+            this.tabPage2.Controls.Add(this.syncDataGrid);
+            this.tabPage2.Controls.Add(this.visitorDataGrid);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(768, 638);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Visitor";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // syncDataGrid
+            // 
+            this.syncDataGrid.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.syncDataGrid.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.syncDataGrid.Location = new System.Drawing.Point(6, 15);
+            this.syncDataGrid.Name = "syncDataGrid";
+            this.syncDataGrid.Size = new System.Drawing.Size(94, 35);
+            this.syncDataGrid.TabIndex = 1;
+            this.syncDataGrid.Text = "Sync";
+            this.syncDataGrid.UseVisualStyleBackColor = false;
+            this.syncDataGrid.Click += new System.EventHandler(this.syncDataGrid_Click);
+            // 
+            // visitorDataGrid
+            // 
+            this.visitorDataGrid.AllowUserToDeleteRows = false;
+            this.visitorDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.visitorDataGrid.Location = new System.Drawing.Point(6, 56);
+            this.visitorDataGrid.Name = "visitorDataGrid";
+            this.visitorDataGrid.ReadOnly = true;
+            this.visitorDataGrid.RowHeadersWidth = 51;
+            this.visitorDataGrid.RowTemplate.Height = 24;
+            this.visitorDataGrid.Size = new System.Drawing.Size(756, 576);
+            this.visitorDataGrid.TabIndex = 0;
+            // 
+            // autoSyncVisitorData
+            // 
+            this.autoSyncVisitorData.Enabled = true;
+            this.autoSyncVisitorData.Interval = 3000;
+            this.autoSyncVisitorData.Tick += new System.EventHandler(this.autoSyncVisitorData_Tick);
+            // 
+            // importVisitorsB
+            // 
+            this.importVisitorsB.Location = new System.Drawing.Point(647, 15);
+            this.importVisitorsB.Name = "importVisitorsB";
+            this.importVisitorsB.Size = new System.Drawing.Size(115, 35);
+            this.importVisitorsB.TabIndex = 2;
+            this.importVisitorsB.Text = "Import Visitors";
+            this.importVisitorsB.UseVisualStyleBackColor = true;
+            this.importVisitorsB.Click += new System.EventHandler(this.importVisitorsB_Click);
+            // 
+            // exportVisitorsB
+            // 
+            this.exportVisitorsB.Location = new System.Drawing.Point(526, 15);
+            this.exportVisitorsB.Name = "exportVisitorsB";
+            this.exportVisitorsB.Size = new System.Drawing.Size(115, 35);
+            this.exportVisitorsB.TabIndex = 3;
+            this.exportVisitorsB.Text = "Export Visitors";
+            this.exportVisitorsB.UseVisualStyleBackColor = true;
+            this.exportVisitorsB.Click += new System.EventHandler(this.exportVisitorsB_Click);
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ClientSize = new System.Drawing.Size(800, 755);
+            this.ClientSize = new System.Drawing.Size(800, 735);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.logoutB);
@@ -888,6 +950,8 @@ namespace recreation_centre
             this.tabControl3.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.visitorDataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -962,5 +1026,10 @@ namespace recreation_centre
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridView visitorDataGrid;
+        private System.Windows.Forms.Button syncDataGrid;
+        private System.Windows.Forms.Timer autoSyncVisitorData;
+        private System.Windows.Forms.Button exportVisitorsB;
+        private System.Windows.Forms.Button importVisitorsB;
     }
 }
