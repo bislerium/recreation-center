@@ -37,7 +37,7 @@ namespace recreation_centre
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
+            this.flushTicketB = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabControl7 = new System.Windows.Forms.TabControl();
             this.tabPage9 = new System.Windows.Forms.TabPage();
@@ -50,7 +50,7 @@ namespace recreation_centre
             this.label20 = new System.Windows.Forms.Label();
             this.tabControl6 = new System.Windows.Forms.TabControl();
             this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.button5 = new System.Windows.Forms.Button();
+            this.setDayB = new System.Windows.Forms.Button();
             this.holidaysTB = new System.Windows.Forms.TextBox();
             this.weekdaysTB = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -191,7 +191,7 @@ namespace recreation_centre
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.button1);
+            this.tabPage4.Controls.Add(this.flushTicketB);
             this.tabPage4.Controls.Add(this.textBox1);
             this.tabPage4.Controls.Add(this.tabControl7);
             this.tabPage4.Controls.Add(this.tabControl6);
@@ -206,18 +206,18 @@ namespace recreation_centre
             this.tabPage4.Text = "Ticket";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // flushTicketB
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(488, 441);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(207, 40);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Flush Ticket";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.flushTicketB.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.flushTicketB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flushTicketB.ForeColor = System.Drawing.Color.White;
+            this.flushTicketB.Location = new System.Drawing.Point(488, 441);
+            this.flushTicketB.Name = "flushTicketB";
+            this.flushTicketB.Size = new System.Drawing.Size(207, 40);
+            this.flushTicketB.TabIndex = 13;
+            this.flushTicketB.Text = "Flush Ticket";
+            this.flushTicketB.UseVisualStyleBackColor = false;
+            this.flushTicketB.Click += new System.EventHandler(this.flushTicketB_Click);
             // 
             // textBox1
             // 
@@ -278,6 +278,7 @@ namespace recreation_centre
             this.deleteDurationB.TabIndex = 11;
             this.deleteDurationB.Text = "Delete";
             this.deleteDurationB.UseVisualStyleBackColor = false;
+            this.deleteDurationB.Click += new System.EventHandler(this.deleteDurationB_Click);
             // 
             // setDurationB
             // 
@@ -290,6 +291,7 @@ namespace recreation_centre
             this.setDurationB.TabIndex = 10;
             this.setDurationB.Text = "Set";
             this.setDurationB.UseVisualStyleBackColor = false;
+            this.setDurationB.Click += new System.EventHandler(this.setDurationB_Click);
             // 
             // durationRateTB
             // 
@@ -318,6 +320,7 @@ namespace recreation_centre
             this.hourDurationCB.Name = "hourDurationCB";
             this.hourDurationCB.Size = new System.Drawing.Size(110, 28);
             this.hourDurationCB.TabIndex = 7;
+            this.hourDurationCB.SelectedIndexChanged += new System.EventHandler(this.hourDurationCB_SelectedIndexChanged);
             // 
             // label20
             // 
@@ -340,7 +343,7 @@ namespace recreation_centre
             // 
             // tabPage8
             // 
-            this.tabPage8.Controls.Add(this.button5);
+            this.tabPage8.Controls.Add(this.setDayB);
             this.tabPage8.Controls.Add(this.holidaysTB);
             this.tabPage8.Controls.Add(this.weekdaysTB);
             this.tabPage8.Controls.Add(this.label18);
@@ -367,18 +370,18 @@ namespace recreation_centre
             this.tabPage8.Text = "Day";
             this.tabPage8.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // setDayB
             // 
-            this.button5.BackColor = System.Drawing.SystemColors.Highlight;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(6, 324);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(191, 35);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "Set";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.setDayB.BackColor = System.Drawing.SystemColors.Highlight;
+            this.setDayB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.setDayB.ForeColor = System.Drawing.Color.White;
+            this.setDayB.Location = new System.Drawing.Point(6, 324);
+            this.setDayB.Name = "setDayB";
+            this.setDayB.Size = new System.Drawing.Size(191, 35);
+            this.setDayB.TabIndex = 6;
+            this.setDayB.Text = "Set";
+            this.setDayB.UseVisualStyleBackColor = false;
+            this.setDayB.Click += new System.EventHandler(this.setDayB_Click);
             // 
             // holidaysTB
             // 
@@ -668,6 +671,7 @@ namespace recreation_centre
             this.deleteGroupB.TabIndex = 5;
             this.deleteGroupB.Text = "Delete";
             this.deleteGroupB.UseVisualStyleBackColor = false;
+            this.deleteGroupB.Click += new System.EventHandler(this.deleteGroupB_Click);
             // 
             // setGroupB
             // 
@@ -680,6 +684,7 @@ namespace recreation_centre
             this.setGroupB.TabIndex = 4;
             this.setGroupB.Text = "Set";
             this.setGroupB.UseVisualStyleBackColor = false;
+            this.setGroupB.Click += new System.EventHandler(this.setGroupB_Click);
             // 
             // groupRateTB
             // 
@@ -708,6 +713,7 @@ namespace recreation_centre
             this.peopleCountCB.Name = "peopleCountCB";
             this.peopleCountCB.Size = new System.Drawing.Size(110, 28);
             this.peopleCountCB.TabIndex = 1;
+            this.peopleCountCB.SelectedIndexChanged += new System.EventHandler(this.peopleCountCB_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -908,7 +914,7 @@ namespace recreation_centre
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TabControl tabControl6;
         private System.Windows.Forms.TabPage tabPage8;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button setDayB;
         private System.Windows.Forms.TextBox holidaysTB;
         private System.Windows.Forms.TextBox weekdaysTB;
         private System.Windows.Forms.Label label18;
@@ -940,7 +946,7 @@ namespace recreation_centre
         private System.Windows.Forms.ComboBox hourDurationCB;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button flushTicketB;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TabControl tabControl3;
         private System.Windows.Forms.TabPage tabPage5;

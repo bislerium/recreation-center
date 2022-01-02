@@ -377,7 +377,14 @@ namespace Backend
         public TicketProcess(string fileSource = "D:\\ticket.json")
         {
             this.fileSource = fileSource;
-            ticket = new Ticket();
+            ticket = new Ticket()
+            {
+                Group = new SortedDictionary<short, decimal>(),
+                Duration = new SortedDictionary<short, decimal>(),
+                Age = new SortedDictionary<AgeGroupE, decimal>(),
+                Day = new SortedDictionary<DayOfWeek, decimal>(),
+            };
+
         }
 
         public bool ReadTicket()

@@ -86,7 +86,12 @@ namespace recreation_centre
         private void setBasePriceB_Click(object sender, EventArgs e)
         {
             String basePrice = basePriceMTB.Text.Trim();
+            if (checkEmptyFields("Please, fill the Base Price Field!", basePrice))
+            {
+                return;
+            }
             ticket.BasePrice = int.Parse( basePrice);
+            MessageBox.Show($"BasePrice added successfully!", "Error: Invalid Group", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void setAgeGroupB_Click(object sender, EventArgs e)
@@ -95,54 +100,237 @@ namespace recreation_centre
             string youngAdultPriceRate = youngAdultTB.Text.Trim();
             string middleAdultPriceRate = middleAdultTB.Text.Trim();
             string oldAdultPriceRate = oldAdultTB.Text.Trim();
-            if (string.IsNullOrWhiteSpace(childPriceRate) || string.IsNullOrWhiteSpace(youngAdultPriceRate)
-                || string.IsNullOrWhiteSpace(middleAdultPriceRate) || string.IsNullOrWhiteSpace(oldAdultPriceRate))
+            if (checkEmptyFields("Please, fill the AgeGroup Fields!", childPriceRate, youngAdultPriceRate,
+                middleAdultPriceRate, oldAdultPriceRate))
             {
-                MessageBox.Show("Please, fill All the AgeGroup Fields!", "Error: Empty Field(s)", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            ticket.Age[AgeGroupE.CHILD] = decimal.Parse(childPriceRate);
-            ticket.Age[AgeGroupE.YOUNG_ADULT] = decimal.Parse(youngAdultPriceRate);
-            ticket.Age[AgeGroupE.MIDDLE_ADULT] = decimal.Parse(middleAdultPriceRate);
-            ticket.Age[AgeGroupE.OLD_ADULT] = decimal.Parse(oldAdultPriceRate);
+            decimal[] values = checkDecimalFields(childTB, youngAdultTB, middleAdultTB, oldAdultTB);
+            if (values == null)
+            {
+                return;
+            }
+            ticket.Age[AgeGroupE.CHILD] = values[0];
+            ticket.Age[AgeGroupE.YOUNG_ADULT] = values[1];
+            ticket.Age[AgeGroupE.MIDDLE_ADULT] = values[2];
+            ticket.Age[AgeGroupE.OLD_ADULT] = values[3];
+            setDefaultFieldBackColor(childTB, youngAdultTB, middleAdultTB, oldAdultTB);
+            MessageBox.Show($"PriceRate for AgeGroups added successfully!", "Error: Invalid Group", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private Boolean checkEmptyFields(string message, params String[] stringValues) 
+        {
+            foreach (String value in stringValues)
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    MessageBox.Show(message, "Error: Empty Field(s)", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private decimal[] checkDecimalFields(params TextBox[] testBoxList)
+        {
+            bool error = false;
+            decimal[] values = new decimal[testBoxList.Length];
+            foreach (TextBox testBox in testBoxList)
+            {
+
+                if (decimal.TryParse(testBox.Text.Trim(), out decimal value))
+                {
+                    values.Append(value);
+                }
+                else
+                {
+                    error = true;
+                    testBox.BackColor = Color.Red;
+                    testBox.ForeColor = Color.White;
+                }
+            }
+            if (error)
+            {
+                values = null;
+            }
+            return values;
+        }
+
+        private void setGroupB_Click(object sender, EventArgs e)
+        {
+            string peopleCount = peopleCountCB.Text.Trim();
+            string priceRate = groupRateTB.Text.Trim();
+            if (checkEmptyFields("Please, fill the Group Fields!", peopleCount, priceRate))
+            {
+                return;
+            }
+            bool error = false;
+            if (!short.TryParse(peopleCount, out short shortPeopleCount)) { 
+                peopleCountCB.BackColor = Color.Red;
+                peopleCountCB.ForeColor = Color.White;
+                error = true;
+            }
+            if (!decimal.TryParse(priceRate, out decimal decimalPricerate))
+            {
+                groupRateTB.BackColor = Color.Red;
+                groupRateTB.ForeColor = Color.White;
+                error = true;                
+            }
+            if (error) return;
+            ticket.Group[shortPeopleCount] = decimalPricerate;
+            loadGroupCB();
+            setDefaultFieldBackColor(peopleCountCB, groupRateTB);
+            MessageBox.Show($"PriceRate for Group: {peopleCount} peoples added successfully!", "Error: Invalid Group", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void deleteGroupB_Click(object sender, EventArgs e)
+        {
+            short id = short.Parse(peopleCountCB.Text);
+            if (!ticket.Group.ContainsKey(id))
+            {
+                MessageBox.Show("Sorry, The Group entry was not Found!", "Error: Invalid Group", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (MessageBox.Show($"Delete PriceRate for Group: {id} Peoples",
+                "Delete Confirm",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                ticket.Group.Remove(id);
+                loadGroupCB();
+                peopleCountCB.Text = "";
+                groupRateTB.Text = "";
+            }
+
+        }
+
+        private void setDurationB_Click(object sender, EventArgs e)
+        {
+            string hourDuration = hourDurationCB.Text.Trim();
+            string priceRate = durationRateTB.Text.Trim();
+            if (checkEmptyFields("Please, fill the Duration Fields!", hourDuration, priceRate))
+            {
+                return;
+            }
+            bool error = false;
+            if (!short.TryParse(hourDuration, out short shortHourDuration))
+            {
+                hourDurationCB.BackColor = Color.Red;
+                hourDurationCB.ForeColor = Color.White;
+                error = true;
+            }
+            if (!decimal.TryParse(priceRate, out decimal decimalPriceRate))
+            {
+                durationRateTB.BackColor = Color.Red;
+                durationRateTB.ForeColor = Color.White;
+                error = true;
+            }
+            if (error) return;
+            ticket.Duration[shortHourDuration] = decimalPriceRate;
+            loadDurationCB();
+            setDefaultFieldBackColor(hourDurationCB, durationRateTB);
+            MessageBox.Show($"PriceRate for Duration: {hourDuration} hours added successfully!", "Error: Invalid Group", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void deleteDurationB_Click(object sender, EventArgs e)
+        {
+            short id = short.Parse(hourDurationCB.Text);
+            if (!ticket.Duration.ContainsKey(id)) 
+            {
+                MessageBox.Show("Sorry, The Duration entry was not Found!", "Error: Invalid Duration", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (MessageBox.Show($"Delete PriceRate for Duration: {id} Hours",
+                "Delete Confirm",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Question) == DialogResult.OK)
+            {
+                ticket.Duration.Remove(id);
+                loadDurationCB();
+                durationRateTB.Text = "";
+                hourDurationCB.Text = "";
+            }
+        }
+
+        private void hourDurationCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            durationRateTB.Text=ticket.Duration[short.Parse(hourDurationCB.Text)].ToString();
+        }
+
+        private void loadDurationCB()
+        {
+            hourDurationCB.Items.Clear();           
+            foreach (var key in ticket.Duration.Keys)
+            {
+                hourDurationCB.Items.Add(key.ToString());
+            }
+        }
+        private void loadGroupCB()
+        {
+            peopleCountCB.Items.Clear();
+            foreach (var key in ticket.Group.Keys)
+            {
+                peopleCountCB.Items.Add(key.ToString());
+            }
+        }
+
+        private void setDefaultFieldBackColor(params Control[] controlList)
+        {
+            foreach (var control in controlList) 
+            {
+                control.ForeColor = Color.Black;
+                control.BackColor = Color.White;
+            }
+        }
+
+        private void peopleCountCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            groupRateTB.Text = ticket.Group[short.Parse(peopleCountCB.Text)].ToString();
+        }
+
+        private void flushTicketB_Click(object sender, EventArgs e)
         {
             if (ticketProcess.WriteTicket())
             {
                 MessageBox.Show($"Successfully, flushed Ticket Data locally at:\n\"{ticketProcess.getFileSource()}\"", "Ticket Flush", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else 
+            else
             {
                 MessageBox.Show("Something went Wrong!", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void setDayB_Click(object sender, EventArgs e)
         {
             String sundayPriceRate = sundayTB.Text.Trim();
-            String mondayPriceRate = sundayTB.Text.Trim();
-            String tuesdayPriceRate = sundayTB.Text.Trim();
-            String wednesdayPriceRate = sundayTB.Text.Trim();
-            String thrusdayPriceRate = sundayTB.Text.Trim();
-            String fridayPriceRate = sundayTB.Text.Trim();
-            String saturdayPriceRate = sundayTB.Text.Trim();
-            if (string.IsNullOrWhiteSpace(sundayPriceRate) || string.IsNullOrWhiteSpace(mondayPriceRate)
-                || string.IsNullOrWhiteSpace(tuesdayPriceRate) || string.IsNullOrWhiteSpace(wednesdayPriceRate)
-                || string.IsNullOrWhiteSpace(thrusdayPriceRate) || string.IsNullOrWhiteSpace(fridayPriceRate)
-                || string.IsNullOrWhiteSpace(saturdayPriceRate))
+            String mondayPriceRate = mondayTB.Text.Trim();
+            String tuesdayPriceRate = tuesdayTB.Text.Trim();
+            String wednesdayPriceRate = wednesdayTB.Text.Trim();
+            String thrusdayPriceRate = thrusdayTB.Text.Trim();
+            String fridayPriceRate = fridayTB.Text.Trim();
+            String saturdayPriceRate = saturdayTB.Text.Trim();
+            if (checkEmptyFields("Please, fill the Day Fields!", sundayPriceRate, mondayPriceRate, tuesdayPriceRate, wednesdayPriceRate,
+                thrusdayPriceRate, fridayPriceRate, saturdayPriceRate))
             {
-                MessageBox.Show("Please, don't leave any Day-Fields Empty", "Error: Empty Field(s)", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            ticket.Day[DayOfWeek.Sunday] = decimal.Parse(sundayPriceRate);
-            ticket.Day[DayOfWeek.Monday] = decimal.Parse(mondayPriceRate);
-            ticket.Day[DayOfWeek.Tuesday] = decimal.Parse(tuesdayPriceRate);
-            ticket.Day[DayOfWeek.Wednesday] = decimal.Parse(wednesdayPriceRate);
-            ticket.Day[DayOfWeek.Thursday] = decimal.Parse(thrusdayPriceRate);
-            ticket.Day[DayOfWeek.Friday] = decimal.Parse(fridayPriceRate);
-            ticket.Day[DayOfWeek.Saturday] = decimal.Parse(saturdayPriceRate);
+            decimal[] values = checkDecimalFields(sundayTB, mondayTB, tuesdayTB, wednesdayTB,
+                thrusdayTB, fridayTB, saturdayTB);
+            if (values == null)
+            {
+                return;
+            }
+            ticket.Day[DayOfWeek.Sunday] = values[0];
+            ticket.Day[DayOfWeek.Monday] = values[1];
+            ticket.Day[DayOfWeek.Tuesday] = values[2];
+            ticket.Day[DayOfWeek.Wednesday] = values[3];
+            ticket.Day[DayOfWeek.Thursday] = values[4];
+            ticket.Day[DayOfWeek.Friday] = values[5];
+            ticket.Day[DayOfWeek.Saturday] = values[6];
+            setDefaultFieldBackColor(sundayTB, mondayTB, tuesdayTB, wednesdayTB,
+                thrusdayTB, fridayTB, saturdayTB);
+            MessageBox.Show($"PriceRate for Days added successfully!", "Error: Invalid Group", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
