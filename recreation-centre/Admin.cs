@@ -23,14 +23,19 @@ namespace recreation_centre
             InitializeComponent();
             this.visitorProcess = visitorProcess;
             this.ticketProcess = ticketProcess;
-            initializeTicket();
+            initializeTicket(true);
             initializeVisitors();
         }
 
         private void logoutB_Click(object sender, EventArgs e)
         {
-            new Login();
-            this.Dispose();
+            try {
+                Application.Run(new Login());
+                this.Dispose();
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }           
         }
 
         private void closeB_Click(object sender, EventArgs e)
@@ -167,7 +172,7 @@ namespace recreation_centre
                 return;
             }
             bool error = false;
-            if (!short.TryParse(peopleCount, out short shortPeopleCount)) { 
+            if (!short.TryParse(peopleCount, out short shortPeopleCount) || shortPeopleCount == 0) { 
                 peopleCountCB.BackColor = Color.Red;
                 peopleCountCB.ForeColor = Color.White;
                 error = true;
@@ -193,7 +198,7 @@ namespace recreation_centre
                 return ;
             }
             short id = short.Parse(peopleCount);
-            if (!ticket.Group.ContainsKey(id))
+            if (!ticket.Group.ContainsKey(id) || id == 0)
             {
                 MessageBox.Show("Sorry, The Group entry was not Found!", "Error: Invalid Group", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -220,7 +225,7 @@ namespace recreation_centre
                 return;
             }
             bool error = false;
-            if (!short.TryParse(hourDuration, out short shortHourDuration))
+            if (!short.TryParse(hourDuration, out short shortHourDuration) || shortHourDuration == 0)
             {
                 hourDurationCB.BackColor = Color.Red;
                 hourDurationCB.ForeColor = Color.White;
@@ -247,7 +252,7 @@ namespace recreation_centre
                 return;
             }
             short id = short.Parse(hourDuration);
-            if (!ticket.Duration.ContainsKey(id)) 
+            if (!ticket.Duration.ContainsKey(id) || id == 0) 
             {
                 MessageBox.Show("Sorry, The Duration entry was not Found!", "Error: Invalid Duration", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -276,6 +281,7 @@ namespace recreation_centre
             durationRateTB.Text = "";
             foreach (var key in ticket.Duration.Keys)
             {
+                if (key == 0) continue;
                 hourDurationCB.Items.Add(key.ToString());
             }
         }
@@ -286,6 +292,7 @@ namespace recreation_centre
             groupRateTB.Text = "";
             foreach (var key in ticket.Group.Keys)
             {
+                if (key == 0) continue;
                 peopleCountCB.Items.Add(key.ToString());
             }
         }
@@ -347,12 +354,15 @@ namespace recreation_centre
                 thrusdayTB, fridayTB, saturdayTB);
             MessageBox.Show($"PriceRate for Days added successfully!", "Error: Invalid Group", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-        private void initializeTicket() 
+        private void initializeTicket(bool isNewTicket = false) 
         {
             if (!ticketProcess.ReadTicket())
             {
-                MessageBox.Show($"Could'nt Read!\n\"Try deleting {ticketProcess.getFileSource()}\"", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MessageBox.Show($"Could'nt Read Ticket : {ticketProcess.getFileSource()}", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+                if (!isNewTicket) return;
+                MessageBox.Show($"New Ticket:{ticketProcess.getFileSource()} Can be created!", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
             ticket = ticketProcess.GetTicket();
             loadDurationCB();
@@ -445,22 +455,17 @@ namespace recreation_centre
 
         private void syncDataGrid_Click(object sender, EventArgs e)
         {
-            visitorDataGrid.DataSource = visitors;
+            visitorDataGrid.DataSource = visitors.Values.ToArray();
         }
 
         private void initializeVisitors()
         {
             if (!visitorProcess.ReadVisitors())
             {
-                MessageBox.Show($"Could'nt Read!\n\"Try deleting {visitorProcess.getFileSource()}\"", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Could'nt Read Visitors!\n\"Try deleting {visitorProcess.getFileSource()}\"", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             visitors = visitorProcess.GetVisitors();
-        }
-
-        private void autoSyncVisitorData_Tick(object sender, EventArgs e)
-        {
-            visitorDataGrid.DataSource = visitors.Values.ToArray();
         }
 
         private void importVisitorsB_Click(object sender, EventArgs e)

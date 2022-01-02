@@ -34,13 +34,13 @@ namespace Backend
             }
         }
 
-        public class Auth
+        public class Authy
         {
             private readonly string fileSource;
             private Dictionary<int, User> Credentials;
             Random r;
 
-            public Auth(string credentialSource = "D:\\credentials.json")
+            public Authy(string credentialSource = "D:\\credentials.json")
             {
                 fileSource = credentialSource;
                 Credentials = new Dictionary<int, User>();
@@ -144,7 +144,7 @@ namespace Backend
 
             public static void Main(string[] args)
             {
-                Auth a = new Auth();
+                Authy a = new Authy();
                 Console.WriteLine(a.GenerateRecoveryCode(16));
                 string aa = a.GenerateRecoveryCode(16);
                 string bb = a.GenerateRecoveryCode(16);
@@ -193,78 +193,59 @@ namespace Backend
     public struct Bill
     {
         public decimal InitialPrice { get; }
-        public decimal C_AgeDrate { get; }
-        public decimal C_AgeDiscount { get; }
-        public decimal AfterCAD { get; }
-        public decimal Y_AgeDrate { get; }
-        public decimal Y_AgeDiscount { get; }
-        public decimal AfterYAD { get; }
-        public decimal M_AgeDrate { get; }
-        public decimal M_AgeDiscount { get; }
-        public decimal AfterMAD { get; }
-        public decimal O_AgeDrate { get; }
-        public decimal O_AgeDiscount { get; }
-        public decimal AfterOAD { get; }
+        public decimal C_AgeRate { get; }
+        public decimal C_AgeRating { get; }
+        public decimal AfterCAR { get; }
+        public decimal Y_AgeRate { get; }
+        public decimal Y_AgeRating { get; }
+        public decimal AfterYAR { get; }
+        public decimal M_AgeRate { get; }
+        public decimal M_AgeRating { get; }
+        public decimal AfterMAR { get; }
+        public decimal O_AgeRate { get; }
+        public decimal O_AgeRating { get; }
+        public decimal AfterOAR { get; }
         public decimal TotalAgeGroupPrice { get; }
-        public decimal GroupDRate { get; }
-        public decimal GroupDiscout { get; }
-        public decimal AfterGD { get; }
-        public decimal DurationDRate { get; }
-        public decimal DurationDiscount { get; }
-        public decimal AfterDND { get; }
-        public decimal DayDRate { get; }
-        public decimal DayDiscount { get; }
-        public decimal AfterDYD { get; }
+        public decimal GroupRate { get; }
+        public decimal GroupRating { get; }
+        public decimal AfterGR { get; }
+        public decimal DurationRate { get; }
+        public decimal DurationRating { get; }
+        public decimal AfterDNR { get; }
+        public decimal DayRate { get; }
+        public decimal DayPricing { get; }
+        public decimal AfterDYR { get; }
         public decimal FinalPrice { get; }
 
-        public Bill(decimal initialPrice,
-            decimal c_AgeDrate,
-            decimal c_AgeDiscount,
-            decimal afterCAD,
-            decimal y_AgeDrate,
-            decimal y_AgeDiscount,
-            decimal afterYAD,
-            decimal m_AgeDrate,
-            decimal m_AgeDiscount,
-            decimal afterMAD,
-            decimal o_AgeDrate,
-            decimal o_AgeDiscount,
-            decimal afterOAD,
-            decimal totalAgeGroupPrice,
-            decimal groupDRate,
-            decimal groupDiscout,
-            decimal afterGD,
-            decimal durationDRate,
-            decimal durationDiscount,
-            decimal afterDND,
-            decimal dayDRate,
-            decimal dayDiscount,
-            decimal afterDYD,
-            decimal finalPrice)
+        public Bill(decimal initialPrice, decimal c_AgeRate, decimal c_AgeRating, decimal afterCAR,
+            decimal y_AgeRate, decimal y_AgeRating, decimal afterYAR, decimal ageRate, decimal ageRating,
+            decimal afterMAR, decimal o_AgeRate, decimal o_AgeRating, decimal afterOAR, decimal totalAgeGroupPrice,
+            decimal groupRate, decimal groupRating, decimal afterGR, decimal durationRate, decimal durationRating,
+            decimal afterDNR, decimal dayRate, decimal dayPricing, decimal afterDYR, decimal finalPrice)
         {
             InitialPrice = initialPrice;
-            C_AgeDrate = c_AgeDrate;
-            C_AgeDiscount = c_AgeDiscount;
-            AfterCAD = afterCAD;
-            Y_AgeDrate = y_AgeDrate;
-            Y_AgeDiscount = y_AgeDiscount;
-            AfterYAD = afterYAD;
-            M_AgeDrate = m_AgeDrate;
-            M_AgeDiscount = m_AgeDiscount;
-            AfterMAD = afterMAD;
-            O_AgeDrate = o_AgeDrate;
-            O_AgeDiscount = o_AgeDiscount;
-            AfterOAD = afterOAD;
+            C_AgeRate = c_AgeRate;
+            C_AgeRating = c_AgeRating;
+            AfterCAR = afterCAR;
+            Y_AgeRate = y_AgeRate;
+            Y_AgeRating = y_AgeRating;
+            AfterYAR = afterYAR;
+            M_AgeRate = ageRate;
+            M_AgeRating = ageRating;
+            AfterMAR = afterMAR;
+            O_AgeRate = o_AgeRate;
+            O_AgeRating = o_AgeRating;
+            AfterOAR = afterOAR;
             TotalAgeGroupPrice = totalAgeGroupPrice;
-            GroupDRate = groupDRate;
-            GroupDiscout = groupDiscout;
-            AfterGD = afterGD;
-            DurationDRate = durationDRate;
-            DurationDiscount = durationDiscount;
-            AfterDND = afterDND;
-            DayDRate = dayDRate;
-            DayDiscount = dayDiscount;
-            AfterDYD = afterDYD;
+            GroupRate = groupRate;
+            GroupRating = groupRating;
+            AfterGR = afterGR;
+            DurationRate = durationRate;
+            DurationRating = durationRating;
+            AfterDNR = afterDNR;
+            DayRate = dayRate;
+            DayPricing = dayPricing;
+            AfterDYR = afterDYR;
             FinalPrice = finalPrice;
         }
     }
@@ -288,7 +269,7 @@ namespace Backend
         CHILD = 0,
         YOUNG_ADULT = 17,
         MIDDLE_ADULT = 31,
-        OLD_ADULT = 45     
+        OLD_ADULT = 46    
     }
 
     public class Visitor
@@ -339,32 +320,31 @@ namespace Backend
 
         public SortedDictionary<DayOfWeek, decimal> Day { get; set; }
 
-        public Price GetGroupDiscount(short groupOf,
-            decimal basePrice)
+        public Price GetGroupDiscount(short groupOf, decimal basePrice)
         {
             short appropriateGroup = Group.Keys.Aggregate((x, y) => (groupOf >= x && groupOf < y) ? x : y);
-            decimal discount = Group[appropriateGroup] * basePrice;
-            return new Price(Group[appropriateGroup], discount, basePrice - discount);
+            decimal rating = Group[appropriateGroup]/100 * basePrice;
+            return new Price(Group[appropriateGroup], rating, basePrice - rating);
         }
 
         public Price GetDurationDiscount(short durationInHour, decimal basePrice)
         {
             short appropriateDuration = Duration.Keys.Aggregate((x, y) => (durationInHour >= x && durationInHour < y) ? x : y);
-            decimal discount = Duration[appropriateDuration] * basePrice;
-            return new Price(Duration[appropriateDuration], discount, basePrice - discount);
+            decimal rating = Duration[appropriateDuration]/100 * basePrice;
+            return new Price(Duration[appropriateDuration], rating, basePrice - rating);
         }
 
         public Price GetAgeDiscount(short age, decimal basePrice)
         {
             AgeGroupE appropriateAge = Age.Keys.Aggregate((x, y) => (age >= (short)x && age < (short)y) ? x : y);
-            decimal discount = Age[appropriateAge] * basePrice;
-            return new Price(Age[appropriateAge], discount, basePrice - discount);
+            decimal rating = Age[appropriateAge]/100 * basePrice;
+            return new Price(Age[appropriateAge], rating, basePrice - rating);
         }
 
         public Price GetDayDiscount(DayOfWeek day, decimal basePrice)
         {
-            decimal discount = Day[day] * basePrice;
-            return new Price(Day[day], discount, basePrice - discount);
+            decimal raing = Day[day]/100 * basePrice;
+            return new Price(Day[day], raing, basePrice - raing);
         }
 
         public override string ToString()
@@ -381,7 +361,6 @@ namespace Backend
 
     public class TicketProcess 
     {
-
         private Ticket ticket;
         private readonly String fileSource;
 
@@ -391,8 +370,14 @@ namespace Backend
             ticket = new Ticket()
             {
                 BasePrice = 0,
-                Group = new SortedDictionary<short, decimal>(),
-                Duration = new SortedDictionary<short, decimal>(),
+                Group = new SortedDictionary<short, decimal>() 
+                {
+                    {0, 0}
+                },
+                Duration = new SortedDictionary<short, decimal>()
+                {
+                    {0, 0}
+                },
                 Age = new SortedDictionary<AgeGroupE, decimal>()
                 {
                     {AgeGroupE.CHILD, 0 },

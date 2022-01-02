@@ -21,9 +21,6 @@ namespace recreation_centre
             InitializeComponent();
             this.visitorProcess = visitorProcess;
             loginUserTB.Text = loginUser;
-            inDateTimeDTP.Format = DateTimePickerFormat.Custom;
-            inDateTimeDTP.CustomFormat = "dd/MM/yyyy, hh:mm tt ";
-            dayMTB.Text = DateTime.Now.DayOfWeek.ToString();
         }
 
         private void syncCurTimeB_Click(object sender, EventArgs e)
@@ -100,8 +97,15 @@ namespace recreation_centre
 
         private void logoutB_Click(object sender, EventArgs e)
         {
-            new Login();
-            this.Dispose();
+            try
+            {
+                Application.Run(new Login());
+                this.Dispose();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private void calenderDate_click(object sender, EventArgs e) 
@@ -131,6 +135,18 @@ namespace recreation_centre
         private void closeB_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void initializeVisitors()
+        {
+            if (visitorProcess.ReadVisitors())
+            {
+                MessageBox.Show($"Could'nt Read Visitors!\n\"Try deleting {visitorProcess.getFileSource()}\"", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            inDateTimeDTP.Format = DateTimePickerFormat.Custom;
+            inDateTimeDTP.CustomFormat = "dd/MM/yyyy, hh:mm tt ";
+            dayMTB.Text = DateTime.Now.DayOfWeek.ToString();
         }
     }
 }

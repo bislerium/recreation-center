@@ -38,8 +38,15 @@ namespace recreation_centre
 
         private void logoutB_Click(object sender, EventArgs e)
         {
-            new Login();
-            this.Dispose();            
+            try
+            {
+                Application.Run(new Login());
+                this.Dispose();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private void calculateB_Click(object sender, EventArgs e)
