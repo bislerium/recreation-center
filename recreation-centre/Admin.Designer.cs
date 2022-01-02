@@ -36,8 +36,7 @@ namespace recreation_centre
             this.closeB = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabControl2 = new System.Windows.Forms.TabControl();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.exportTicketB = new System.Windows.Forms.Button();
             this.importTicketB = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -98,11 +97,8 @@ namespace recreation_centre
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabControl2.SuspendLayout();
-            this.tabPage4.SuspendLayout();
             this.tabControl7.SuspendLayout();
             this.tabPage9.SuspendLayout();
             this.tabControl6.SuspendLayout();
@@ -169,57 +165,47 @@ namespace recreation_centre
             this.tabControl1.Location = new System.Drawing.Point(12, 64);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(776, 705);
+            this.tabControl1.Size = new System.Drawing.Size(776, 683);
             this.tabControl1.TabIndex = 27;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.tabControl2);
+            this.tabPage1.Controls.Add(this.exportTicketB);
+            this.tabPage1.Controls.Add(this.importTicketB);
+            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.flushTicketB);
+            this.tabPage1.Controls.Add(this.tabControl7);
+            this.tabPage1.Controls.Add(this.tabControl6);
+            this.tabPage1.Controls.Add(this.tabControl5);
+            this.tabPage1.Controls.Add(this.tabControl4);
+            this.tabPage1.Controls.Add(this.tabControl3);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(768, 676);
+            this.tabPage1.Size = new System.Drawing.Size(768, 654);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Ticket & Visitor";
+            this.tabPage1.Text = "Ticket";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabControl2
+            // tabPage2
             // 
-            this.tabControl2.Controls.Add(this.tabPage4);
-            this.tabControl2.Location = new System.Drawing.Point(6, 6);
-            this.tabControl2.Name = "tabControl2";
-            this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(756, 640);
-            this.tabControl2.TabIndex = 0;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.exportTicketB);
-            this.tabPage4.Controls.Add(this.importTicketB);
-            this.tabPage4.Controls.Add(this.textBox1);
-            this.tabPage4.Controls.Add(this.flushTicketB);
-            this.tabPage4.Controls.Add(this.tabControl7);
-            this.tabPage4.Controls.Add(this.tabControl6);
-            this.tabPage4.Controls.Add(this.tabControl5);
-            this.tabPage4.Controls.Add(this.tabControl4);
-            this.tabPage4.Controls.Add(this.tabControl3);
-            this.tabPage4.Location = new System.Drawing.Point(4, 25);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(748, 611);
-            this.tabPage4.TabIndex = 1;
-            this.tabPage4.Text = "Ticket";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(768, 654);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Visitor";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // exportTicketB
             // 
             this.exportTicketB.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.exportTicketB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.exportTicketB.ForeColor = System.Drawing.Color.Black;
-            this.exportTicketB.Location = new System.Drawing.Point(623, 510);
+            this.exportTicketB.Location = new System.Drawing.Point(633, 533);
             this.exportTicketB.Name = "exportTicketB";
             this.exportTicketB.Size = new System.Drawing.Size(104, 35);
-            this.exportTicketB.TabIndex = 24;
+            this.exportTicketB.TabIndex = 33;
             this.exportTicketB.Text = "Export";
             this.exportTicketB.UseVisualStyleBackColor = false;
             this.exportTicketB.Click += new System.EventHandler(this.exportTicketB_Click);
@@ -229,22 +215,22 @@ namespace recreation_centre
             this.importTicketB.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.importTicketB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.importTicketB.ForeColor = System.Drawing.Color.Black;
-            this.importTicketB.Location = new System.Drawing.Point(520, 510);
+            this.importTicketB.Location = new System.Drawing.Point(530, 533);
             this.importTicketB.Name = "importTicketB";
             this.importTicketB.Size = new System.Drawing.Size(97, 35);
-            this.importTicketB.TabIndex = 23;
+            this.importTicketB.TabIndex = 32;
             this.importTicketB.Text = "Import";
             this.importTicketB.UseVisualStyleBackColor = false;
             this.importTicketB.Click += new System.EventHandler(this.importTicketB_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 6);
+            this.textBox1.Location = new System.Drawing.Point(32, 17);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(736, 74);
-            this.textBox1.TabIndex = 14;
+            this.textBox1.Size = new System.Drawing.Size(705, 74);
+            this.textBox1.TabIndex = 31;
             this.textBox1.Text = resources.GetString("textBox1.Text");
             // 
             // flushTicketB
@@ -252,10 +238,10 @@ namespace recreation_centre
             this.flushTicketB.BackColor = System.Drawing.Color.OrangeRed;
             this.flushTicketB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.flushTicketB.ForeColor = System.Drawing.Color.White;
-            this.flushTicketB.Location = new System.Drawing.Point(520, 551);
+            this.flushTicketB.Location = new System.Drawing.Point(530, 574);
             this.flushTicketB.Name = "flushTicketB";
             this.flushTicketB.Size = new System.Drawing.Size(207, 40);
-            this.flushTicketB.TabIndex = 13;
+            this.flushTicketB.TabIndex = 30;
             this.flushTicketB.Text = "Flush Ticket";
             this.flushTicketB.UseVisualStyleBackColor = false;
             this.flushTicketB.Click += new System.EventHandler(this.flushTicketB_Click);
@@ -263,11 +249,11 @@ namespace recreation_centre
             // tabControl7
             // 
             this.tabControl7.Controls.Add(this.tabPage9);
-            this.tabControl7.Location = new System.Drawing.Point(269, 352);
+            this.tabControl7.Location = new System.Drawing.Point(279, 375);
             this.tabControl7.Name = "tabControl7";
             this.tabControl7.SelectedIndex = 0;
             this.tabControl7.Size = new System.Drawing.Size(211, 250);
-            this.tabControl7.TabIndex = 8;
+            this.tabControl7.TabIndex = 29;
             // 
             // tabPage9
             // 
@@ -364,11 +350,11 @@ namespace recreation_centre
             // tabControl6
             // 
             this.tabControl6.Controls.Add(this.tabPage8);
-            this.tabControl6.Location = new System.Drawing.Point(520, 93);
+            this.tabControl6.Location = new System.Drawing.Point(530, 116);
             this.tabControl6.Name = "tabControl6";
             this.tabControl6.SelectedIndex = 0;
             this.tabControl6.Size = new System.Drawing.Size(211, 397);
-            this.tabControl6.TabIndex = 7;
+            this.tabControl6.TabIndex = 28;
             // 
             // tabPage8
             // 
@@ -588,11 +574,11 @@ namespace recreation_centre
             // tabControl5
             // 
             this.tabControl5.Controls.Add(this.tabPage7);
-            this.tabControl5.Location = new System.Drawing.Point(22, 93);
+            this.tabControl5.Location = new System.Drawing.Point(32, 116);
             this.tabControl5.Name = "tabControl5";
             this.tabControl5.SelectedIndex = 0;
             this.tabControl5.Size = new System.Drawing.Size(207, 159);
-            this.tabControl5.TabIndex = 6;
+            this.tabControl5.TabIndex = 27;
             // 
             // tabPage7
             // 
@@ -656,11 +642,11 @@ namespace recreation_centre
             // tabControl4
             // 
             this.tabControl4.Controls.Add(this.tabPage6);
-            this.tabControl4.Location = new System.Drawing.Point(269, 93);
+            this.tabControl4.Location = new System.Drawing.Point(279, 116);
             this.tabControl4.Name = "tabControl4";
             this.tabControl4.SelectedIndex = 0;
             this.tabControl4.Size = new System.Drawing.Size(211, 251);
-            this.tabControl4.TabIndex = 4;
+            this.tabControl4.TabIndex = 26;
             // 
             // tabPage6
             // 
@@ -757,11 +743,11 @@ namespace recreation_centre
             // tabControl3
             // 
             this.tabControl3.Controls.Add(this.tabPage5);
-            this.tabControl3.Location = new System.Drawing.Point(22, 263);
+            this.tabControl3.Location = new System.Drawing.Point(32, 286);
             this.tabControl3.Name = "tabControl3";
             this.tabControl3.SelectedIndex = 0;
             this.tabControl3.Size = new System.Drawing.Size(207, 301);
-            this.tabControl3.TabIndex = 2;
+            this.tabControl3.TabIndex = 25;
             // 
             // tabPage5
             // 
@@ -867,22 +853,12 @@ namespace recreation_centre
             this.label5.TabIndex = 7;
             this.label5.Text = "Child (0-16):";
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(768, 676);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Account Management";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.ClientSize = new System.Drawing.Size(800, 781);
+            this.ClientSize = new System.Drawing.Size(800, 755);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.logoutB);
@@ -896,9 +872,7 @@ namespace recreation_centre
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabControl2.ResumeLayout(false);
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
+            this.tabPage1.PerformLayout();
             this.tabControl7.ResumeLayout(false);
             this.tabPage9.ResumeLayout(false);
             this.tabPage9.PerformLayout();
@@ -927,20 +901,20 @@ namespace recreation_centre
         private System.Windows.Forms.Button closeB;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabControl tabControl2;
-        private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.MaskedTextBox basePriceMTB;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TabControl tabControl4;
-        private System.Windows.Forms.TabPage tabPage6;
-        private System.Windows.Forms.Button deleteGroupB;
-        private System.Windows.Forms.Button setGroupB;
-        private System.Windows.Forms.TextBox groupRateTB;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox peopleCountCB;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button exportTicketB;
+        private System.Windows.Forms.Button importTicketB;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button flushTicketB;
+        private System.Windows.Forms.TabControl tabControl7;
+        private System.Windows.Forms.TabPage tabPage9;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Button deleteDurationB;
+        private System.Windows.Forms.Button setDurationB;
+        private System.Windows.Forms.TextBox durationRateTB;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.ComboBox hourDurationCB;
+        private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TabControl tabControl6;
         private System.Windows.Forms.TabPage tabPage8;
         private System.Windows.Forms.Button setDayB;
@@ -965,17 +939,18 @@ namespace recreation_centre
         private System.Windows.Forms.TabControl tabControl5;
         private System.Windows.Forms.TabPage tabPage7;
         private System.Windows.Forms.Button setBasePriceB;
-        private System.Windows.Forms.TabControl tabControl7;
-        private System.Windows.Forms.TabPage tabPage9;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Button deleteDurationB;
-        private System.Windows.Forms.Button setDurationB;
-        private System.Windows.Forms.TextBox durationRateTB;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.ComboBox hourDurationCB;
-        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.MaskedTextBox basePriceMTB;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TabControl tabControl4;
+        private System.Windows.Forms.TabPage tabPage6;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Button flushTicketB;
+        private System.Windows.Forms.Button deleteGroupB;
+        private System.Windows.Forms.Button setGroupB;
+        private System.Windows.Forms.TextBox groupRateTB;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox peopleCountCB;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TabControl tabControl3;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.Button setAgeGroupB;
@@ -987,8 +962,5 @@ namespace recreation_centre
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button exportTicketB;
-        private System.Windows.Forms.Button importTicketB;
     }
 }

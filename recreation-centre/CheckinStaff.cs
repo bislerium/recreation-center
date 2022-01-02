@@ -70,7 +70,7 @@ namespace recreation_centre
             };
             Visitor v = new Visitor()
             {
-                TicketCode = visitorProcess.GenerateID(10),
+                TicketCode = visitorProcess.GenerateID(),
                 Name = name,
                 Phone = phone,
                 Age = short.Parse(age),

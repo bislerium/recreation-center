@@ -269,7 +269,9 @@ namespace recreation_centre
 
         private void loadDurationCB()
         {
-            hourDurationCB.Items.Clear();           
+            hourDurationCB.Items.Clear();
+            hourDurationCB.Text = "";
+            durationRateTB.Text = "";
             foreach (var key in ticket.Duration.Keys)
             {
                 hourDurationCB.Items.Add(key.ToString());
@@ -278,6 +280,8 @@ namespace recreation_centre
         private void loadGroupCB()
         {
             peopleCountCB.Items.Clear();
+            peopleCountCB.Text = "";
+            groupRateTB.Text = "";
             foreach (var key in ticket.Group.Keys)
             {
                 peopleCountCB.Items.Add(key.ToString());
@@ -343,6 +347,11 @@ namespace recreation_centre
         }
         private void initializeTicket() 
         {
+            if (!ticketProcess.ReadTicket())
+            {
+                MessageBox.Show($"Could'nt Read!\n\"Try deleting {ticketProcess.getFileSource()}\"", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             ticket = ticketProcess.GetTicket();
             loadDurationCB();
             loadGroupCB();
@@ -371,7 +380,10 @@ namespace recreation_centre
             if (exportTicketDialogBox.ShowDialog() == DialogResult.OK)
             {
                 TicketProcess tk = new TicketProcess(exportTicketDialogBox.FileName, ticket);
-                tk.WriteTicket();
+                if (!tk.WriteTicket())
+                { 
+                MessageBox.Show("Could'nt Write!", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -391,7 +403,6 @@ namespace recreation_centre
             if (importTicketDialogBox.ShowDialog() == DialogResult.OK)
             {
                 ticketProcess = new TicketProcess(importTicketDialogBox.FileName);
-                ticketProcess.ReadTicket();
                 initializeTicket();
             }
         }

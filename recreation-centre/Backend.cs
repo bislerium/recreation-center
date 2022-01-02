@@ -190,7 +190,7 @@ namespace Backend
     }
 
     // Used as a value-type to visualize the Ticket pricing process in Win-Form for Staff-clerk
-    public struct Price
+    public struct Bill
     {
         public decimal InitialPrice { get; }
         public decimal C_AgeDrate { get; }
@@ -217,7 +217,7 @@ namespace Backend
         public decimal AfterDYD { get; }
         public decimal FinalPrice { get; }
 
-        public Price(decimal initialPrice,
+        public Bill(decimal initialPrice,
             decimal c_AgeDrate,
             decimal c_AgeDiscount,
             decimal afterCAD,
@@ -269,17 +269,17 @@ namespace Backend
         }
     }
 
-    public struct DiscountPrice { 
-        public decimal DiscountRate { get; }
-        public decimal Discount { get; }
-        public decimal DiscountedPrice { get; }
-        public DiscountPrice(decimal discountRate,
-            decimal discount,
-            decimal discountedPrice)
+    public struct Price { 
+        public decimal Rate { get; }
+        public decimal Rating { get; }
+        public decimal RatedPrice { get; }
+        public Price(decimal Rate,
+            decimal Rating,
+            decimal RatedPrice)
         {
-            DiscountRate = discountRate;
-            Discount = discount;
-            DiscountedPrice = discountedPrice;
+            this.Rate = Rate;
+            this.Rating = Rating;
+            this.RatedPrice = RatedPrice;
         }
     }
 
@@ -309,7 +309,7 @@ namespace Backend
 
         public DateTime? OutTime { get; set; }
 
-        public Price? Bill { get; set; }
+        public Bill? Bill { get; set; }
 
         public override string ToString()
         {
@@ -339,32 +339,43 @@ namespace Backend
 
         public SortedDictionary<DayOfWeek, decimal> Day { get; set; }
 
-        public DiscountPrice GetGroupDiscount(short groupOf,
+        public Price GetGroupDiscount(short groupOf,
             decimal basePrice)
         {
             short appropriateGroup = Group.Keys.Aggregate((x, y) => (groupOf >= x && groupOf < y) ? x : y);
             decimal discount = Group[appropriateGroup] * basePrice;
-            return new DiscountPrice(Group[appropriateGroup], discount, basePrice - discount);
+            return new Price(Group[appropriateGroup], discount, basePrice - discount);
         }
 
-        public DiscountPrice GetDurationDiscount(short durationInHour, decimal basePrice)
+        public Price GetDurationDiscount(short durationInHour, decimal basePrice)
         {
             short appropriateDuration = Duration.Keys.Aggregate((x, y) => (durationInHour >= x && durationInHour < y) ? x : y);
             decimal discount = Duration[appropriateDuration] * basePrice;
-            return new DiscountPrice(Duration[appropriateDuration], discount, basePrice - discount);
+            return new Price(Duration[appropriateDuration], discount, basePrice - discount);
         }
 
-        public DiscountPrice GetAgeDiscount(short age, decimal basePrice)
+        public Price GetAgeDiscount(short age, decimal basePrice)
         {
             AgeGroupE appropriateAge = Age.Keys.Aggregate((x, y) => (age >= (short)x && age < (short)y) ? x : y);
             decimal discount = Age[appropriateAge] * basePrice;
-            return new DiscountPrice(Age[appropriateAge], discount, basePrice - discount);
+            return new Price(Age[appropriateAge], discount, basePrice - discount);
         }
 
-        public DiscountPrice GetDayDiscount(DayOfWeek day, decimal basePrice)
+        public Price GetDayDiscount(DayOfWeek day, decimal basePrice)
         {
             decimal discount = Day[day] * basePrice;
-            return new DiscountPrice(Day[day], discount, basePrice - discount);
+            return new Price(Day[day], discount, basePrice - discount);
+        }
+
+        public override string ToString()
+        {
+            return $@"
+                    Base Price = { BasePrice },
+                    Group = { string.Join(" | ", Group.Select(x => x.Key + " : " + x.Value).ToList()) },
+                    Duration = { string.Join(" | ", Duration.Select(x => x.Key + " : " + x.Value).ToList()) },
+                    Age = { string.Join(" | ", Age.Select(x => x.Key.ToString() + " : " + x.Value).ToList()) },
+                    Day = { string.Join(" | ", Day.Select(x => x.Key.ToString() + " : " + x.Value).ToList()) },
+                ";
         }
     }
 
@@ -468,41 +479,41 @@ namespace Backend
 
         public String getFileSource() => fileSource;
 
-        public Price GenerateBill(Visitor visitor)
+        public Bill GenerateBill(Visitor visitor)
         {
             decimal initialPrice = ticket.BasePrice;
-            DiscountPrice cad = ticket.GetAgeDiscount((short)AgeGroupE.CHILD, initialPrice * visitor.GroupOf[AgeGroupE.CHILD]);
-            decimal c_AgeDrate = cad.DiscountRate;
-            decimal c_AgeDiscount = cad.Discount;
-            decimal afterCAD = cad.DiscountedPrice;
-            DiscountPrice yad = ticket.GetAgeDiscount((short)AgeGroupE.YOUNG_ADULT, initialPrice * visitor.GroupOf[AgeGroupE.YOUNG_ADULT]);
-            decimal y_AgeDrate = yad.DiscountRate;
-            decimal y_AgeDiscount = yad.Discount;
-            decimal afterYAD = yad.DiscountedPrice;
-            DiscountPrice mad = ticket.GetAgeDiscount((short)AgeGroupE.MIDDLE_ADULT, initialPrice * visitor.GroupOf[AgeGroupE.MIDDLE_ADULT]);
-            decimal m_AgeDrate = mad.DiscountRate;
-            decimal m_AgeDiscount = mad.Discount;
-            decimal afterMAD = mad.DiscountedPrice;
-            DiscountPrice oad = ticket.GetAgeDiscount((short)AgeGroupE.OLD_ADULT, initialPrice * visitor.GroupOf[AgeGroupE.OLD_ADULT]);
-            decimal o_AgeDrate = oad.DiscountRate;
-            decimal o_AgeDiscount = oad.Discount;
-            decimal afterOAD = oad.DiscountedPrice;
+            Price cad = ticket.GetAgeDiscount((short)AgeGroupE.CHILD, initialPrice * visitor.GroupOf[AgeGroupE.CHILD]);
+            decimal c_AgeDrate = cad.Rate;
+            decimal c_AgeDiscount = cad.Rating;
+            decimal afterCAD = cad.RatedPrice;
+            Price yad = ticket.GetAgeDiscount((short)AgeGroupE.YOUNG_ADULT, initialPrice * visitor.GroupOf[AgeGroupE.YOUNG_ADULT]);
+            decimal y_AgeDrate = yad.Rate;
+            decimal y_AgeDiscount = yad.Rating;
+            decimal afterYAD = yad.RatedPrice;
+            Price mad = ticket.GetAgeDiscount((short)AgeGroupE.MIDDLE_ADULT, initialPrice * visitor.GroupOf[AgeGroupE.MIDDLE_ADULT]);
+            decimal m_AgeDrate = mad.Rate;
+            decimal m_AgeDiscount = mad.Rating;
+            decimal afterMAD = mad.RatedPrice;
+            Price oad = ticket.GetAgeDiscount((short)AgeGroupE.OLD_ADULT, initialPrice * visitor.GroupOf[AgeGroupE.OLD_ADULT]);
+            decimal o_AgeDrate = oad.Rate;
+            decimal o_AgeDiscount = oad.Rating;
+            decimal afterOAD = oad.RatedPrice;
             decimal totalAgeGroupPrice = afterCAD + afterYAD + afterMAD + afterOAD;
-            DiscountPrice gd = ticket.GetGroupDiscount((short)visitor.GroupOf.Sum(x => x.Value), totalAgeGroupPrice);
-            decimal groupDRate = gd.DiscountRate;
-            decimal groupDiscout = gd.Discount;
-            decimal afterGD = gd.DiscountedPrice;
+            Price gd = ticket.GetGroupDiscount((short)visitor.GroupOf.Sum(x => x.Value), totalAgeGroupPrice);
+            decimal groupDRate = gd.Rate;
+            decimal groupDiscout = gd.Rating;
+            decimal afterGD = gd.RatedPrice;
             decimal duration = (decimal)(visitor.OutTime - visitor.InTime)?.TotalHours;
-            DiscountPrice dnd = ticket.GetDurationDiscount((short)duration, afterGD * duration);
-            decimal durationDRate = dnd.DiscountRate;
-            decimal durationDiscount = dnd.Discount;
-            decimal afterDND = dnd.DiscountedPrice;
-            DiscountPrice dyd = ticket.GetDayDiscount(visitor.InTime.DayOfWeek, afterDND);
-            decimal dayDRate = dyd.DiscountRate;
-            decimal dayDiscount = dyd.Discount;
-            decimal afterDYD = dyd.DiscountedPrice;
+            Price dnd = ticket.GetDurationDiscount((short)duration, afterGD * duration);
+            decimal durationDRate = dnd.Rate;
+            decimal durationDiscount = dnd.Rating;
+            decimal afterDND = dnd.RatedPrice;
+            Price dyd = ticket.GetDayDiscount(visitor.InTime.DayOfWeek, afterDND);
+            decimal dayDRate = dyd.Rate;
+            decimal dayDiscount = dyd.Rating;
+            decimal afterDYD = dyd.RatedPrice;
             decimal finalPrice = afterDYD;
-            return new Price(
+            return new Bill(
                 initialPrice,
                 c_AgeDrate,
                 c_AgeDiscount,
@@ -602,7 +613,7 @@ namespace Backend
             }
         }
 
-        public int GenerateID(int length)
+        public int GenerateID(int length = 10)
         {
             var min = (int)Math.Pow(10, length - 1);
             var max = (int)Math.Pow(10, length) - 1;
