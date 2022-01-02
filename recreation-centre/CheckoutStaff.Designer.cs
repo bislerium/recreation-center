@@ -235,8 +235,10 @@
             this.dayTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dayTB.Location = new System.Drawing.Point(18, 391);
             this.dayTB.Name = "dayTB";
+            this.dayTB.ReadOnly = true;
             this.dayTB.Size = new System.Drawing.Size(202, 27);
             this.dayTB.TabIndex = 18;
+            this.dayTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label12
             // 
@@ -253,16 +255,20 @@
             this.durationToTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.durationToTB.Location = new System.Drawing.Point(76, 328);
             this.durationToTB.Name = "durationToTB";
+            this.durationToTB.ReadOnly = true;
             this.durationToTB.Size = new System.Drawing.Size(144, 27);
             this.durationToTB.TabIndex = 16;
+            this.durationToTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // durationFromTB
             // 
             this.durationFromTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.durationFromTB.Location = new System.Drawing.Point(76, 295);
             this.durationFromTB.Name = "durationFromTB";
+            this.durationFromTB.ReadOnly = true;
             this.durationFromTB.Size = new System.Drawing.Size(146, 27);
             this.durationFromTB.TabIndex = 15;
+            this.durationFromTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label11
             // 
@@ -289,8 +295,10 @@
             this.durationTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.durationTB.Location = new System.Drawing.Point(17, 262);
             this.durationTB.Name = "durationTB";
+            this.durationTB.ReadOnly = true;
             this.durationTB.Size = new System.Drawing.Size(205, 27);
             this.durationTB.TabIndex = 12;
+            this.durationTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label9
             // 
@@ -307,32 +315,40 @@
             this.oldAdultTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.oldAdultTB.Location = new System.Drawing.Point(127, 198);
             this.oldAdultTB.Name = "oldAdultTB";
+            this.oldAdultTB.ReadOnly = true;
             this.oldAdultTB.Size = new System.Drawing.Size(95, 27);
             this.oldAdultTB.TabIndex = 10;
+            this.oldAdultTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // middleAdultTB
             // 
             this.middleAdultTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.middleAdultTB.Location = new System.Drawing.Point(126, 165);
             this.middleAdultTB.Name = "middleAdultTB";
+            this.middleAdultTB.ReadOnly = true;
             this.middleAdultTB.Size = new System.Drawing.Size(96, 27);
             this.middleAdultTB.TabIndex = 9;
+            this.middleAdultTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // youngAdultTB
             // 
             this.youngAdultTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.youngAdultTB.Location = new System.Drawing.Point(126, 132);
             this.youngAdultTB.Name = "youngAdultTB";
+            this.youngAdultTB.ReadOnly = true;
             this.youngAdultTB.Size = new System.Drawing.Size(96, 27);
             this.youngAdultTB.TabIndex = 8;
+            this.youngAdultTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // childTB
             // 
             this.childTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.childTB.Location = new System.Drawing.Point(126, 99);
             this.childTB.Name = "childTB";
+            this.childTB.ReadOnly = true;
             this.childTB.Size = new System.Drawing.Size(96, 27);
             this.childTB.TabIndex = 7;
+            this.childTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label8
             // 
@@ -389,8 +405,10 @@
             this.nameTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nameTB.Location = new System.Drawing.Point(17, 37);
             this.nameTB.Name = "nameTB";
+            this.nameTB.ReadOnly = true;
             this.nameTB.Size = new System.Drawing.Size(205, 27);
             this.nameTB.TabIndex = 1;
+            this.nameTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label3
             // 
@@ -438,10 +456,10 @@
             // 
             // loginUserTB
             // 
-            this.loginUserTB.Enabled = false;
             this.loginUserTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.loginUserTB.Location = new System.Drawing.Point(994, 667);
             this.loginUserTB.Name = "loginUserTB";
+            this.loginUserTB.ReadOnly = true;
             this.loginUserTB.Size = new System.Drawing.Size(249, 27);
             this.loginUserTB.TabIndex = 5;
             this.loginUserTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -580,8 +598,10 @@
             this.bPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bPrice.Location = new System.Drawing.Point(103, 28);
             this.bPrice.Name = "bPrice";
+            this.bPrice.ReadOnly = true;
             this.bPrice.Size = new System.Drawing.Size(123, 27);
             this.bPrice.TabIndex = 1;
+            this.bPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label17
             // 
@@ -615,24 +635,30 @@
             this.cRE.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cRE.Location = new System.Drawing.Point(103, 104);
             this.cRE.Name = "cRE";
+            this.cRE.ReadOnly = true;
             this.cRE.Size = new System.Drawing.Size(65, 27);
             this.cRE.TabIndex = 5;
+            this.cRE.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // cRG
             // 
             this.cRG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cRG.Location = new System.Drawing.Point(188, 104);
             this.cRG.Name = "cRG";
+            this.cRG.ReadOnly = true;
             this.cRG.Size = new System.Drawing.Size(65, 27);
             this.cRG.TabIndex = 6;
+            this.cRG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // cRP
             // 
             this.cRP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cRP.Location = new System.Drawing.Point(267, 104);
             this.cRP.Name = "cRP";
+            this.cRP.ReadOnly = true;
             this.cRP.Size = new System.Drawing.Size(65, 27);
             this.cRP.TabIndex = 7;
+            this.cRP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label20
             // 
@@ -657,160 +683,200 @@
             this.yRE.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.yRE.Location = new System.Drawing.Point(103, 146);
             this.yRE.Name = "yRE";
+            this.yRE.ReadOnly = true;
             this.yRE.Size = new System.Drawing.Size(65, 27);
             this.yRE.TabIndex = 10;
+            this.yRE.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // yRG
             // 
             this.yRG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.yRG.Location = new System.Drawing.Point(188, 146);
             this.yRG.Name = "yRG";
+            this.yRG.ReadOnly = true;
             this.yRG.Size = new System.Drawing.Size(65, 27);
             this.yRG.TabIndex = 11;
+            this.yRG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // yRP
             // 
             this.yRP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.yRP.Location = new System.Drawing.Point(267, 146);
             this.yRP.Name = "yRP";
+            this.yRP.ReadOnly = true;
             this.yRP.Size = new System.Drawing.Size(65, 27);
             this.yRP.TabIndex = 12;
+            this.yRP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // mRE
             // 
             this.mRE.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mRE.Location = new System.Drawing.Point(103, 188);
             this.mRE.Name = "mRE";
+            this.mRE.ReadOnly = true;
             this.mRE.Size = new System.Drawing.Size(65, 27);
             this.mRE.TabIndex = 13;
+            this.mRE.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // mRG
             // 
             this.mRG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mRG.Location = new System.Drawing.Point(188, 188);
             this.mRG.Name = "mRG";
+            this.mRG.ReadOnly = true;
             this.mRG.Size = new System.Drawing.Size(65, 27);
             this.mRG.TabIndex = 14;
+            this.mRG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // mRP
             // 
             this.mRP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mRP.Location = new System.Drawing.Point(267, 188);
             this.mRP.Name = "mRP";
+            this.mRP.ReadOnly = true;
             this.mRP.Size = new System.Drawing.Size(65, 27);
             this.mRP.TabIndex = 15;
+            this.mRP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // oRP
             // 
             this.oRP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.oRP.Location = new System.Drawing.Point(267, 230);
             this.oRP.Name = "oRP";
+            this.oRP.ReadOnly = true;
             this.oRP.Size = new System.Drawing.Size(65, 27);
             this.oRP.TabIndex = 16;
+            this.oRP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // oRG
             // 
             this.oRG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.oRG.Location = new System.Drawing.Point(188, 230);
             this.oRG.Name = "oRG";
+            this.oRG.ReadOnly = true;
             this.oRG.Size = new System.Drawing.Size(65, 27);
             this.oRG.TabIndex = 17;
+            this.oRG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // oRE
             // 
             this.oRE.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.oRE.Location = new System.Drawing.Point(103, 230);
             this.oRE.Name = "oRE";
+            this.oRE.ReadOnly = true;
             this.oRE.Size = new System.Drawing.Size(65, 27);
             this.oRE.TabIndex = 18;
+            this.oRE.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // aGP
             // 
             this.aGP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.aGP.Location = new System.Drawing.Point(103, 272);
             this.aGP.Name = "aGP";
+            this.aGP.ReadOnly = true;
             this.aGP.Size = new System.Drawing.Size(229, 27);
             this.aGP.TabIndex = 19;
+            this.aGP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // gRE
             // 
             this.gRE.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gRE.Location = new System.Drawing.Point(103, 314);
             this.gRE.Name = "gRE";
+            this.gRE.ReadOnly = true;
             this.gRE.Size = new System.Drawing.Size(65, 27);
             this.gRE.TabIndex = 20;
+            this.gRE.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // gRG
             // 
             this.gRG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gRG.Location = new System.Drawing.Point(188, 314);
             this.gRG.Name = "gRG";
+            this.gRG.ReadOnly = true;
             this.gRG.Size = new System.Drawing.Size(65, 27);
             this.gRG.TabIndex = 21;
+            this.gRG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // gRP
             // 
             this.gRP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gRP.Location = new System.Drawing.Point(267, 314);
             this.gRP.Name = "gRP";
+            this.gRP.ReadOnly = true;
             this.gRP.Size = new System.Drawing.Size(65, 27);
             this.gRP.TabIndex = 22;
+            this.gRP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // dRE
             // 
             this.dRE.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dRE.Location = new System.Drawing.Point(103, 356);
             this.dRE.Name = "dRE";
+            this.dRE.ReadOnly = true;
             this.dRE.Size = new System.Drawing.Size(65, 27);
             this.dRE.TabIndex = 23;
+            this.dRE.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // dRG
             // 
             this.dRG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dRG.Location = new System.Drawing.Point(188, 356);
             this.dRG.Name = "dRG";
+            this.dRG.ReadOnly = true;
             this.dRG.Size = new System.Drawing.Size(65, 27);
             this.dRG.TabIndex = 24;
+            this.dRG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // dRP
             // 
             this.dRP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dRP.Location = new System.Drawing.Point(267, 356);
             this.dRP.Name = "dRP";
+            this.dRP.ReadOnly = true;
             this.dRP.Size = new System.Drawing.Size(65, 27);
             this.dRP.TabIndex = 25;
+            this.dRP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // dYR
             // 
             this.dYR.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dYR.Location = new System.Drawing.Point(103, 398);
             this.dYR.Name = "dYR";
+            this.dYR.ReadOnly = true;
             this.dYR.Size = new System.Drawing.Size(65, 27);
             this.dYR.TabIndex = 26;
+            this.dYR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // dYG
             // 
             this.dYG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dYG.Location = new System.Drawing.Point(188, 398);
             this.dYG.Name = "dYG";
+            this.dYG.ReadOnly = true;
             this.dYG.Size = new System.Drawing.Size(65, 27);
             this.dYG.TabIndex = 27;
+            this.dYG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // dYP
             // 
             this.dYP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dYP.Location = new System.Drawing.Point(267, 398);
             this.dYP.Name = "dYP";
+            this.dYP.ReadOnly = true;
             this.dYP.Size = new System.Drawing.Size(65, 27);
             this.dYP.TabIndex = 28;
+            this.dYP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tBill
             // 
             this.tBill.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tBill.Location = new System.Drawing.Point(103, 440);
             this.tBill.Name = "tBill";
+            this.tBill.ReadOnly = true;
             this.tBill.Size = new System.Drawing.Size(229, 27);
             this.tBill.TabIndex = 29;
+            this.tBill.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label22
             // 

@@ -487,7 +487,7 @@ namespace Backend
             decimal groupDRate = gd.Rate;
             decimal groupDiscout = gd.Rating;
             decimal afterGD = gd.RatedPrice;
-            decimal duration = Math.Abs((decimal)(visitor.OutTime - visitor.InTime)?.TotalHours);
+            decimal duration = (decimal)(visitor.OutTime-visitor.InTime)?.TotalHours;
             Price dnd = ticket.GetDurationDiscount((short)duration, afterGD * duration);
             decimal durationDRate = dnd.Rate;
             decimal durationDiscount = dnd.Rating;

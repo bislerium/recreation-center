@@ -63,13 +63,18 @@ namespace recreation_centre
                 MessageBox.Show("Given User Ticet ID not Found!", "Error: Invalid ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (checkoutDateTime.Value <= DateTime.Now)
+            {
+                MessageBox.Show("DateTime must be Recent!", "Error: Old DateTime", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             visitor = visitorProcess.GetVisitor(visitorTicketCode);
-            visitor.OutTime = checkoutDateTime.Value;
-/*            if (visitor.Bill.HasValue)
+            if (visitor.Bill.HasValue)
             {
                 MessageBox.Show("Given User Ticket ID was already Checked-out!", "Error: Checked-out", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
-            }*/
+            }
+            visitor.OutTime = checkoutDateTime.Value;
             Bill bill = ticketProcess.GenerateBill(visitor);
             visitor.Bill = bill;
 
@@ -103,7 +108,8 @@ namespace recreation_centre
             youngAdultTB.Text = visitor.GroupOf[AgeGroupE.YOUNG_ADULT].ToString();
             middleAdultTB.Text = visitor.GroupOf[AgeGroupE.MIDDLE_ADULT].ToString();
             oldAdultTB.Text = visitor.GroupOf[AgeGroupE.OLD_ADULT].ToString();
-            durationTB.Text = (visitor.InTime - visitor.OutTime).ToString();
+            TimeSpan ts = ((TimeSpan)(visitor.OutTime - visitor.InTime));
+            durationTB.Text = $"{ts.Hours}:{ts.Minutes}:{ts.Seconds}";
             durationFromTB.Text = visitor.InTime.ToString();
             durationToTB.Text = visitor.OutTime.ToString();
             dayTB.Text = visitor.Day.ToString();
@@ -206,13 +212,11 @@ namespace recreation_centre
             checkoutDateTime.CustomFormat = "dd/MM/yy, hh:mm tt ";
             if (!visitorProcess.ReadVisitors())
             {
-                MessageBox.Show($"Could'nt Read Visitors!\n\"Try deleting {visitorProcess.getFileSource()}\"", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MessageBox.Show($"Could'nt Read Visitors!\n\"New {visitorProcess.getFileSource()} will be Created\"", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             if (!ticketProcess.ReadTicket())
             {
-                MessageBox.Show($"Could'nt Read Ticket!\n\"Try deleting {ticketProcess.getFileSource()}\"", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                MessageBox.Show($"Could'nt Read Ticket!\n\"New {ticketProcess.getFileSource()} will be Created\"", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             loadVisitors();
         }
@@ -223,8 +227,9 @@ namespace recreation_centre
         {
             checkedOutDataGrid.DataSource = visitorProcess.GetVisitors()
                                                           .Values
-                                                          .ToArray()
-                                                          .Where(x => x.Bill.HasValue);
+                                                          .Where(x => x.Bill.HasValue)
+                                                          .ToArray();
+                                                          
         }
 
         private void syncDataGrid_Click(object sender, EventArgs e)
