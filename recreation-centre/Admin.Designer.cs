@@ -29,6 +29,7 @@ namespace recreation_centre
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin));
             this.label1 = new System.Windows.Forms.Label();
             this.logoutB = new System.Windows.Forms.Button();
             this.minimizeB = new System.Windows.Forms.Button();
@@ -166,7 +167,7 @@ namespace recreation_centre
             this.tabControl1.Location = new System.Drawing.Point(12, 64);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(776, 694);
+            this.tabControl1.Size = new System.Drawing.Size(776, 705);
             this.tabControl1.TabIndex = 27;
             // 
             // tabPage1
@@ -175,7 +176,7 @@ namespace recreation_centre
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(768, 665);
+            this.tabPage1.Size = new System.Drawing.Size(768, 676);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Ticket & Visitor";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -186,7 +187,7 @@ namespace recreation_centre
             this.tabControl2.Location = new System.Drawing.Point(6, 6);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(756, 641);
+            this.tabControl2.Size = new System.Drawing.Size(756, 664);
             this.tabControl2.TabIndex = 0;
             // 
             // tabPage4
@@ -201,7 +202,7 @@ namespace recreation_centre
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(748, 612);
+            this.tabPage4.Size = new System.Drawing.Size(748, 635);
             this.tabPage4.TabIndex = 1;
             this.tabPage4.Text = "Ticket";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -225,11 +226,9 @@ namespace recreation_centre
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(704, 66);
+            this.textBox1.Size = new System.Drawing.Size(704, 74);
             this.textBox1.TabIndex = 10;
-            this.textBox1.Text = "The Group (People Count) and Duration (Hour Duration) values represent ranges.\r\n-" +
-    "> Use \'+\' to represent Tickek Price Increase\r\n-> Use \'-\' to represent Ticket Pri" +
-    "ce Discount";
+            this.textBox1.Text = resources.GetString("textBox1.Text");
             // 
             // tabControl7
             // 

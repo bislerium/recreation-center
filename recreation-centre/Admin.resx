@@ -117,4 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>The Group (People Count) and Duration (Hour Duration) values represent ranges.
+-&gt; Use '+' to represent Tickek Price Increase.
+-&gt; Use '-' to represent Ticket Price Discount.
+-&gt; Click 'Flush Ticket' to locally save Ticket.</value>
+  </data>
 </root>

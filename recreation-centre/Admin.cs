@@ -136,18 +136,18 @@ namespace recreation_centre
         {
             bool error = false;
             decimal[] values = new decimal[testBoxList.Length];
-            foreach (TextBox testBox in testBoxList)
+            for (int i = 0; i < values.Length; i++)
             {
 
-                if (decimal.TryParse(testBox.Text.Trim(), out decimal value))
+                if (decimal.TryParse(testBoxList[i].Text.Trim(), out decimal value))
                 {
-                    values.Append(value);
+                    values[i] = value;
                 }
                 else
                 {
                     error = true;
-                    testBox.BackColor = Color.Red;
-                    testBox.ForeColor = Color.White;
+                    testBoxList[i].BackColor = Color.Red;
+                    testBoxList[i].ForeColor = Color.White;
                 }
             }
             if (error)
@@ -320,6 +320,10 @@ namespace recreation_centre
             if (values == null)
             {
                 return;
+            }
+            foreach(decimal d in values)
+                { 
+                Console.WriteLine(d);
             }
             ticket.Day[DayOfWeek.Sunday] = values[0];
             ticket.Day[DayOfWeek.Monday] = values[1];
