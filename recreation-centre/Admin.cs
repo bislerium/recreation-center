@@ -12,6 +12,7 @@ using Backend;
 
 namespace recreation_centre
 {
+    //This form is used by admin for performing tasks like ticket creation and report analysis
     public partial class Admin : Form
     {
         private VisitorProcess visitorProcess;
@@ -28,6 +29,7 @@ namespace recreation_centre
             initializeVisitors();
         }
 
+        //Disposes this frame and unhides Login frame.
         private void logoutB_Click(object sender, EventArgs e)
         {
             try {
@@ -51,6 +53,8 @@ namespace recreation_centre
             this.WindowState = FormWindowState.Minimized;
         }
 
+
+        // Used to make borderless frame moovable.
         private bool mouseDown;
         private Point lastLocation;
         private void Form1_MouseDown(object sender, MouseEventArgs e)
@@ -128,6 +132,7 @@ namespace recreation_centre
 
         }
 
+        //Checks Empty field per given string values.
         private Boolean checkEmptyFields(string message, params String[] stringValues) 
         {
             foreach (String value in stringValues)
@@ -141,6 +146,7 @@ namespace recreation_centre
             return false;
         }
 
+        //Checks Whether the textbox argument contains decimal values or not.
         private decimal[] checkDecimalFields(params TextBox[] testBoxList)
         {
             bool error = false;
@@ -272,11 +278,13 @@ namespace recreation_centre
             }
         }
 
+        //Renders price rate per duration in corresponding textbox.
         private void hourDurationCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             durationRateTB.Text=ticket.Duration[short.Parse(hourDurationCB.Text)].ToString();
         }
 
+        //loads all the applicable duration from Dictionary and feeds to combobox
         private void loadDurationCB()
         {
             hourDurationCB.Items.Clear();
@@ -288,6 +296,8 @@ namespace recreation_centre
                 hourDurationCB.Items.Add(key.ToString());
             }
         }
+
+        //loads all the applicable Group from Dictionary and feeds to combobox
         private void loadGroupCB()
         {
             peopleCountCB.Items.Clear();
@@ -300,6 +310,7 @@ namespace recreation_centre
             }
         }
 
+        //Sets foreground and background color for eaach wrong fields that are subclasses of Control Class.
         private void setDefaultFieldBackColor(params Control[] controlList)
         {
             foreach (var control in controlList) 
@@ -309,11 +320,13 @@ namespace recreation_centre
             }
         }
 
+        //Renders the price rate per people count/group in a textbox.
         private void peopleCountCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             groupRateTB.Text = ticket.Group[short.Parse(peopleCountCB.Text)].ToString();
         }
 
+        //Saves/Persists ticket locally.
         private void flushTicketB_Click(object sender, EventArgs e)
         {
             if (ticketProcess.WriteTicket())
@@ -394,12 +407,14 @@ namespace recreation_centre
             commonImportDialog(RWMode.ticket);
         }
 
+        //For supporting filechooser Dialog window.
         enum RWMode
         { 
             visitors,
             ticket
         }
 
+        //Renders a filechooser Dialog window for importing vistiors or ticket data.
         private void commonImportDialog(RWMode mode)
         {
             OpenFileDialog importDialogBox = new OpenFileDialog
@@ -427,6 +442,7 @@ namespace recreation_centre
             }
         }
 
+        //Renders a filechooser Dialog window for exporting vistiors or ticket data.
         private void commonExportDialog(RWMode mode)
         {
             SaveFileDialog exportDialogBox = new SaveFileDialog
@@ -456,11 +472,13 @@ namespace recreation_centre
             }
         }
 
+        //Sync the Visitor data table with update changes.
         private void syncDataGrid_Click(object sender, EventArgs e)
         {
             visitorDataGrid.DataSource = visitors.Values.ToArray();
         }
 
+        //Initialize VisitorProcess instance evertime this class instantiates and visitors data imported.
         private void initializeVisitors()
         {
             if (!visitorProcess.ReadVisitors())
@@ -493,6 +511,7 @@ namespace recreation_centre
             commonExportDialog(RWMode.visitors);
         }
 
+        //Generates Daily Report
         private void generateDailyReport()
         {
             var currList = visitors.Values.ToList().Where(x => x.Bill.HasValue && x.InTime.Date.Equals(DateTime.Now.Date));
@@ -537,7 +556,7 @@ namespace recreation_centre
                                             {
                                                 Day = grp.Key,
                                                 Total_Visitors = grp.Sum(sum => sum.GroupOf.Sum(s => s.Value)),
-                                                Total_Earnings = grp.Sum(sum => sum.Bill.Value.FinalPrice)
+                                                Total_Earnings = grp.Sum(sum => sum.BillPrice)
                                             })
                                             .ToList();
 
@@ -545,6 +564,7 @@ namespace recreation_centre
 
             if (sortByVisitor)
             {
+                //Implementation of Bubble Sort
                 for (int i = 0; i < max; i++)
                 {
                     int nrLeft = max - i;
@@ -583,7 +603,9 @@ namespace recreation_centre
                     }
                 }
             }
-            weeklyReportDataGrid.DataSource = weeklyList.ToList();
+            var sortedWeeklyList = weeklyList.ToList();
+                sortedWeeklyList.Reverse();
+            weeklyReportDataGrid.DataSource = sortedWeeklyList;
         }
 
         private void dailyReportB_Click(object sender, EventArgs e)
@@ -599,11 +621,12 @@ namespace recreation_centre
 
         private void sortWeeklyReportCB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (sortWeeklyReportCB.SelectedItem.ToString().Equals("Vistor"))
+
+            if (sortWeeklyReportCB.SelectedIndex==0)
             {
-                generateWeeklyReport();
+                generateWeeklyReport(true);
             }
-            else
+            if (sortWeeklyReportCB.SelectedIndex==1)
             {
                 generateWeeklyReport(false);
             }

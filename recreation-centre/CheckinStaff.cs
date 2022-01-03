@@ -11,6 +11,7 @@ using Backend;
 
 namespace recreation_centre
 {
+    //This Form performs Check-in Process
     public partial class CheckinStaff : Form
     {
 

@@ -104,6 +104,7 @@
             this.vistorTicketCodeMTB = new System.Windows.Forms.MaskedTextBox();
             this.loginUserTB = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkedOutDataGrid)).BeginInit();
@@ -180,6 +181,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.label29);
             this.panel3.Controls.Add(this.label28);
             this.panel3.Controls.Add(this.label27);
             this.panel3.Controls.Add(this.label26);
@@ -941,6 +943,16 @@
             this.label13.TabIndex = 6;
             this.label13.Text = "Logged-in User:";
             // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(232, 34);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(95, 18);
+            this.label29.TabIndex = 7;
+            this.label29.Text = "/Hour/People";
+            // 
             // CheckoutStaff
             // 
             this.BackColor = System.Drawing.Color.Silver;
@@ -1046,5 +1058,6 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox bPrice;
         private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label29;
     }
 }

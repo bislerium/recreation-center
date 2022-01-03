@@ -261,6 +261,8 @@ namespace Backend
 
         public Bill? Bill { get; set; }
 
+        public decimal BillPrice { get; set; }
+
         public override string ToString()
         {
             return $@"
@@ -272,7 +274,8 @@ namespace Backend
                     day = { Day },
                     intime = { InTime },
                     outTime = { OutTime },
-                    Price = {Bill}
+                    Bill = {Bill},
+                    BillPrice = {BillPrice}
                 ";
         }
     }

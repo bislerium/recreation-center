@@ -11,6 +11,7 @@ using Backend;
 
 namespace recreation_centre
 {
+    //This Form performs Check-out Process
     public partial class CheckoutStaff : Form
     {
 
@@ -71,6 +72,11 @@ namespace recreation_centre
                 return;
             }
             visitor = visitorProcess.GetVisitor(visitorTicketCode);
+            if (checkoutDateTime.Value <= visitor.InTime)
+            {
+                MessageBox.Show($"DateTime must be Recent!\"Check-in time: {visitor.InTime}\"", "Error: Old DateTime", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (visitor.Bill.HasValue)
             {
                 MessageBox.Show("Given User Ticket ID was already Checked-out!", "Error: Checked-out", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -79,6 +85,7 @@ namespace recreation_centre
             visitor.OutTime = checkoutDateTime.Value;
             Bill bill = ticketProcess.GenerateBill(visitor);
             visitor.Bill = bill;
+            visitor.BillPrice = bill.FinalPrice;
 
             bPrice.Text = bill.InitialPrice.ToString();
             cRE.Text = bill.C_AgeRate.ToString();

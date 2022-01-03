@@ -13,7 +13,7 @@ using Backend;
 namespace recreation_centre
 {
 
-    //Used For Login
+    //This form performs login process
     public partial class Login : Form
     {
         private Authy auth;
