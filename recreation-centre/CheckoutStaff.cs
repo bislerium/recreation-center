@@ -118,7 +118,7 @@ namespace recreation_centre
             middleAdultTB.Text = visitor.GroupOf[AgeGroupE.MIDDLE_ADULT].ToString();
             oldAdultTB.Text = visitor.GroupOf[AgeGroupE.OLD_ADULT].ToString();
             TimeSpan ts = ((TimeSpan)(visitor.OutTime - visitor.InTime));
-            durationTB.Text = $"{ts.Hours}:{ts.Minutes}:{ts.Seconds}";
+            durationTB.Text = $"{ts.Hours} Hrs, {ts.Minutes} Mins, {ts.Seconds} Sec";
             durationFromTB.Text = visitor.InTime.ToString();
             durationToTB.Text = visitor.OutTime.ToString();
             dayTB.Text = visitor.Day.ToString();
@@ -219,9 +219,10 @@ namespace recreation_centre
         {
             checkoutDateTime.Format = DateTimePickerFormat.Custom;
             checkoutDateTime.CustomFormat = "dd/MM/yy, hh:mm tt ";
+            checkoutDateTime.Value = DateTime.Now;
             if (!visitorProcess.ReadVisitors())
             {
-                MessageBox.Show($"Could'nt Read Visitors!\n\"New {visitorProcess.getFileSource()} will be Created\"", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Could'nt Read Visitors!\n\"New {visitorProcess.GetFileSource()} will be Created\"", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             if (!ticketProcess.ReadTicket())
             {

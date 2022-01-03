@@ -603,11 +603,9 @@ namespace Backend
             }            
         }
 
-        public String getFileSource() => fileSource;
+        public String GetFileSource() => fileSource;
 
         public Dictionary<int, Visitor> GetVisitors() => visitors;
-
-        public bool IsEmpty() => visitors == null || visitors.Count == 0;
 
         public Visitor GetVisitor(int identifier) => visitors[identifier];
 

@@ -66,9 +66,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(12, 22);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(248, 20);
+            this.label1.Size = new System.Drawing.Size(238, 20);
             this.label1.TabIndex = 10;
-            this.label1.Text = "Recreational Center | Check-out";
+            this.label1.Text = "Recreational Center | Check-in";
             // 
             // allclearB
             // 
@@ -345,9 +345,9 @@
             // 
             // loginUserTB
             // 
-            this.loginUserTB.Enabled = false;
             this.loginUserTB.Location = new System.Drawing.Point(281, 444);
             this.loginUserTB.Name = "loginUserTB";
+            this.loginUserTB.ReadOnly = true;
             this.loginUserTB.Size = new System.Drawing.Size(249, 22);
             this.loginUserTB.TabIndex = 14;
             this.loginUserTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;

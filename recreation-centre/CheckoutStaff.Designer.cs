@@ -34,6 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label29 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
@@ -71,7 +72,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.bPrice = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.syncDataGrid = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.checkedOutDataGrid = new System.Windows.Forms.DataGridView();
             this.syncDateTime = new System.Windows.Forms.Button();
@@ -104,7 +104,6 @@
             this.vistorTicketCodeMTB = new System.Windows.Forms.MaskedTextBox();
             this.loginUserTB = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkedOutDataGrid)).BeginInit();
@@ -162,7 +161,6 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.HighlightText;
             this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.syncDataGrid);
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.checkedOutDataGrid);
             this.panel1.Controls.Add(this.syncDateTime);
@@ -223,6 +221,16 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(352, 490);
             this.panel3.TabIndex = 11;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.Location = new System.Drawing.Point(232, 34);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(95, 18);
+            this.label29.TabIndex = 7;
+            this.label29.Text = "/Hour/People";
             // 
             // label28
             // 
@@ -581,17 +589,6 @@
             this.label16.TabIndex = 0;
             this.label16.Text = "Base Price";
             // 
-            // syncDataGrid
-            // 
-            this.syncDataGrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.syncDataGrid.Location = new System.Drawing.Point(982, 25);
-            this.syncDataGrid.Name = "syncDataGrid";
-            this.syncDataGrid.Size = new System.Drawing.Size(75, 30);
-            this.syncDataGrid.TabIndex = 7;
-            this.syncDataGrid.Text = "Sync";
-            this.syncDataGrid.UseVisualStyleBackColor = true;
-            this.syncDataGrid.Click += new System.EventHandler(this.syncDataGrid_Click);
-            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -641,9 +638,9 @@
             this.checkoutDateTime.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.checkoutDateTime.CustomFormat = "dd/MM/yyyy hh:mm tt";
             this.checkoutDateTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkoutDateTime.Location = new System.Drawing.Point(162, 58);
+            this.checkoutDateTime.Location = new System.Drawing.Point(175, 58);
             this.checkoutDateTime.Name = "checkoutDateTime";
-            this.checkoutDateTime.Size = new System.Drawing.Size(244, 27);
+            this.checkoutDateTime.Size = new System.Drawing.Size(231, 27);
             this.checkoutDateTime.TabIndex = 6;
             this.checkoutDateTime.Value = new System.DateTime(2022, 1, 3, 0, 10, 0, 0);
             // 
@@ -907,18 +904,18 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(18, 32);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(122, 20);
+            this.label2.Size = new System.Drawing.Size(140, 20);
             this.label2.TabIndex = 0;
-            this.label2.Text = "User Ticket ID:";
+            this.label2.Text = "Visitor Ticket ID:";
             // 
             // vistorTicketCodeMTB
             // 
             this.vistorTicketCodeMTB.BackColor = System.Drawing.Color.White;
             this.vistorTicketCodeMTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.vistorTicketCodeMTB.Location = new System.Drawing.Point(162, 25);
+            this.vistorTicketCodeMTB.Location = new System.Drawing.Point(175, 25);
             this.vistorTicketCodeMTB.Mask = "0000000000";
             this.vistorTicketCodeMTB.Name = "vistorTicketCodeMTB";
-            this.vistorTicketCodeMTB.Size = new System.Drawing.Size(244, 27);
+            this.vistorTicketCodeMTB.Size = new System.Drawing.Size(231, 27);
             this.vistorTicketCodeMTB.TabIndex = 0;
             this.vistorTicketCodeMTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.vistorTicketCodeMTB.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.userTicketIDMTB_MaskInputRejected);
@@ -942,16 +939,6 @@
             this.label13.Size = new System.Drawing.Size(129, 20);
             this.label13.TabIndex = 6;
             this.label13.Text = "Logged-in User:";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.Location = new System.Drawing.Point(232, 34);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(95, 18);
-            this.label29.TabIndex = 7;
-            this.label29.Text = "/Hour/People";
             // 
             // CheckoutStaff
             // 
@@ -1018,7 +1005,6 @@
         private System.Windows.Forms.DateTimePicker checkoutDateTime;
         private System.Windows.Forms.DataGridView checkedOutDataGrid;
         private System.Windows.Forms.Button syncDateTime;
-        private System.Windows.Forms.Button syncDataGrid;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label28;

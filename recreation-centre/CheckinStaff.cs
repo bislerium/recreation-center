@@ -169,7 +169,7 @@ namespace recreation_centre
         {
             if (!visitorProcess.ReadVisitors())
             {
-                MessageBox.Show($"Could'nt Read Visitors!\n\"{visitorProcess.getFileSource()} shall be overwritten\"", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Could'nt Read Visitors!\n\"{visitorProcess.GetFileSource()} shall be overwritten\"", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             inDateTimeDTP.Format = DateTimePickerFormat.Custom;
             inDateTimeDTP.CustomFormat = "dd/MM/yyyy, hh:mm tt ";

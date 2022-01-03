@@ -102,13 +102,13 @@ namespace recreation_centre
             this.syncDataGrid = new System.Windows.Forms.Button();
             this.visitorDataGrid = new System.Windows.Forms.DataGridView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.sortWeeklyReportCB = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.weeklyReportDataGrid = new System.Windows.Forms.DataGridView();
             this.dailyReportB = new System.Windows.Forms.Button();
             this.dailyReportDataGrid = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.sortWeeklyReportCB = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl7.SuspendLayout();
@@ -873,7 +873,7 @@ namespace recreation_centre
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(768, 638);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Visitor";
+            this.tabPage2.Text = "Visitors";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // exportVisitorsB
@@ -935,6 +935,20 @@ namespace recreation_centre
             this.tabPage3.Text = "Report";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // sortWeeklyReportCB
+            // 
+            this.sortWeeklyReportCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.sortWeeklyReportCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.sortWeeklyReportCB.FormattingEnabled = true;
+            this.sortWeeklyReportCB.Items.AddRange(new object[] {
+            "Visitor",
+            "Earning"});
+            this.sortWeeklyReportCB.Location = new System.Drawing.Point(592, 308);
+            this.sortWeeklyReportCB.Name = "sortWeeklyReportCB";
+            this.sortWeeklyReportCB.Size = new System.Drawing.Size(147, 28);
+            this.sortWeeklyReportCB.TabIndex = 7;
+            this.sortWeeklyReportCB.SelectedIndexChanged += new System.EventHandler(this.sortWeeklyReportCB_SelectedIndexChanged);
+            // 
             // label23
             // 
             this.label23.AutoSize = true;
@@ -950,7 +964,7 @@ namespace recreation_centre
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(22, 291);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(193, 40);
+            this.button1.Size = new System.Drawing.Size(201, 40);
             this.button1.TabIndex = 3;
             this.button1.Text = "View Weekly Report";
             this.button1.UseVisualStyleBackColor = true;
@@ -973,7 +987,7 @@ namespace recreation_centre
             this.dailyReportB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dailyReportB.Location = new System.Drawing.Point(22, 13);
             this.dailyReportB.Name = "dailyReportB";
-            this.dailyReportB.Size = new System.Drawing.Size(166, 40);
+            this.dailyReportB.Size = new System.Drawing.Size(193, 40);
             this.dailyReportB.TabIndex = 1;
             this.dailyReportB.Text = "View Daily Report";
             this.dailyReportB.UseVisualStyleBackColor = true;
@@ -1000,20 +1014,6 @@ namespace recreation_centre
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Chart";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // sortWeeklyReportCB
-            // 
-            this.sortWeeklyReportCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.sortWeeklyReportCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sortWeeklyReportCB.FormattingEnabled = true;
-            this.sortWeeklyReportCB.Items.AddRange(new object[] {
-            "Visitor",
-            "Earning"});
-            this.sortWeeklyReportCB.Location = new System.Drawing.Point(592, 308);
-            this.sortWeeklyReportCB.Name = "sortWeeklyReportCB";
-            this.sortWeeklyReportCB.Size = new System.Drawing.Size(147, 28);
-            this.sortWeeklyReportCB.TabIndex = 7;
-            this.sortWeeklyReportCB.SelectedIndexChanged += new System.EventHandler(this.sortWeeklyReportCB_SelectedIndexChanged);
             // 
             // Admin
             // 

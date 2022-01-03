@@ -483,7 +483,7 @@ namespace recreation_centre
         {
             if (!visitorProcess.ReadVisitors())
             {
-                MessageBox.Show($"Could'nt Read Visitors!\n\"Try deleting {visitorProcess.getFileSource()}\"", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Could'nt Read Visitors!\n\"Try deleting {visitorProcess.GetFileSource()}\"", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             visitors = visitorProcess.GetVisitors();
