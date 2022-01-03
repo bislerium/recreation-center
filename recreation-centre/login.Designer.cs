@@ -33,12 +33,12 @@ namespace recreation_centre
             this.minimizeB = new System.Windows.Forms.Button();
             this.closeB = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.userIDTB = new System.Windows.Forms.TextBox();
+            this.clearB = new System.Windows.Forms.Button();
+            this.loginB = new System.Windows.Forms.Button();
             this.passwordTB = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.loginB = new System.Windows.Forms.Button();
-            this.clearB = new System.Windows.Forms.Button();
+            this.userIDTB = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,6 +61,7 @@ namespace recreation_centre
             this.minimizeB.Size = new System.Drawing.Size(40, 40);
             this.minimizeB.TabIndex = 28;
             this.minimizeB.UseVisualStyleBackColor = true;
+            this.minimizeB.Click += new System.EventHandler(this.minimizeB_Click);
             // 
             // closeB
             // 
@@ -71,6 +72,7 @@ namespace recreation_centre
             this.closeB.Size = new System.Drawing.Size(40, 40);
             this.closeB.TabIndex = 27;
             this.closeB.UseVisualStyleBackColor = true;
+            this.closeB.Click += new System.EventHandler(this.closeB_Click);
             // 
             // panel1
             // 
@@ -86,24 +88,30 @@ namespace recreation_centre
             this.panel1.Size = new System.Drawing.Size(386, 249);
             this.panel1.TabIndex = 30;
             // 
-            // label2
+            // clearB
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(32, 36);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 25);
-            this.label2.TabIndex = 31;
-            this.label2.Text = "User ID:";
+            this.clearB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearB.Location = new System.Drawing.Point(111, 192);
+            this.clearB.Name = "clearB";
+            this.clearB.Size = new System.Drawing.Size(110, 40);
+            this.clearB.TabIndex = 36;
+            this.clearB.Text = "Clear";
+            this.clearB.UseVisualStyleBackColor = true;
+            this.clearB.Click += new System.EventHandler(this.clearB_Click);
             // 
-            // userIDTB
+            // loginB
             // 
-            this.userIDTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userIDTB.Location = new System.Drawing.Point(37, 64);
-            this.userIDTB.Name = "userIDTB";
-            this.userIDTB.Size = new System.Drawing.Size(300, 30);
-            this.userIDTB.TabIndex = 32;
-            this.userIDTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.loginB.BackColor = System.Drawing.SystemColors.Highlight;
+            this.loginB.Cursor = System.Windows.Forms.Cursors.Default;
+            this.loginB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.loginB.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.loginB.Location = new System.Drawing.Point(227, 192);
+            this.loginB.Name = "loginB";
+            this.loginB.Size = new System.Drawing.Size(110, 40);
+            this.loginB.TabIndex = 35;
+            this.loginB.Text = "Login";
+            this.loginB.UseVisualStyleBackColor = false;
+            this.loginB.Click += new System.EventHandler(this.loginB_Click);
             // 
             // passwordTB
             // 
@@ -124,30 +132,24 @@ namespace recreation_centre
             this.label3.TabIndex = 33;
             this.label3.Text = "Password:";
             // 
-            // loginB
+            // userIDTB
             // 
-            this.loginB.BackColor = System.Drawing.SystemColors.Highlight;
-            this.loginB.Cursor = System.Windows.Forms.Cursors.Default;
-            this.loginB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.loginB.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.loginB.Location = new System.Drawing.Point(227, 192);
-            this.loginB.Name = "loginB";
-            this.loginB.Size = new System.Drawing.Size(110, 40);
-            this.loginB.TabIndex = 35;
-            this.loginB.Text = "Login";
-            this.loginB.UseVisualStyleBackColor = false;
-            this.loginB.Click += new System.EventHandler(this.loginB_Click);
+            this.userIDTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userIDTB.Location = new System.Drawing.Point(37, 64);
+            this.userIDTB.Name = "userIDTB";
+            this.userIDTB.Size = new System.Drawing.Size(300, 30);
+            this.userIDTB.TabIndex = 32;
+            this.userIDTB.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // clearB
+            // label2
             // 
-            this.clearB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clearB.Location = new System.Drawing.Point(111, 192);
-            this.clearB.Name = "clearB";
-            this.clearB.Size = new System.Drawing.Size(110, 40);
-            this.clearB.TabIndex = 36;
-            this.clearB.Text = "Clear";
-            this.clearB.UseVisualStyleBackColor = true;
-            this.clearB.Click += new System.EventHandler(this.clearB_Click);
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(32, 36);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(83, 25);
+            this.label2.TabIndex = 31;
+            this.label2.Text = "User ID:";
             // 
             // Login
             // 
@@ -162,6 +164,9 @@ namespace recreation_centre
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Login";
             this.Text = "login";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

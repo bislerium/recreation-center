@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,8 +31,10 @@ namespace recreation_centre
         private void logoutB_Click(object sender, EventArgs e)
         {
             try {
-                Application.Run(new Login());
-                this.Dispose();
+                this.Hide();
+                var v = new Login();
+                v.FormClosed += (s, args) => this.Close();
+                v.ShowDialog();
             }
             catch (Exception ex) {
                 Console.WriteLine(ex.Message);
@@ -466,6 +469,18 @@ namespace recreation_centre
                 return;
             }
             visitors = visitorProcess.GetVisitors();
+            visitorDataGrid.DataSource = visitors.Values.ToArray();
+            foreach (var v in visitors.Values)
+            {
+                try
+                {
+                    Console.WriteLine(v.Bill);
+                    Console.WriteLine(v.Bill.HasValue);
+                    Console.WriteLine(v.Bill.Value.DurationRating);
+                    Console.WriteLine(v.Bill.Value.FinalPrice);
+                } catch (Exception ex) { }
+
+            }
         }
 
         private void importVisitorsB_Click(object sender, EventArgs e)
@@ -485,7 +500,7 @@ namespace recreation_centre
                                       .Select(g => new { visitorGroupOf = g.Key,
                                           Total_Visitors = g.Count()})
                                       .ToList();
-            var groupByAge = new List<dynamic>(currList.Select(g => g.GroupOf
+/*            var groupByAge = new List<dynamic>(currList.Select(g => g.GroupOf
                                                     .Select(x => new {
                                                                     ageGroup = x.Key,
                                                                     groupCount = x.Value})).ToList())
@@ -495,8 +510,103 @@ namespace recreation_centre
                                                         ageGroup = g.Key,
                                                         total_age = g.Sum(x => x.groupCount)
                                                     })
-                                                    .ToList();
+                                                    .ToList();*/
             dailyReportDataGrid.DataSource = groupByGroup;
+        }
+
+        // Generates Weekly Repory as per the Sorting parameters: visitor, earning
+        private void generateWeeklyReport(bool sortByVisitor = true)
+        {
+            DateTime date = DateTime.Now;
+            int year = date.Date.Year;
+            DateTime firstDay = new DateTime(year, 1, 1);
+            DayOfWeek day = date.DayOfWeek;
+            CultureInfo cul = CultureInfo.CurrentCulture;
+            int weekNo = cul.Calendar.GetWeekOfYear(date, CalendarWeekRule.FirstDay, DayOfWeek.Sunday);
+            int days = (weekNo - 1) * 7;
+            DateTime dt1 = firstDay.AddDays(days);
+            DayOfWeek dow = dt1.DayOfWeek;
+            DateTime startDateOfWeek = dt1.AddDays(-(int)dow);
+            DateTime endDateOfWeek = startDateOfWeek.AddDays(6);
+
+            DateTime current = DateTime.Now;
+            var weeklyList = visitors.Values.Where(x => startDateOfWeek <= DateTime.Parse(x.InTime.ToLongDateString()) && endDateOfWeek >= DateTime.Parse(x.InTime.ToLongDateString()))
+                                            .Where(x => x.Bill.HasValue)
+                                            .GroupBy(x => DateTime.Parse(x.InTime.ToLongDateString()).DayOfWeek)
+                                            .Select(grp => new
+                                            {
+                                                Day = grp.Key,
+                                                Total_Visitors = grp.Sum(sum => sum.GroupOf.Sum(s => s.Value)),
+                                                Total_Earnings = grp.Sum(sum => sum.Bill.Value.FinalPrice)
+                                            })
+                                            .ToList();
+
+            int max = weeklyList.Count() - 1;
+
+            if (sortByVisitor)
+            {
+                for (int i = 0; i < max; i++)
+                {
+                    int nrLeft = max - i;
+                    for (int j = 0; j < nrLeft; j++)
+                    {
+                        if (weeklyList[j + 1] == null)
+                        {
+                            break;
+                        }
+                        else if (weeklyList[j].Total_Visitors > weeklyList[j + 1].Total_Visitors)
+                        {
+                            var temp = weeklyList[j];
+                            weeklyList[j] = weeklyList[j + 1];
+                            weeklyList[j + 1] = temp;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < max; i++)
+                {
+                    int nrLeft = max - i;
+                    for (int j = 0; j < nrLeft; j++)
+                    {
+                        if (weeklyList[j + 1] == null)
+                        {
+                            break;
+                        }
+                        else if (weeklyList[j].Total_Earnings > weeklyList[j + 1].Total_Earnings)
+                        {
+                            var temp = weeklyList[j];
+                            weeklyList[j] = weeklyList[j + 1];
+                            weeklyList[j + 1] = temp;
+                        }
+                    }
+                }
+            }
+            weeklyReportDataGrid.DataSource = weeklyList.ToList();
+        }
+
+        private void dailyReportB_Click(object sender, EventArgs e)
+        {
+            generateDailyReport();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            generateWeeklyReport();
+            sortWeeklyReportCB.SelectedIndex = 0;
+        }
+
+        private void sortWeeklyReportCB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (sortWeeklyReportCB.SelectedItem.ToString().Equals("Vistor"))
+            {
+                generateWeeklyReport();
+            }
+            else
+            {
+                generateWeeklyReport(false);
+            }
         }
     }
 }

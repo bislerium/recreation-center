@@ -100,13 +100,39 @@ namespace recreation_centre
         {
             try
             {
-                Application.Run(new Login());
-                this.Dispose();
+                this.Hide();
+                var v = new Login();
+                v.FormClosed += (s, args) => this.Close();
+                v.ShowDialog();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        private bool mouseDown;
+        private Point lastLocation;
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point(
+                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+
+                this.Update();
+            }
+        }
+
+        private void Form1_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
         }
 
         private void calenderDate_click(object sender, EventArgs e) 

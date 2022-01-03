@@ -33,6 +33,50 @@
             this.closeB = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.tBill = new System.Windows.Forms.TextBox();
+            this.dYP = new System.Windows.Forms.TextBox();
+            this.dYG = new System.Windows.Forms.TextBox();
+            this.dYR = new System.Windows.Forms.TextBox();
+            this.dRP = new System.Windows.Forms.TextBox();
+            this.dRG = new System.Windows.Forms.TextBox();
+            this.dRE = new System.Windows.Forms.TextBox();
+            this.gRP = new System.Windows.Forms.TextBox();
+            this.gRG = new System.Windows.Forms.TextBox();
+            this.gRE = new System.Windows.Forms.TextBox();
+            this.aGP = new System.Windows.Forms.TextBox();
+            this.oRE = new System.Windows.Forms.TextBox();
+            this.oRG = new System.Windows.Forms.TextBox();
+            this.oRP = new System.Windows.Forms.TextBox();
+            this.mRP = new System.Windows.Forms.TextBox();
+            this.mRG = new System.Windows.Forms.TextBox();
+            this.mRE = new System.Windows.Forms.TextBox();
+            this.yRP = new System.Windows.Forms.TextBox();
+            this.yRG = new System.Windows.Forms.TextBox();
+            this.yRE = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.cRP = new System.Windows.Forms.TextBox();
+            this.cRG = new System.Windows.Forms.TextBox();
+            this.cRE = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.bPrice = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.syncDataGrid = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.checkedOutDataGrid = new System.Windows.Forms.DataGridView();
+            this.syncDateTime = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.checkoutDateTime = new System.Windows.Forms.DateTimePicker();
             this.allclearB = new System.Windows.Forms.Button();
             this.checkoutB = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -60,54 +104,10 @@
             this.vistorTicketCodeMTB = new System.Windows.Forms.MaskedTextBox();
             this.loginUserTB = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.checkoutDateTime = new System.Windows.Forms.DateTimePicker();
-            this.label14 = new System.Windows.Forms.Label();
-            this.syncDateTime = new System.Windows.Forms.Button();
-            this.checkedOutDataGrid = new System.Windows.Forms.DataGridView();
-            this.label15 = new System.Windows.Forms.Label();
-            this.syncDataGrid = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label16 = new System.Windows.Forms.Label();
-            this.bPrice = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.cRE = new System.Windows.Forms.TextBox();
-            this.cRG = new System.Windows.Forms.TextBox();
-            this.cRP = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.yRE = new System.Windows.Forms.TextBox();
-            this.yRG = new System.Windows.Forms.TextBox();
-            this.yRP = new System.Windows.Forms.TextBox();
-            this.mRE = new System.Windows.Forms.TextBox();
-            this.mRG = new System.Windows.Forms.TextBox();
-            this.mRP = new System.Windows.Forms.TextBox();
-            this.oRP = new System.Windows.Forms.TextBox();
-            this.oRG = new System.Windows.Forms.TextBox();
-            this.oRE = new System.Windows.Forms.TextBox();
-            this.aGP = new System.Windows.Forms.TextBox();
-            this.gRE = new System.Windows.Forms.TextBox();
-            this.gRG = new System.Windows.Forms.TextBox();
-            this.gRP = new System.Windows.Forms.TextBox();
-            this.dRE = new System.Windows.Forms.TextBox();
-            this.dRG = new System.Windows.Forms.TextBox();
-            this.dRP = new System.Windows.Forms.TextBox();
-            this.dYR = new System.Windows.Forms.TextBox();
-            this.dYG = new System.Windows.Forms.TextBox();
-            this.dYP = new System.Windows.Forms.TextBox();
-            this.tBill = new System.Windows.Forms.TextBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkedOutDataGrid)).BeginInit();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkedOutDataGrid)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // logoutB
@@ -177,6 +177,473 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1248, 603);
             this.panel1.TabIndex = 4;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label28);
+            this.panel3.Controls.Add(this.label27);
+            this.panel3.Controls.Add(this.label26);
+            this.panel3.Controls.Add(this.label25);
+            this.panel3.Controls.Add(this.label24);
+            this.panel3.Controls.Add(this.label23);
+            this.panel3.Controls.Add(this.label22);
+            this.panel3.Controls.Add(this.tBill);
+            this.panel3.Controls.Add(this.dYP);
+            this.panel3.Controls.Add(this.dYG);
+            this.panel3.Controls.Add(this.dYR);
+            this.panel3.Controls.Add(this.dRP);
+            this.panel3.Controls.Add(this.dRG);
+            this.panel3.Controls.Add(this.dRE);
+            this.panel3.Controls.Add(this.gRP);
+            this.panel3.Controls.Add(this.gRG);
+            this.panel3.Controls.Add(this.gRE);
+            this.panel3.Controls.Add(this.aGP);
+            this.panel3.Controls.Add(this.oRE);
+            this.panel3.Controls.Add(this.oRG);
+            this.panel3.Controls.Add(this.oRP);
+            this.panel3.Controls.Add(this.mRP);
+            this.panel3.Controls.Add(this.mRG);
+            this.panel3.Controls.Add(this.mRE);
+            this.panel3.Controls.Add(this.yRP);
+            this.panel3.Controls.Add(this.yRG);
+            this.panel3.Controls.Add(this.yRE);
+            this.panel3.Controls.Add(this.label21);
+            this.panel3.Controls.Add(this.label20);
+            this.panel3.Controls.Add(this.cRP);
+            this.panel3.Controls.Add(this.cRG);
+            this.panel3.Controls.Add(this.cRE);
+            this.panel3.Controls.Add(this.label19);
+            this.panel3.Controls.Add(this.label18);
+            this.panel3.Controls.Add(this.label17);
+            this.panel3.Controls.Add(this.bPrice);
+            this.panel3.Controls.Add(this.label16);
+            this.panel3.Location = new System.Drawing.Point(22, 101);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(352, 490);
+            this.panel3.TabIndex = 11;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(38, 445);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(59, 16);
+            this.label28.TabIndex = 36;
+            this.label28.Text = "Total Bill";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(65, 403);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(32, 16);
+            this.label27.TabIndex = 35;
+            this.label27.Text = "Day";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(40, 361);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(57, 16);
+            this.label26.TabIndex = 34;
+            this.label26.Text = "Duration";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(53, 319);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(44, 16);
+            this.label25.TabIndex = 33;
+            this.label25.Text = "Group";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(25, 277);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(72, 16);
+            this.label24.TabIndex = 32;
+            this.label24.Text = "Age Group";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(36, 235);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(61, 16);
+            this.label23.TabIndex = 31;
+            this.label23.Text = "Old Adult";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(16, 193);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(81, 16);
+            this.label22.TabIndex = 30;
+            this.label22.Text = "Middle Adult";
+            // 
+            // tBill
+            // 
+            this.tBill.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tBill.Location = new System.Drawing.Point(103, 440);
+            this.tBill.Name = "tBill";
+            this.tBill.ReadOnly = true;
+            this.tBill.Size = new System.Drawing.Size(229, 27);
+            this.tBill.TabIndex = 29;
+            this.tBill.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // dYP
+            // 
+            this.dYP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dYP.Location = new System.Drawing.Point(267, 398);
+            this.dYP.Name = "dYP";
+            this.dYP.ReadOnly = true;
+            this.dYP.Size = new System.Drawing.Size(65, 27);
+            this.dYP.TabIndex = 28;
+            this.dYP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // dYG
+            // 
+            this.dYG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dYG.Location = new System.Drawing.Point(188, 398);
+            this.dYG.Name = "dYG";
+            this.dYG.ReadOnly = true;
+            this.dYG.Size = new System.Drawing.Size(65, 27);
+            this.dYG.TabIndex = 27;
+            this.dYG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // dYR
+            // 
+            this.dYR.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dYR.Location = new System.Drawing.Point(103, 398);
+            this.dYR.Name = "dYR";
+            this.dYR.ReadOnly = true;
+            this.dYR.Size = new System.Drawing.Size(65, 27);
+            this.dYR.TabIndex = 26;
+            this.dYR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // dRP
+            // 
+            this.dRP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dRP.Location = new System.Drawing.Point(267, 356);
+            this.dRP.Name = "dRP";
+            this.dRP.ReadOnly = true;
+            this.dRP.Size = new System.Drawing.Size(65, 27);
+            this.dRP.TabIndex = 25;
+            this.dRP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // dRG
+            // 
+            this.dRG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dRG.Location = new System.Drawing.Point(188, 356);
+            this.dRG.Name = "dRG";
+            this.dRG.ReadOnly = true;
+            this.dRG.Size = new System.Drawing.Size(65, 27);
+            this.dRG.TabIndex = 24;
+            this.dRG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // dRE
+            // 
+            this.dRE.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dRE.Location = new System.Drawing.Point(103, 356);
+            this.dRE.Name = "dRE";
+            this.dRE.ReadOnly = true;
+            this.dRE.Size = new System.Drawing.Size(65, 27);
+            this.dRE.TabIndex = 23;
+            this.dRE.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // gRP
+            // 
+            this.gRP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gRP.Location = new System.Drawing.Point(267, 314);
+            this.gRP.Name = "gRP";
+            this.gRP.ReadOnly = true;
+            this.gRP.Size = new System.Drawing.Size(65, 27);
+            this.gRP.TabIndex = 22;
+            this.gRP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // gRG
+            // 
+            this.gRG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gRG.Location = new System.Drawing.Point(188, 314);
+            this.gRG.Name = "gRG";
+            this.gRG.ReadOnly = true;
+            this.gRG.Size = new System.Drawing.Size(65, 27);
+            this.gRG.TabIndex = 21;
+            this.gRG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // gRE
+            // 
+            this.gRE.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gRE.Location = new System.Drawing.Point(103, 314);
+            this.gRE.Name = "gRE";
+            this.gRE.ReadOnly = true;
+            this.gRE.Size = new System.Drawing.Size(65, 27);
+            this.gRE.TabIndex = 20;
+            this.gRE.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // aGP
+            // 
+            this.aGP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.aGP.Location = new System.Drawing.Point(103, 272);
+            this.aGP.Name = "aGP";
+            this.aGP.ReadOnly = true;
+            this.aGP.Size = new System.Drawing.Size(229, 27);
+            this.aGP.TabIndex = 19;
+            this.aGP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // oRE
+            // 
+            this.oRE.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.oRE.Location = new System.Drawing.Point(103, 230);
+            this.oRE.Name = "oRE";
+            this.oRE.ReadOnly = true;
+            this.oRE.Size = new System.Drawing.Size(65, 27);
+            this.oRE.TabIndex = 18;
+            this.oRE.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // oRG
+            // 
+            this.oRG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.oRG.Location = new System.Drawing.Point(188, 230);
+            this.oRG.Name = "oRG";
+            this.oRG.ReadOnly = true;
+            this.oRG.Size = new System.Drawing.Size(65, 27);
+            this.oRG.TabIndex = 17;
+            this.oRG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // oRP
+            // 
+            this.oRP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.oRP.Location = new System.Drawing.Point(267, 230);
+            this.oRP.Name = "oRP";
+            this.oRP.ReadOnly = true;
+            this.oRP.Size = new System.Drawing.Size(65, 27);
+            this.oRP.TabIndex = 16;
+            this.oRP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // mRP
+            // 
+            this.mRP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mRP.Location = new System.Drawing.Point(267, 188);
+            this.mRP.Name = "mRP";
+            this.mRP.ReadOnly = true;
+            this.mRP.Size = new System.Drawing.Size(65, 27);
+            this.mRP.TabIndex = 15;
+            this.mRP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // mRG
+            // 
+            this.mRG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mRG.Location = new System.Drawing.Point(188, 188);
+            this.mRG.Name = "mRG";
+            this.mRG.ReadOnly = true;
+            this.mRG.Size = new System.Drawing.Size(65, 27);
+            this.mRG.TabIndex = 14;
+            this.mRG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // mRE
+            // 
+            this.mRE.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mRE.Location = new System.Drawing.Point(103, 188);
+            this.mRE.Name = "mRE";
+            this.mRE.ReadOnly = true;
+            this.mRE.Size = new System.Drawing.Size(65, 27);
+            this.mRE.TabIndex = 13;
+            this.mRE.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // yRP
+            // 
+            this.yRP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.yRP.Location = new System.Drawing.Point(267, 146);
+            this.yRP.Name = "yRP";
+            this.yRP.ReadOnly = true;
+            this.yRP.Size = new System.Drawing.Size(65, 27);
+            this.yRP.TabIndex = 12;
+            this.yRP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // yRG
+            // 
+            this.yRG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.yRG.Location = new System.Drawing.Point(188, 146);
+            this.yRG.Name = "yRG";
+            this.yRG.ReadOnly = true;
+            this.yRG.Size = new System.Drawing.Size(65, 27);
+            this.yRG.TabIndex = 11;
+            this.yRG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // yRE
+            // 
+            this.yRE.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.yRE.Location = new System.Drawing.Point(103, 146);
+            this.yRE.Name = "yRE";
+            this.yRE.ReadOnly = true;
+            this.yRE.Size = new System.Drawing.Size(65, 27);
+            this.yRE.TabIndex = 10;
+            this.yRE.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(18, 151);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(79, 16);
+            this.label21.TabIndex = 9;
+            this.label21.Text = "Young Adult";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(60, 109);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(37, 16);
+            this.label20.TabIndex = 8;
+            this.label20.Text = "Child";
+            // 
+            // cRP
+            // 
+            this.cRP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cRP.Location = new System.Drawing.Point(267, 104);
+            this.cRP.Name = "cRP";
+            this.cRP.ReadOnly = true;
+            this.cRP.Size = new System.Drawing.Size(65, 27);
+            this.cRP.TabIndex = 7;
+            this.cRP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // cRG
+            // 
+            this.cRG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cRG.Location = new System.Drawing.Point(188, 104);
+            this.cRG.Name = "cRG";
+            this.cRG.ReadOnly = true;
+            this.cRG.Size = new System.Drawing.Size(65, 27);
+            this.cRG.TabIndex = 6;
+            this.cRG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // cRE
+            // 
+            this.cRE.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cRE.Location = new System.Drawing.Point(103, 104);
+            this.cRE.Name = "cRE";
+            this.cRE.ReadOnly = true;
+            this.cRE.Size = new System.Drawing.Size(65, 27);
+            this.cRE.TabIndex = 5;
+            this.cRE.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(264, 78);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(75, 16);
+            this.label19.TabIndex = 4;
+            this.label19.Text = "RatedPrice";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(185, 78);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(46, 16);
+            this.label18.TabIndex = 3;
+            this.label18.Text = "Rating";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(100, 78);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(59, 16);
+            this.label17.TabIndex = 2;
+            this.label17.Text = "Rate (%)";
+            // 
+            // bPrice
+            // 
+            this.bPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bPrice.Location = new System.Drawing.Point(103, 28);
+            this.bPrice.Name = "bPrice";
+            this.bPrice.ReadOnly = true;
+            this.bPrice.Size = new System.Drawing.Size(123, 27);
+            this.bPrice.TabIndex = 1;
+            this.bPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(24, 34);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(73, 16);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "Base Price";
+            // 
+            // syncDataGrid
+            // 
+            this.syncDataGrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.syncDataGrid.Location = new System.Drawing.Point(982, 25);
+            this.syncDataGrid.Name = "syncDataGrid";
+            this.syncDataGrid.Size = new System.Drawing.Size(75, 30);
+            this.syncDataGrid.TabIndex = 7;
+            this.syncDataGrid.Text = "Sync";
+            this.syncDataGrid.UseVisualStyleBackColor = true;
+            this.syncDataGrid.Click += new System.EventHandler(this.syncDataGrid_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(1063, 28);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(165, 20);
+            this.label15.TabIndex = 10;
+            this.label15.Text = "Checked-out Visitors";
+            // 
+            // checkedOutDataGrid
+            // 
+            this.checkedOutDataGrid.AllowUserToDeleteRows = false;
+            this.checkedOutDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.checkedOutDataGrid.Location = new System.Drawing.Point(640, 61);
+            this.checkedOutDataGrid.Name = "checkedOutDataGrid";
+            this.checkedOutDataGrid.ReadOnly = true;
+            this.checkedOutDataGrid.RowHeadersWidth = 51;
+            this.checkedOutDataGrid.RowTemplate.Height = 24;
+            this.checkedOutDataGrid.Size = new System.Drawing.Size(591, 530);
+            this.checkedOutDataGrid.TabIndex = 9;
+            // 
+            // syncDateTime
+            // 
+            this.syncDateTime.BackColor = System.Drawing.Color.Transparent;
+            this.syncDateTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.syncDateTime.ForeColor = System.Drawing.Color.Black;
+            this.syncDateTime.Location = new System.Drawing.Point(412, 25);
+            this.syncDateTime.Name = "syncDateTime";
+            this.syncDateTime.Size = new System.Drawing.Size(78, 60);
+            this.syncDateTime.TabIndex = 8;
+            this.syncDateTime.Text = "Sync Time";
+            this.syncDateTime.UseVisualStyleBackColor = false;
+            this.syncDateTime.Click += new System.EventHandler(this.syncDateTime_Click);
+            // 
+            // label14
+            // 
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(18, 61);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(140, 20);
+            this.label14.TabIndex = 7;
+            this.label14.Text = "Check-out Time:";
+            // 
+            // checkoutDateTime
+            // 
+            this.checkoutDateTime.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkoutDateTime.CustomFormat = "dd/MM/yyyy hh:mm tt";
+            this.checkoutDateTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkoutDateTime.Location = new System.Drawing.Point(162, 58);
+            this.checkoutDateTime.Name = "checkoutDateTime";
+            this.checkoutDateTime.Size = new System.Drawing.Size(244, 27);
+            this.checkoutDateTime.TabIndex = 6;
+            this.checkoutDateTime.Value = new System.DateTime(2022, 1, 3, 0, 10, 0, 0);
             // 
             // allclearB
             // 
@@ -474,473 +941,6 @@
             this.label13.TabIndex = 6;
             this.label13.Text = "Logged-in User:";
             // 
-            // checkoutDateTime
-            // 
-            this.checkoutDateTime.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkoutDateTime.CustomFormat = "dd/MM/yyyy hh:mm tt";
-            this.checkoutDateTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkoutDateTime.Location = new System.Drawing.Point(162, 58);
-            this.checkoutDateTime.Name = "checkoutDateTime";
-            this.checkoutDateTime.Size = new System.Drawing.Size(244, 27);
-            this.checkoutDateTime.TabIndex = 6;
-            this.checkoutDateTime.Value = new System.DateTime(2022, 1, 3, 0, 10, 0, 0);
-            // 
-            // label14
-            // 
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(18, 61);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(140, 20);
-            this.label14.TabIndex = 7;
-            this.label14.Text = "Check-out Time:";
-            // 
-            // syncDateTime
-            // 
-            this.syncDateTime.BackColor = System.Drawing.Color.Transparent;
-            this.syncDateTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.syncDateTime.ForeColor = System.Drawing.Color.Black;
-            this.syncDateTime.Location = new System.Drawing.Point(412, 25);
-            this.syncDateTime.Name = "syncDateTime";
-            this.syncDateTime.Size = new System.Drawing.Size(78, 60);
-            this.syncDateTime.TabIndex = 8;
-            this.syncDateTime.Text = "Sync Time";
-            this.syncDateTime.UseVisualStyleBackColor = false;
-            this.syncDateTime.Click += new System.EventHandler(this.syncDateTime_Click);
-            // 
-            // checkedOutDataGrid
-            // 
-            this.checkedOutDataGrid.AllowUserToDeleteRows = false;
-            this.checkedOutDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.checkedOutDataGrid.Location = new System.Drawing.Point(640, 61);
-            this.checkedOutDataGrid.Name = "checkedOutDataGrid";
-            this.checkedOutDataGrid.ReadOnly = true;
-            this.checkedOutDataGrid.RowHeadersWidth = 51;
-            this.checkedOutDataGrid.RowTemplate.Height = 24;
-            this.checkedOutDataGrid.Size = new System.Drawing.Size(591, 530);
-            this.checkedOutDataGrid.TabIndex = 9;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(1063, 28);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(165, 20);
-            this.label15.TabIndex = 10;
-            this.label15.Text = "Checked-out Visitors";
-            // 
-            // syncDataGrid
-            // 
-            this.syncDataGrid.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.syncDataGrid.Location = new System.Drawing.Point(982, 25);
-            this.syncDataGrid.Name = "syncDataGrid";
-            this.syncDataGrid.Size = new System.Drawing.Size(75, 30);
-            this.syncDataGrid.TabIndex = 7;
-            this.syncDataGrid.Text = "Sync";
-            this.syncDataGrid.UseVisualStyleBackColor = true;
-            this.syncDataGrid.Click += new System.EventHandler(this.syncDataGrid_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.label28);
-            this.panel3.Controls.Add(this.label27);
-            this.panel3.Controls.Add(this.label26);
-            this.panel3.Controls.Add(this.label25);
-            this.panel3.Controls.Add(this.label24);
-            this.panel3.Controls.Add(this.label23);
-            this.panel3.Controls.Add(this.label22);
-            this.panel3.Controls.Add(this.tBill);
-            this.panel3.Controls.Add(this.dYP);
-            this.panel3.Controls.Add(this.dYG);
-            this.panel3.Controls.Add(this.dYR);
-            this.panel3.Controls.Add(this.dRP);
-            this.panel3.Controls.Add(this.dRG);
-            this.panel3.Controls.Add(this.dRE);
-            this.panel3.Controls.Add(this.gRP);
-            this.panel3.Controls.Add(this.gRG);
-            this.panel3.Controls.Add(this.gRE);
-            this.panel3.Controls.Add(this.aGP);
-            this.panel3.Controls.Add(this.oRE);
-            this.panel3.Controls.Add(this.oRG);
-            this.panel3.Controls.Add(this.oRP);
-            this.panel3.Controls.Add(this.mRP);
-            this.panel3.Controls.Add(this.mRG);
-            this.panel3.Controls.Add(this.mRE);
-            this.panel3.Controls.Add(this.yRP);
-            this.panel3.Controls.Add(this.yRG);
-            this.panel3.Controls.Add(this.yRE);
-            this.panel3.Controls.Add(this.label21);
-            this.panel3.Controls.Add(this.label20);
-            this.panel3.Controls.Add(this.cRP);
-            this.panel3.Controls.Add(this.cRG);
-            this.panel3.Controls.Add(this.cRE);
-            this.panel3.Controls.Add(this.label19);
-            this.panel3.Controls.Add(this.label18);
-            this.panel3.Controls.Add(this.label17);
-            this.panel3.Controls.Add(this.bPrice);
-            this.panel3.Controls.Add(this.label16);
-            this.panel3.Location = new System.Drawing.Point(22, 101);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(352, 490);
-            this.panel3.TabIndex = 11;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(24, 34);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(73, 16);
-            this.label16.TabIndex = 0;
-            this.label16.Text = "Base Price";
-            // 
-            // bPrice
-            // 
-            this.bPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bPrice.Location = new System.Drawing.Point(103, 28);
-            this.bPrice.Name = "bPrice";
-            this.bPrice.ReadOnly = true;
-            this.bPrice.Size = new System.Drawing.Size(123, 27);
-            this.bPrice.TabIndex = 1;
-            this.bPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(100, 78);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(59, 16);
-            this.label17.TabIndex = 2;
-            this.label17.Text = "Rate (%)";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(185, 78);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(46, 16);
-            this.label18.TabIndex = 3;
-            this.label18.Text = "Rating";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(264, 78);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(75, 16);
-            this.label19.TabIndex = 4;
-            this.label19.Text = "RatedPrice";
-            // 
-            // cRE
-            // 
-            this.cRE.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cRE.Location = new System.Drawing.Point(103, 104);
-            this.cRE.Name = "cRE";
-            this.cRE.ReadOnly = true;
-            this.cRE.Size = new System.Drawing.Size(65, 27);
-            this.cRE.TabIndex = 5;
-            this.cRE.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // cRG
-            // 
-            this.cRG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cRG.Location = new System.Drawing.Point(188, 104);
-            this.cRG.Name = "cRG";
-            this.cRG.ReadOnly = true;
-            this.cRG.Size = new System.Drawing.Size(65, 27);
-            this.cRG.TabIndex = 6;
-            this.cRG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // cRP
-            // 
-            this.cRP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cRP.Location = new System.Drawing.Point(267, 104);
-            this.cRP.Name = "cRP";
-            this.cRP.ReadOnly = true;
-            this.cRP.Size = new System.Drawing.Size(65, 27);
-            this.cRP.TabIndex = 7;
-            this.cRP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(60, 109);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(37, 16);
-            this.label20.TabIndex = 8;
-            this.label20.Text = "Child";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(18, 151);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(79, 16);
-            this.label21.TabIndex = 9;
-            this.label21.Text = "Young Adult";
-            // 
-            // yRE
-            // 
-            this.yRE.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.yRE.Location = new System.Drawing.Point(103, 146);
-            this.yRE.Name = "yRE";
-            this.yRE.ReadOnly = true;
-            this.yRE.Size = new System.Drawing.Size(65, 27);
-            this.yRE.TabIndex = 10;
-            this.yRE.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // yRG
-            // 
-            this.yRG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.yRG.Location = new System.Drawing.Point(188, 146);
-            this.yRG.Name = "yRG";
-            this.yRG.ReadOnly = true;
-            this.yRG.Size = new System.Drawing.Size(65, 27);
-            this.yRG.TabIndex = 11;
-            this.yRG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // yRP
-            // 
-            this.yRP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.yRP.Location = new System.Drawing.Point(267, 146);
-            this.yRP.Name = "yRP";
-            this.yRP.ReadOnly = true;
-            this.yRP.Size = new System.Drawing.Size(65, 27);
-            this.yRP.TabIndex = 12;
-            this.yRP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // mRE
-            // 
-            this.mRE.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mRE.Location = new System.Drawing.Point(103, 188);
-            this.mRE.Name = "mRE";
-            this.mRE.ReadOnly = true;
-            this.mRE.Size = new System.Drawing.Size(65, 27);
-            this.mRE.TabIndex = 13;
-            this.mRE.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // mRG
-            // 
-            this.mRG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mRG.Location = new System.Drawing.Point(188, 188);
-            this.mRG.Name = "mRG";
-            this.mRG.ReadOnly = true;
-            this.mRG.Size = new System.Drawing.Size(65, 27);
-            this.mRG.TabIndex = 14;
-            this.mRG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // mRP
-            // 
-            this.mRP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mRP.Location = new System.Drawing.Point(267, 188);
-            this.mRP.Name = "mRP";
-            this.mRP.ReadOnly = true;
-            this.mRP.Size = new System.Drawing.Size(65, 27);
-            this.mRP.TabIndex = 15;
-            this.mRP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // oRP
-            // 
-            this.oRP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.oRP.Location = new System.Drawing.Point(267, 230);
-            this.oRP.Name = "oRP";
-            this.oRP.ReadOnly = true;
-            this.oRP.Size = new System.Drawing.Size(65, 27);
-            this.oRP.TabIndex = 16;
-            this.oRP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // oRG
-            // 
-            this.oRG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.oRG.Location = new System.Drawing.Point(188, 230);
-            this.oRG.Name = "oRG";
-            this.oRG.ReadOnly = true;
-            this.oRG.Size = new System.Drawing.Size(65, 27);
-            this.oRG.TabIndex = 17;
-            this.oRG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // oRE
-            // 
-            this.oRE.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.oRE.Location = new System.Drawing.Point(103, 230);
-            this.oRE.Name = "oRE";
-            this.oRE.ReadOnly = true;
-            this.oRE.Size = new System.Drawing.Size(65, 27);
-            this.oRE.TabIndex = 18;
-            this.oRE.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // aGP
-            // 
-            this.aGP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.aGP.Location = new System.Drawing.Point(103, 272);
-            this.aGP.Name = "aGP";
-            this.aGP.ReadOnly = true;
-            this.aGP.Size = new System.Drawing.Size(229, 27);
-            this.aGP.TabIndex = 19;
-            this.aGP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // gRE
-            // 
-            this.gRE.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gRE.Location = new System.Drawing.Point(103, 314);
-            this.gRE.Name = "gRE";
-            this.gRE.ReadOnly = true;
-            this.gRE.Size = new System.Drawing.Size(65, 27);
-            this.gRE.TabIndex = 20;
-            this.gRE.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // gRG
-            // 
-            this.gRG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gRG.Location = new System.Drawing.Point(188, 314);
-            this.gRG.Name = "gRG";
-            this.gRG.ReadOnly = true;
-            this.gRG.Size = new System.Drawing.Size(65, 27);
-            this.gRG.TabIndex = 21;
-            this.gRG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // gRP
-            // 
-            this.gRP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gRP.Location = new System.Drawing.Point(267, 314);
-            this.gRP.Name = "gRP";
-            this.gRP.ReadOnly = true;
-            this.gRP.Size = new System.Drawing.Size(65, 27);
-            this.gRP.TabIndex = 22;
-            this.gRP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // dRE
-            // 
-            this.dRE.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dRE.Location = new System.Drawing.Point(103, 356);
-            this.dRE.Name = "dRE";
-            this.dRE.ReadOnly = true;
-            this.dRE.Size = new System.Drawing.Size(65, 27);
-            this.dRE.TabIndex = 23;
-            this.dRE.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // dRG
-            // 
-            this.dRG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dRG.Location = new System.Drawing.Point(188, 356);
-            this.dRG.Name = "dRG";
-            this.dRG.ReadOnly = true;
-            this.dRG.Size = new System.Drawing.Size(65, 27);
-            this.dRG.TabIndex = 24;
-            this.dRG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // dRP
-            // 
-            this.dRP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dRP.Location = new System.Drawing.Point(267, 356);
-            this.dRP.Name = "dRP";
-            this.dRP.ReadOnly = true;
-            this.dRP.Size = new System.Drawing.Size(65, 27);
-            this.dRP.TabIndex = 25;
-            this.dRP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // dYR
-            // 
-            this.dYR.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dYR.Location = new System.Drawing.Point(103, 398);
-            this.dYR.Name = "dYR";
-            this.dYR.ReadOnly = true;
-            this.dYR.Size = new System.Drawing.Size(65, 27);
-            this.dYR.TabIndex = 26;
-            this.dYR.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // dYG
-            // 
-            this.dYG.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dYG.Location = new System.Drawing.Point(188, 398);
-            this.dYG.Name = "dYG";
-            this.dYG.ReadOnly = true;
-            this.dYG.Size = new System.Drawing.Size(65, 27);
-            this.dYG.TabIndex = 27;
-            this.dYG.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // dYP
-            // 
-            this.dYP.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dYP.Location = new System.Drawing.Point(267, 398);
-            this.dYP.Name = "dYP";
-            this.dYP.ReadOnly = true;
-            this.dYP.Size = new System.Drawing.Size(65, 27);
-            this.dYP.TabIndex = 28;
-            this.dYP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // tBill
-            // 
-            this.tBill.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tBill.Location = new System.Drawing.Point(103, 440);
-            this.tBill.Name = "tBill";
-            this.tBill.ReadOnly = true;
-            this.tBill.Size = new System.Drawing.Size(229, 27);
-            this.tBill.TabIndex = 29;
-            this.tBill.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(16, 193);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(81, 16);
-            this.label22.TabIndex = 30;
-            this.label22.Text = "Middle Adult";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(36, 235);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(61, 16);
-            this.label23.TabIndex = 31;
-            this.label23.Text = "Old Adult";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(25, 277);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(72, 16);
-            this.label24.TabIndex = 32;
-            this.label24.Text = "Age Group";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(53, 319);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(44, 16);
-            this.label25.TabIndex = 33;
-            this.label25.Text = "Group";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(40, 361);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(57, 16);
-            this.label26.TabIndex = 34;
-            this.label26.Text = "Duration";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(65, 403);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(32, 16);
-            this.label27.TabIndex = 35;
-            this.label27.Text = "Day";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Location = new System.Drawing.Point(38, 445);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(59, 16);
-            this.label28.TabIndex = 36;
-            this.label28.Text = "Total Bill";
-            // 
             // CheckoutStaff
             // 
             this.BackColor = System.Drawing.Color.Silver;
@@ -954,13 +954,16 @@
             this.Controls.Add(this.closeB);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CheckoutStaff";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseUp);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkedOutDataGrid)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkedOutDataGrid)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

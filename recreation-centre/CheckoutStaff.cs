@@ -41,8 +41,10 @@ namespace recreation_centre
         {
             try
             {
-                Application.Run(new Login());
-                this.Dispose();
+                this.Hide();
+                var v = new Login();
+                v.FormClosed += (s, args) => this.Close();
+                v.ShowDialog();
             }
             catch (Exception ex)
             {

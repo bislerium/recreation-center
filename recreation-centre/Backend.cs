@@ -6,10 +6,15 @@ using System.Linq;
 using System.Text;
 using static System.Collections.Generic.Dictionary<int, decimal>;
 
+
+//Package contains supporting classes, enums and structs for this project.
 namespace Backend
 {
+
+    //Auth package handles authentication and authorization.
     namespace Auth
     {
+
         public enum UserGroup { 
             Admin,
             CheckinStaff,
@@ -34,6 +39,7 @@ namespace Backend
             }
         }
 
+        //Class to handle auth process.
         public class Authy
         {
             private readonly string fileSource;
@@ -46,6 +52,7 @@ namespace Backend
                 Credentials = new Dictionary<int, User>();
             }
 
+            //Generate codes of specific length.
             public string GenerateRecoveryCode(int length)
             {
                 r = new Random();
@@ -58,6 +65,7 @@ namespace Backend
                 return sb.ToString();
             }
 
+            //Read credentials from specified source file given through constructor.
             public bool ReadCredential()
             {
                 if (File.Exists(fileSource))
@@ -91,6 +99,7 @@ namespace Backend
                 }
             }
 
+            //Appends User credential to a credential List and persists it locally at a specified location.
             public bool WriteCredential(User user)
             {
                 if (HasUser(user.UserID))
@@ -118,6 +127,7 @@ namespace Backend
                 }
             }
 
+            //Returns File Location
             public String getFileSource() => fileSource;
 
             public Dictionary<int, User> GetCredentials() => Credentials;
@@ -140,52 +150,9 @@ namespace Backend
                 return null;
             }
 
+            //Takes User object to authnticate it by commparing thorugh credentials list.
             public bool IsAuthenticated(User user) => HasUser(user.UserID) && (user.HashedPassword == (Credentials[user.UserID].HashedPassword));
-
-            public static void Main(string[] args)
-            {
-                Authy a = new Authy();
-                Console.WriteLine(a.GenerateRecoveryCode(16));
-                string aa = a.GenerateRecoveryCode(16);
-                string bb = a.GenerateRecoveryCode(16);
-                Console.WriteLine(aa);
-                Console.WriteLine(bb);
-                User u = new User
-                {
-                    UserID = 232342,
-                    UserName = "bishal gc",
-                    HashedPassword = "apple321".GetHashCode(),
-                    HashedRecoveryCode = aa.GetHashCode()
-                };
-                User uu = new User
-                {
-                    UserID = 487383,
-                    UserName = "Nigga por",
-                    HashedPassword = "cmjcnn938uc".GetHashCode(),
-                    HashedRecoveryCode = bb.GetHashCode()
-                };
-                if (!a.ReadCredential())
-                {
-                    Console.WriteLine("added");
-                    Console.WriteLine(a.WriteCredential(u));
-                    Console.WriteLine(a.WriteCredential(uu));
-                    Console.WriteLine(a.WriteCredential(uu));
-                }
-                Console.WriteLine("user password -> " + u.HashedPassword);
-                Console.WriteLine(a.HasUser(u.UserID));
-                Console.WriteLine(a.GetUser(u.UserID));
-                Console.WriteLine("verify -> " + a.VerifyReset(u.UserID, "?5vwzA@002>UPl>u"));
-                Console.WriteLine("reset -> " + a.ResetPassword(u.UserID, "?5vwzA@002>UPl>u", "hello there"));
-                Console.WriteLine(a.GetUser(u.UserID));
-                Console.WriteLine("authenticated -> " + a.IsAuthenticated(u));
-                Console.WriteLine(a.Credentials.Count);
-
-                foreach (var kv in a.Credentials)
-                {
-                    Console.Write(kv.Key + " -> ");
-                    Console.WriteLine(kv.Value);
-                }
-            }
+           
         }
     }
 
@@ -250,6 +217,7 @@ namespace Backend
         }
     }
 
+    //Used while pricing per specifice attribtues: Age, Group, Duration, Day
     public struct Price { 
         public decimal Rate { get; }
         public decimal Rating { get; }
@@ -264,6 +232,7 @@ namespace Backend
         }
     }
 
+    //Represents a range of AgeGroup in ticketing.
     public enum AgeGroupE: Int16
     {
         CHILD = 0,
@@ -359,6 +328,7 @@ namespace Backend
         }
     }
 
+    //For Ticketting-related Processes.
     public class TicketProcess 
     {
         private Ticket ticket;
@@ -404,6 +374,7 @@ namespace Backend
             this.ticket = ticket;
         }
 
+        //Read ticket from a specified location given at the time of this object instantiation.
         public bool ReadTicket()
         {
             if (File.Exists(fileSource))
@@ -438,6 +409,7 @@ namespace Backend
             }
         }
 
+        //Write Ticket locally to persist it.
         public bool WriteTicket()
         {
             try
@@ -463,6 +435,8 @@ namespace Backend
 
         public String getFileSource() => fileSource;
 
+
+        //Generates the strucutre of Bill.
         public Bill GenerateBill(Visitor visitor)
         {
             decimal initialPrice = ticket.BasePrice;
@@ -526,6 +500,7 @@ namespace Backend
         }
     }
 
+    //Performs Visitor-related Processing.
     public class VisitorProcess
     {
 
@@ -539,11 +514,14 @@ namespace Backend
             visitors = new Dictionary<int, Visitor>();
             random = new Random();
         }
+
+        //Used to export visitors dictionary to a specified location.
         public VisitorProcess(string fileSource, Dictionary<int, Visitor> visitors): this(fileSource)
         {
             this.visitors = visitors;
         }
 
+        //Reads Visitors data from a specified filesource.
         public bool ReadVisitors()
         {
             if (File.Exists(fileSource))
@@ -577,6 +555,7 @@ namespace Backend
             }
         }
 
+        //Write a specific visitor data locally.
         public bool WriteVisitor(Visitor visitor)
         { 
             visitors[visitor.TicketCode] = visitor;
@@ -587,7 +566,8 @@ namespace Backend
             }
             return success;
         }
-            
+
+        //Write visitors dictionary data locally.            
         public bool WriteVisitors()
         {
             try
@@ -629,30 +609,5 @@ namespace Backend
         public Visitor GetVisitor(int identifier) => visitors[identifier];
 
         public bool HasVisitor(int identifier) => visitors.ContainsKey(identifier);
-
-
-/*        static void Main(string[] args)
-        {
-            VisitorProcess vs = new VisitorProcess();
-            Console.WriteLine(vs.ReadVisitors());
-            Visitor v = new Visitor()
-            {
-                TicketCode = vs.GenerateID(),
-                Name = "bishal",
-                Phone = "97798007465839",
-                Age = 34,
-                GroupOf = new Dictionary<AgeGroupE, short>() {
-                    { AgeGroupE.MIDDLE_ADULT, 3 },
-                    { AgeGroupE.CHILD, 2 }
-                },
-                Day = DayOfWeek.Sunday,
-                InTime = DateTime.Now,
-            };
-            Console.WriteLine(v.OutTime);
-            Console.WriteLine(v.OutTime == null);
-            vs.GetVisitors().Select(a => a.Key + " " + a.Value).ToList().ForEach(Console.WriteLine);
-*//*            if (vs.IsEmpty()) vs.Initialize(); *//*
-            Console.WriteLine(vs.WriteVisitors(v));
-        }*/
     }
 }
