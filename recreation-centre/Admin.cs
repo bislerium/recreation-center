@@ -642,11 +642,15 @@ namespace recreation_centre
                 }
             }
             weeklyReportDataGrid.DataSource = weeklyList.ToList();
+            foreach (var series in weeklyReportChart.Series)
+            {
+                series.Points.Clear();
+            }
             for (int i = 0; i < weeklyList.Count; i++)
             {
                 var row = weeklyList[i];
-                weeklyReportChart.Series["Total_Visitors"].Points.AddXY(row.Day.ToString(), weeklyList[i].Total_Visitors); 
-                weeklyReportChart.Series["Total_Earnings"].Points.AddXY(row.Day.ToString(), row.Total_Earnings); 
+                weeklyReportChart.Series["Total_Visitors"].Points.AddXY(row.Day.ToString(), weeklyList[i].Total_Visitors);
+                weeklyReportChart.Series["Total_Earnings"].Points.AddXY(row.Day.ToString(), row.Total_Earnings);
             }
         }
 
