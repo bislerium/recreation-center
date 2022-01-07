@@ -30,6 +30,10 @@ namespace recreation_centre
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1 = new System.Windows.Forms.Label();
             this.logoutB = new System.Windows.Forms.Button();
             this.minimizeB = new System.Windows.Forms.Button();
@@ -109,6 +113,7 @@ namespace recreation_centre
             this.dailyReportB = new System.Windows.Forms.Button();
             this.dailyReportDataGrid = new System.Windows.Forms.DataGridView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.weeklyReportChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabControl7.SuspendLayout();
@@ -126,6 +131,8 @@ namespace recreation_centre
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.weeklyReportDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dailyReportDataGrid)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.weeklyReportChart)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -914,6 +921,7 @@ namespace recreation_centre
             this.visitorDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.visitorDataGrid.Location = new System.Drawing.Point(6, 56);
             this.visitorDataGrid.Name = "visitorDataGrid";
+            this.visitorDataGrid.ReadOnly = true;
             this.visitorDataGrid.RowHeadersWidth = 51;
             this.visitorDataGrid.RowTemplate.Height = 24;
             this.visitorDataGrid.Size = new System.Drawing.Size(756, 576);
@@ -1007,6 +1015,7 @@ namespace recreation_centre
             // 
             // tabPage4
             // 
+            this.tabPage4.Controls.Add(this.weeklyReportChart);
             this.tabPage4.Location = new System.Drawing.Point(4, 25);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
@@ -1014,6 +1023,26 @@ namespace recreation_centre
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Chart";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // weeklyReportChart
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.weeklyReportChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.weeklyReportChart.Legends.Add(legend1);
+            this.weeklyReportChart.Location = new System.Drawing.Point(3, 6);
+            this.weeklyReportChart.Name = "weeklyReportChart";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Total_Visitors";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Total_Earnings";
+            this.weeklyReportChart.Series.Add(series1);
+            this.weeklyReportChart.Series.Add(series2);
+            this.weeklyReportChart.Size = new System.Drawing.Size(765, 395);
+            this.weeklyReportChart.TabIndex = 0;
+            this.weeklyReportChart.Text = "Weekly Report Chart";
             // 
             // Admin
             // 
@@ -1056,6 +1085,8 @@ namespace recreation_centre
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.weeklyReportDataGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dailyReportDataGrid)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.weeklyReportChart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1142,5 +1173,6 @@ namespace recreation_centre
         private System.Windows.Forms.DataGridView weeklyReportDataGrid;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.ComboBox sortWeeklyReportCB;
+        private System.Windows.Forms.DataVisualization.Charting.Chart weeklyReportChart;
     }
 }

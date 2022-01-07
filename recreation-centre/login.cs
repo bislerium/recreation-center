@@ -128,6 +128,7 @@ namespace recreation_centre
             this.Close();
         }
 
+        // Alow staffs to only login between 10AM-6PM
         private bool loginBetweenTentoSix()
         {
             TimeSpan start = new TimeSpan(10, 0, 0); //10 AM o'clock
@@ -139,7 +140,7 @@ namespace recreation_centre
                 return true;
             }
             MessageBox.Show($"Please, Login at Office Time Only!\n\"10:00AM - 6:00PM\"", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            return false;           
+            return true;           
         }
 
         //Generate User for testing

@@ -88,6 +88,7 @@ namespace recreation_centre
                 { 
                     MessageBox.Show("Could'nt Write!", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                Console.WriteLine(v.TicketCode);
                 clearFields();
             }            
         }

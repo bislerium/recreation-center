@@ -156,78 +156,76 @@ namespace Backend
     }
 
     // Used as a value-type to visualize the Ticket pricing process in Win-Form for Staff-clerk
-    public struct Bill
+    public class Bill
     {
-        public decimal InitialPrice { get; }
-        public decimal C_AgeRate { get; }
-        public decimal C_AgeRating { get; }
-        public decimal AfterCAR { get; }
-        public decimal Y_AgeRate { get; }
-        public decimal Y_AgeRating { get; }
-        public decimal AfterYAR { get; }
-        public decimal M_AgeRate { get; }
-        public decimal M_AgeRating { get; }
-        public decimal AfterMAR { get; }
-        public decimal O_AgeRate { get; }
-        public decimal O_AgeRating { get; }
-        public decimal AfterOAR { get; }
-        public decimal TotalAgeGroupPrice { get; }
-        public decimal GroupRate { get; }
-        public decimal GroupRating { get; }
-        public decimal AfterGR { get; }
-        public decimal DurationRate { get; }
-        public decimal DurationRating { get; }
-        public decimal AfterDNR { get; }
-        public decimal DayRate { get; }
-        public decimal DayRating { get; }
-        public decimal AfterDYR { get; }
-        public decimal FinalPrice { get; }
+        public decimal InitialPrice { get; set; }
+        public AgeGroupE C_Age { get; set; }
+        public decimal C_AgeRate { get; set; }
+        public decimal C_AgeRating { get; set; }
+        public decimal AfterCAR { get; set; }
+        public AgeGroupE Y_Age { get; set; }
+        public decimal Y_AgeRate { get; set; }
+        public decimal Y_AgeRating { get; set; }
+        public decimal AfterYAR { get; set; }
+        public AgeGroupE M_Age { get; set; }
+        public decimal M_AgeRate { get; set; }
+        public decimal M_AgeRating { get; set; }
+        public decimal AfterMAR { get; set; }
+        public AgeGroupE O_Age { get; set; }
+        public decimal O_AgeRate { get; set; }
+        public decimal O_AgeRating { get; set; }
+        public decimal AfterOAR { get; set; }
+        public decimal TotalAgeGroupPrice { get; set; }
+        public int Group { get; set; }
+        public decimal GroupRate { get; set; }
+        public decimal GroupRating { get; set; }
+        public decimal AfterGR { get; set; }
+        public int DurationHour { get; set; }
+        public decimal DurationRate { get; set; }
+        public decimal DurationRating { get; set; }
+        public decimal AfterDNR { get; set; }
+        public DayOfWeek Day { get; set; }
+        public decimal DayRate { get; set; }
+        public decimal DayRating { get; set; }
+        public decimal AfterDYR { get; set; }
+        public decimal TotalRating { get; set; }
+        public decimal FinalPrice { get; set; }
 
-        public Bill(decimal initialPrice, decimal c_AgeRate, decimal c_AgeRating, decimal afterCAR,
-            decimal y_AgeRate, decimal y_AgeRating, decimal afterYAR, decimal ageRate, decimal ageRating,
-            decimal afterMAR, decimal o_AgeRate, decimal o_AgeRating, decimal afterOAR, decimal totalAgeGroupPrice,
-            decimal groupRate, decimal groupRating, decimal afterGR, decimal durationRate, decimal durationRating,
-            decimal afterDNR, decimal dayRate, decimal dayRating, decimal afterDYR, decimal finalPrice)
+        public override string ToString()
         {
-            InitialPrice = initialPrice;
-            C_AgeRate = c_AgeRate;
-            C_AgeRating = c_AgeRating;
-            AfterCAR = afterCAR;
-            Y_AgeRate = y_AgeRate;
-            Y_AgeRating = y_AgeRating;
-            AfterYAR = afterYAR;
-            M_AgeRate = ageRate;
-            M_AgeRating = ageRating;
-            AfterMAR = afterMAR;
-            O_AgeRate = o_AgeRate;
-            O_AgeRating = o_AgeRating;
-            AfterOAR = afterOAR;
-            TotalAgeGroupPrice = totalAgeGroupPrice;
-            GroupRate = groupRate;
-            GroupRating = groupRating;
-            AfterGR = afterGR;
-            DurationRate = durationRate;
-            DurationRating = durationRating;
-            AfterDNR = afterDNR;
-            DayRate = dayRate;
-            DayRating = dayRating;
-            AfterDYR = afterDYR;
-            FinalPrice = finalPrice;
-        }
-    }
-
-    //Used while pricing per specifice attribtues: Age, Group, Duration, Day
-    public struct Price { 
-        public decimal Rate { get; }
-        public decimal Rating { get; }
-        public decimal RatedPrice { get; }
-        public Price(decimal Rate,
-            decimal Rating,
-            decimal RatedPrice)
-        {
-            this.Rate = Rate;
-            this.Rating = Rating;
-            this.RatedPrice = RatedPrice;
+            return $@"""
+                        InitialPrice = {InitialPrice}
+                        C_Age = {C_Age},
+                        C_AgeRate = {C_AgeRate}
+                        C_AgeRating = {C_AgeRating}
+                        AfterCAR = {AfterCAR}
+                        Y_Age = {Y_Age}
+                        Y_AgeRate = {Y_AgeRate}
+                        Y_AgeRating = {Y_AgeRating}
+                        AfterYAR = {AfterYAR}
+                        M_Age = {M_Age}
+                        M_AgeRate = {M_AgeRate}
+                        M_AgeRating = {M_AgeRating}
+                        AfterMAR = {AfterMAR}
+                        O_Age = {O_Age}
+                        O_AgeRate = {O_AgeRate}
+                        O_AgeRating = {O_AgeRating}
+                        AfterOAR = {AfterOAR}
+                        TotalAgeGroupPrice = {TotalAgeGroupPrice}
+                        Group = {Group}
+                        GroupRate = {GroupRate}
+                        GroupRating = {GroupRating}
+                        AfterGR = {AfterGR}
+                        DurationHour = {DurationHour}
+                        DurationRate = {DurationRate}
+                        DurationRating = {DurationRating}
+                        AfterDNR = {AfterDNR}
+                        Day =  {Day}
+                        DayRate = {DayRate}
+                        DayRating = {DayRating}
+                        AfterDYR = {AfterDYR}
+                        FinalPrice = {FinalPrice}
+                    """;
         }
     }
 
@@ -258,9 +256,7 @@ namespace Backend
 
         public DateTime? OutTime { get; set; }
 
-        public Bill? Bill { get; set; }
-
-        public decimal BillPrice { get; set; }
+        public Bill Bill { get; set; }
 
         public override string ToString()
         {
@@ -273,8 +269,7 @@ namespace Backend
                     day = { Day },
                     intime = { InTime },
                     outTime = { OutTime },
-                    Bill = {Bill},
-                    BillPrice = {BillPrice}
+                    Bill = {Bill}
                 ";
         }
     }
@@ -291,31 +286,31 @@ namespace Backend
 
         public SortedDictionary<DayOfWeek, decimal> Day { get; set; }
 
-        public Price GetGroupDiscount(short groupOf, decimal basePrice)
+        public (int, decimal, decimal, decimal) GetGroupPricing(short groupOf, decimal basePrice)
         {
             short appropriateGroup = Group.Keys.Aggregate((x, y) => (groupOf >= x && groupOf < y) ? x : y);
             decimal rating = (Group[appropriateGroup]/100) * basePrice;
-            return new Price(Group[appropriateGroup], rating, basePrice + rating);
+            return (appropriateGroup, Group[appropriateGroup], rating, basePrice + rating);
         }
 
-        public Price GetDurationDiscount(short durationInHour, decimal basePrice)
+        public (int, decimal, decimal, decimal) GetDurationPricing(short durationInHour, decimal basePrice)
         {
             short appropriateDuration = Duration.Keys.Aggregate((x, y) => (durationInHour >= x && durationInHour < y) ? x : y);
             decimal rating = (Duration[appropriateDuration]/100) * basePrice;
-            return new Price(Duration[appropriateDuration], rating, basePrice + rating);
+            return (appropriateDuration, Duration[appropriateDuration], rating, basePrice + rating);
         }
 
-        public Price GetAgeDiscount(short age, decimal basePrice)
+        public (AgeGroupE, decimal, decimal, decimal) GetAgePricing(short age, decimal basePrice)
         {
             AgeGroupE appropriateAge = Age.Keys.Aggregate((x, y) => (age >= (short)x && age < (short)y) ? x : y);
             decimal rating = (Age[appropriateAge]/100) * basePrice;
-            return new Price(Age[appropriateAge], rating, basePrice + rating);
+            return (appropriateAge, Age[appropriateAge], rating, basePrice + rating);
         }
 
-        public Price GetDayDiscount(DayOfWeek day, decimal basePrice)
+        public (DayOfWeek, decimal, decimal, decimal) GetDayPricing(DayOfWeek day, decimal basePrice)
         {
             decimal rating = (Day[day]/100) * basePrice;
-            return new Price(Day[day], rating, basePrice + rating);
+            return (day, Day[day], rating, basePrice + rating);
         }
 
         public override string ToString()
@@ -441,64 +436,75 @@ namespace Backend
         //Generates the strucutre of Bill.
         public Bill GenerateBill(Visitor visitor)
         {
+            /*(   ,decimal Rate, decimal Rating, decimal RatedPrice)*/
+
             decimal initialPrice = ticket.BasePrice;
-            Price cad = ticket.GetAgeDiscount((short)AgeGroupE.CHILD, initialPrice * visitor.GroupOf[AgeGroupE.CHILD]);
-            decimal c_AgeDrate = cad.Rate;
-            decimal c_AgeDiscount = cad.Rating;
-            decimal afterCAD = cad.RatedPrice;
-            Price yad = ticket.GetAgeDiscount((short)AgeGroupE.YOUNG_ADULT, initialPrice * visitor.GroupOf[AgeGroupE.YOUNG_ADULT]);
-            decimal y_AgeDrate = yad.Rate;
-            decimal y_AgeDiscount = yad.Rating;
-            decimal afterYAD = yad.RatedPrice;
-            Price mad = ticket.GetAgeDiscount((short)AgeGroupE.MIDDLE_ADULT, initialPrice * visitor.GroupOf[AgeGroupE.MIDDLE_ADULT]);
-            decimal m_AgeDrate = mad.Rate;
-            decimal m_AgeDiscount = mad.Rating;
-            decimal afterMAD = mad.RatedPrice;
-            Price oad = ticket.GetAgeDiscount((short)AgeGroupE.OLD_ADULT, initialPrice * visitor.GroupOf[AgeGroupE.OLD_ADULT]);
-            decimal o_AgeDrate = oad.Rate;
-            decimal o_AgeDiscount = oad.Rating;
-            decimal afterOAD = oad.RatedPrice;
-            decimal totalAgeGroupPrice = afterCAD + afterYAD + afterMAD + afterOAD;
-            Price gd = ticket.GetGroupDiscount((short)visitor.GroupOf.Sum(x => x.Value), totalAgeGroupPrice);
-            decimal groupDRate = gd.Rate;
-            decimal groupDiscout = gd.Rating;
-            decimal afterGD = gd.RatedPrice;
+            var cad = ticket.GetAgePricing((short)AgeGroupE.CHILD, initialPrice * visitor.GroupOf[AgeGroupE.CHILD]);
+            decimal c_AgeDrate = cad.Item2;
+            decimal c_AgeRating = cad.Item3;
+            decimal afterCAR = cad.Item4;
+            var yad = ticket.GetAgePricing((short)AgeGroupE.YOUNG_ADULT, initialPrice * visitor.GroupOf[AgeGroupE.YOUNG_ADULT]);
+            decimal y_AgeDrate = yad.Item2;
+            decimal y_AgeRating = yad.Item3;
+            decimal afterYAR = yad.Item4;
+            var mad = ticket.GetAgePricing((short)AgeGroupE.MIDDLE_ADULT, initialPrice * visitor.GroupOf[AgeGroupE.MIDDLE_ADULT]);
+            decimal m_AgeDrate = mad.Item2;
+            decimal m_AgeRating = mad.Item3;
+            decimal afterMAR = mad.Item4;
+            var oad = ticket.GetAgePricing((short)AgeGroupE.OLD_ADULT, initialPrice * visitor.GroupOf[AgeGroupE.OLD_ADULT]);
+            decimal o_AgeDrate = oad.Item2;
+            decimal o_AgeRating = oad.Item3;
+            decimal afterOAR = oad.Item4;
+            decimal totalAgeGroupPrice = afterCAR + afterYAR + afterMAR + afterOAR;
+            var gd = ticket.GetGroupPricing((short)visitor.GroupOf.Sum(x => x.Value), totalAgeGroupPrice);
+            decimal groupDRate = gd.Item2;
+            decimal groupRating = gd.Item3;
+            decimal afterGR = gd.Item4;
             decimal duration = (decimal)(visitor.OutTime-visitor.InTime)?.TotalHours;
-            Price dnd = ticket.GetDurationDiscount((short)duration, afterGD * duration);
-            decimal durationDRate = dnd.Rate;
-            decimal durationDiscount = dnd.Rating;
-            decimal afterDND = dnd.RatedPrice;
-            Price dyd = ticket.GetDayDiscount(visitor.InTime.DayOfWeek, afterDND);
-            decimal dayDRate = dyd.Rate;
-            decimal dayDiscount = dyd.Rating;
-            decimal afterDYD = dyd.RatedPrice;
-            decimal finalPrice = afterDYD;
-            return new Bill(
-                initialPrice,
-                c_AgeDrate,
-                c_AgeDiscount,
-                afterCAD,
-                y_AgeDrate,
-                y_AgeDiscount,
-                afterYAD,
-                m_AgeDrate,
-                m_AgeDiscount,
-                afterMAD,
-                o_AgeDrate,
-                o_AgeDiscount,
-                afterOAD,
-                totalAgeGroupPrice,
-                groupDRate,
-                groupDiscout,
-                afterGD,
-                durationDRate,
-                durationDiscount,
-                afterDND,
-                dayDRate,
-                dayDiscount,
-                afterDYD,
-                Math.Round(finalPrice,2)
-            );
+            var dnd = ticket.GetDurationPricing((short)duration, afterGR * duration);
+            decimal durationDRate = dnd.Item2;
+            decimal durationRating = dnd.Item3;
+            decimal afterDNR = dnd.Item4;
+            var dyd = ticket.GetDayPricing(visitor.InTime.DayOfWeek, afterDNR);
+            decimal dayDRate = dyd.Item2;
+            decimal dayRating = dyd.Item3;
+            decimal afterDYR = dyd.Item4;
+            decimal totalDiscount = c_AgeRating + y_AgeRating + m_AgeRating + o_AgeRating + groupRating + durationRating + dayRating;
+            decimal finalPrice = afterDYR;
+            return new Bill() {
+                InitialPrice = initialPrice,
+                C_Age = cad.Item1,
+                C_AgeRate = c_AgeDrate,
+                C_AgeRating = Math.Round(c_AgeRating, 2),
+                AfterCAR = Math.Round(afterCAR, 2),
+                Y_Age = yad.Item1,
+                Y_AgeRate = y_AgeDrate,
+                Y_AgeRating = Math.Round(y_AgeRating, 2),
+                AfterYAR = Math.Round(afterYAR, 2),
+                M_Age = mad.Item1,
+                M_AgeRate = m_AgeDrate,
+                M_AgeRating = Math.Round(m_AgeRating, 2),
+                AfterMAR = Math.Round(afterMAR, 2),
+                O_Age = oad.Item1,
+                O_AgeRate = o_AgeDrate,
+                O_AgeRating = Math.Round(o_AgeRating, 2),
+                AfterOAR = Math.Round(afterOAR, 2),
+                TotalAgeGroupPrice = Math.Round(totalAgeGroupPrice, 2),
+                Group = gd.Item1,
+                GroupRate = groupDRate,
+                GroupRating = Math.Round(groupRating, 2),
+                AfterGR = Math.Round(afterGR, 2),
+                DurationHour = dnd.Item1,
+                DurationRate = durationDRate,
+                DurationRating = Math.Round(durationRating, 2),
+                AfterDNR = Math.Round(afterDNR, 2),
+                Day = dyd.Item1,
+                DayRate = dayDRate,
+                DayRating = Math.Round(dayRating, 2),
+                AfterDYR = Math.Round(afterDYR, 2),
+                TotalRating = Math.Round(totalDiscount, 2),
+                FinalPrice = Math.Round(finalPrice, 2),
+            };
         }
     }
 
@@ -514,7 +520,6 @@ namespace Backend
         {
             this.fileSource = Path.GetFullPath(fileSource);
             visitors = new Dictionary<int, Visitor>();
-            Console.WriteLine(visitors.Count);
             random = new Random();
         }
 
@@ -540,6 +545,9 @@ namespace Backend
                             if (visitors_ == null)
                             {
                                 return false;
+                            }
+                            foreach (var v in visitors_) {
+                                Console.WriteLine(v.Value);
                             }
                             visitors = visitors_;
                         }

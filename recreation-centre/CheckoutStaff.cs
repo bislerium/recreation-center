@@ -18,6 +18,7 @@ namespace recreation_centre
         private readonly VisitorProcess visitorProcess;
         private readonly TicketProcess ticketProcess;
         private Visitor visitor;
+        private Bill bill;
 
         public CheckoutStaff(VisitorProcess visitorProcess, TicketProcess ticketProcess, String loginUser)
         {
@@ -66,26 +67,19 @@ namespace recreation_centre
                 MessageBox.Show("Given User Ticet ID not Found!", "Error: Invalid ID", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (checkoutDateTime.Value <= DateTime.Now)
-            {
-                MessageBox.Show("DateTime must be Recent!", "Error: Old DateTime", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
             visitor = visitorProcess.GetVisitor(visitorTicketCode);
             if (checkoutDateTime.Value <= visitor.InTime)
             {
                 MessageBox.Show($"DateTime must be Recent!\"Check-in time: {visitor.InTime}\"", "Error: Old DateTime", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (visitor.Bill.HasValue)
+            if (visitor.Bill != null)
             {
                 MessageBox.Show("Given User Ticket ID was already Checked-out!", "Error: Checked-out", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             visitor.OutTime = checkoutDateTime.Value;
-            Bill bill = ticketProcess.GenerateBill(visitor);
-            visitor.Bill = bill;
-            visitor.BillPrice = bill.FinalPrice;
+            bill = ticketProcess.GenerateBill(visitor);
 
             bPrice.Text = bill.InitialPrice.ToString();
             cRE.Text = bill.C_AgeRate.ToString();
@@ -110,6 +104,7 @@ namespace recreation_centre
             dYR.Text = bill.DayRate.ToString();
             dYG.Text = bill.DayRating.ToString();
             dYP.Text = bill.AfterDYR.ToString();
+            tPRating.Text = bill.TotalRating.ToString();
             tBill.Text = bill.FinalPrice.ToString();
 
             nameTB.Text = visitor.Name;
@@ -131,7 +126,9 @@ namespace recreation_centre
                 MessageBox.Show("Please, Calculate Bill before you Check-out!", "Error: No Bill", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            visitor.Bill = bill;
             visitorProcess.WriteVisitor(visitor);
+            Console.WriteLine(visitor);
             clearFields();
             loadVisitors();
         }
@@ -237,7 +234,7 @@ namespace recreation_centre
         {
             checkedOutDataGrid.DataSource = visitorProcess.GetVisitors()
                                                           .Values
-                                                          .Where(x => x.Bill.HasValue)
+                                                          .Where(x => x.Bill != null)
                                                           .ToArray();
                                                           
         }

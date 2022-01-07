@@ -480,7 +480,7 @@ namespace recreation_centre
             {
                 return;
             }
-            visitorDataGrid.DataSource = visitors.Values.ToArray();
+            syncVisitorsDataGrid();
         }
 
         //Initialize VisitorProcess instance evertime this class instantiates and visitors data imported.
@@ -492,18 +492,7 @@ namespace recreation_centre
                 return;
             }
             visitors = visitorProcess.GetVisitors();
-            visitorDataGrid.DataSource = visitors.Values.ToArray();
-            foreach (var v in visitors.Values)
-            {
-                try
-                {
-                    Console.WriteLine(v.Bill);
-                    Console.WriteLine(v.Bill.HasValue);
-                    Console.WriteLine(v.Bill.Value.DurationRating);
-                    Console.WriteLine(v.Bill.Value.FinalPrice);
-                } catch (Exception ex) { }
-
-            }
+            syncVisitorsDataGrid();
         }
 
         private void importVisitorsB_Click(object sender, EventArgs e)
@@ -531,8 +520,8 @@ namespace recreation_centre
             {
                 return;
             }
-            var currList = visitors.Values.ToList().Where(x => x.Bill.HasValue && x.InTime.Date.Equals(DateTime.Now.Date));
-            var groupByGroup = currList.GroupBy(x => x.Bill?.GroupRate)
+            var currList = visitors.Values.ToList().Where(x => x.Bill != null && x.InTime.Date.Equals(DateTime.Now.Date));
+            var groupByGroup = currList.GroupBy(x => x.Bill.GroupRate)
                                       .Select(g => new { visitorGroupOf = g.Key,
                                           Total_Visitors = g.Count()})
                                       .ToList();
@@ -548,6 +537,35 @@ namespace recreation_centre
                                                     })
                                                     .ToList();*/
             dailyReportDataGrid.DataSource = groupByGroup;
+        }
+
+        // Fill data in Visitors Data Grid
+        private void syncVisitorsDataGrid() {
+            var visitors_ = visitors.Values.Select(a => {
+                decimal? totalRating = null, finalPrice = null;
+                if (a.Bill != null) 
+                {
+                    totalRating = a.Bill.TotalRating;
+                    finalPrice = a.Bill.FinalPrice;
+                }
+                return new
+                {
+                    TicketCode = a.TicketCode,
+                    Name = a.Name,
+                    Phone = a.Phone,
+                    Age = a.Age,
+                    NumOfChild = a.GroupOf[AgeGroupE.CHILD],
+                    NumOfYAdult = a.GroupOf[AgeGroupE.YOUNG_ADULT],
+                    NumOfMAdult = a.GroupOf[AgeGroupE.MIDDLE_ADULT],
+                    NumOfOAdult = a.GroupOf[AgeGroupE.OLD_ADULT],
+                    Day = a.Day.ToString(),
+                    CheckIn = a.InTime.ToLocalTime(),
+                    CheckOut = a.OutTime.ToString(),
+                    TotalRating = totalRating,
+                    TotalBill = finalPrice,
+                };
+            }).ToList();
+            visitorDataGrid.DataSource = visitors_;
         }
 
         // Generates Weekly Repory as per the Sorting parameters: visitor, earning
@@ -570,13 +588,13 @@ namespace recreation_centre
 
             DateTime current = DateTime.Now;
             var weeklyList = visitors.Values.Where(x => startDateOfWeek <= DateTime.Parse(x.InTime.ToLongDateString()) && endDateOfWeek >= DateTime.Parse(x.InTime.ToLongDateString()))
-                                            .Where(x => x.Bill.HasValue)
+                                            .Where(x => x.Bill != null)
                                             .GroupBy(x => DateTime.Parse(x.InTime.ToLongDateString()).DayOfWeek)
                                             .Select(grp => new
                                             {
                                                 Day = grp.Key,
                                                 Total_Visitors = grp.Sum(sum => sum.GroupOf.Sum(s => s.Value)),
-                                                Total_Earnings = grp.Sum(sum => sum.BillPrice)
+                                                Total_Earnings = grp.Sum(sum => sum.Bill.FinalPrice)
                                             })
                                             .ToList();
 
@@ -594,7 +612,7 @@ namespace recreation_centre
                         {
                             break;
                         }
-                        else if (weeklyList[j].Total_Visitors > weeklyList[j + 1].Total_Visitors)
+                        else if (weeklyList[j].Total_Earnings > weeklyList[j + 1].Total_Earnings)
                         {
                             var temp = weeklyList[j];
                             weeklyList[j] = weeklyList[j + 1];
@@ -614,7 +632,7 @@ namespace recreation_centre
                         {
                             break;
                         }
-                        else if (weeklyList[j].Total_Earnings > weeklyList[j + 1].Total_Earnings)
+                        else if (weeklyList[j].Total_Visitors > weeklyList[j + 1].Total_Visitors)
                         {
                             var temp = weeklyList[j];
                             weeklyList[j] = weeklyList[j + 1];
@@ -623,9 +641,13 @@ namespace recreation_centre
                     }
                 }
             }
-            var sortedWeeklyList = weeklyList.ToList();
-                sortedWeeklyList.Reverse();
-            weeklyReportDataGrid.DataSource = sortedWeeklyList;
+            weeklyReportDataGrid.DataSource = weeklyList.ToList();
+            for (int i = 0; i < weeklyList.Count; i++)
+            {
+                var row = weeklyList[i];
+                weeklyReportChart.Series["Total_Visitors"].Points.AddXY(row.Day.ToString(), weeklyList[i].Total_Visitors); 
+                weeklyReportChart.Series["Total_Earnings"].Points.AddXY(row.Day.ToString(), row.Total_Earnings); 
+            }
         }
 
         private void dailyReportB_Click(object sender, EventArgs e)
