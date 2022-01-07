@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using static System.Collections.Generic.Dictionary<int, decimal>;
 
 
 //Package contains supporting classes, enums and structs for this project.
@@ -46,9 +45,9 @@ namespace Backend
             private Dictionary<int, User> Credentials;
             Random r;
 
-            public Authy(string credentialSource = "D:\\credentials.json")
+            public Authy(string credentialSource = @"..\..\json\credentials.json")
             {
-                fileSource = credentialSource;
+                fileSource = Path.GetFullPath(credentialSource);
                 Credentials = new Dictionary<int, User>();
             }
 
@@ -337,9 +336,9 @@ namespace Backend
         private Ticket ticket;
         private readonly String fileSource;
 
-        public TicketProcess(string fileSource = "D:\\ticket.json")
+        public TicketProcess(string fileSource = @"..\..\json\ticket.json")
         {
-            this.fileSource = fileSource;
+            this.fileSource = Path.GetFullPath(fileSource);
             ticket = new Ticket()
             {
                 BasePrice = 0,
@@ -436,7 +435,7 @@ namespace Backend
 
         public Ticket GetTicket() => ticket;
 
-        public String getFileSource() => fileSource;
+        public String getFileSource() =>fileSource;
 
 
         //Generates the strucutre of Bill.
@@ -498,7 +497,7 @@ namespace Backend
                 dayDRate,
                 dayDiscount,
                 afterDYD,
-                Math.Round(finalPrice)
+                Math.Round(finalPrice,2)
             );
         }
     }
@@ -511,10 +510,11 @@ namespace Backend
         private readonly String fileSource;
         private Random random;
 
-        public VisitorProcess(string fileSource = "D:\\visitors.json")
+        public VisitorProcess(string fileSource = @"..\..\json\visitors.json")
         {
-            this.fileSource = fileSource;
+            this.fileSource = Path.GetFullPath(fileSource);
             visitors = new Dictionary<int, Visitor>();
+            Console.WriteLine(visitors.Count);
             random = new Random();
         }
 
@@ -608,6 +608,8 @@ namespace Backend
         public Dictionary<int, Visitor> GetVisitors() => visitors;
 
         public Visitor GetVisitor(int identifier) => visitors[identifier];
+
+        public bool HasEmptyData() => visitors == null || visitors.Count == 0;
 
         public bool HasVisitor(int identifier) => visitors.ContainsKey(identifier);
     }

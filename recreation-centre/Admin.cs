@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -475,6 +476,10 @@ namespace recreation_centre
         //Sync the Visitor data table with update changes.
         private void syncDataGrid_Click(object sender, EventArgs e)
         {
+            if (hasEmptyVisitorsData())
+            {
+                return;
+            }
             visitorDataGrid.DataSource = visitors.Values.ToArray();
         }
 
@@ -483,7 +488,7 @@ namespace recreation_centre
         {
             if (!visitorProcess.ReadVisitors())
             {
-                MessageBox.Show($"Could'nt Read Visitors!\n\"Try deleting {visitorProcess.GetFileSource()}\"", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Could'nt Read Visitors data at!\n\"{visitorProcess.GetFileSource()}\"\"", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             visitors = visitorProcess.GetVisitors();
@@ -503,17 +508,29 @@ namespace recreation_centre
 
         private void importVisitorsB_Click(object sender, EventArgs e)
         {
+            if (hasEmptyVisitorsData())
+            {
+                return;
+            }
             commonImportDialog(RWMode.visitors);
         }
 
         private void exportVisitorsB_Click(object sender, EventArgs e)
         {
+            if (hasEmptyVisitorsData())
+            {
+                return;
+            }
             commonExportDialog(RWMode.visitors);
         }
 
         //Generates Daily Report
         private void generateDailyReport()
         {
+            if (hasEmptyVisitorsData())
+            {
+                return;
+            }
             var currList = visitors.Values.ToList().Where(x => x.Bill.HasValue && x.InTime.Date.Equals(DateTime.Now.Date));
             var groupByGroup = currList.GroupBy(x => x.Bill?.GroupRate)
                                       .Select(g => new { visitorGroupOf = g.Key,
@@ -536,6 +553,9 @@ namespace recreation_centre
         // Generates Weekly Repory as per the Sorting parameters: visitor, earning
         private void generateWeeklyReport(bool sortByVisitor = true)
         {
+            if (hasEmptyVisitorsData()) {
+                return;
+            }
             DateTime date = DateTime.Now;
             int year = date.Date.Year;
             DateTime firstDay = new DateTime(year, 1, 1);
@@ -613,12 +633,6 @@ namespace recreation_centre
             generateDailyReport();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            generateWeeklyReport();
-            sortWeeklyReportCB.SelectedIndex = 0;
-        }
-
         private void sortWeeklyReportCB_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -630,6 +644,21 @@ namespace recreation_centre
             {
                 generateWeeklyReport(false);
             }
+        }
+
+        private bool hasEmptyVisitorsData()
+        {
+            if (visitorProcess.HasEmptyData())
+            { 
+                MessageBox.Show($"Empty Visitors Data", "Empty", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return true;
+            }
+            return false;
+        }
+
+        private void viewWeeklyReportB_Click(object sender, EventArgs e)
+        {
+            sortWeeklyReportCB.SelectedIndex = 0;
         }
     }
 }

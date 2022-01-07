@@ -104,7 +104,7 @@ namespace recreation_centre
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.sortWeeklyReportCB = new System.Windows.Forms.ComboBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.viewWeeklyReportB = new System.Windows.Forms.Button();
             this.weeklyReportDataGrid = new System.Windows.Forms.DataGridView();
             this.dailyReportB = new System.Windows.Forms.Button();
             this.dailyReportDataGrid = new System.Windows.Forms.DataGridView();
@@ -923,7 +923,7 @@ namespace recreation_centre
             // 
             this.tabPage3.Controls.Add(this.sortWeeklyReportCB);
             this.tabPage3.Controls.Add(this.label23);
-            this.tabPage3.Controls.Add(this.button1);
+            this.tabPage3.Controls.Add(this.viewWeeklyReportB);
             this.tabPage3.Controls.Add(this.weeklyReportDataGrid);
             this.tabPage3.Controls.Add(this.dailyReportB);
             this.tabPage3.Controls.Add(this.dailyReportDataGrid);
@@ -959,16 +959,16 @@ namespace recreation_centre
             this.label23.TabIndex = 6;
             this.label23.Text = "View Weekly Report By:";
             // 
-            // button1
+            // viewWeeklyReportB
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(22, 291);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(201, 40);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "View Weekly Report";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.viewWeeklyReportB.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.viewWeeklyReportB.Location = new System.Drawing.Point(22, 291);
+            this.viewWeeklyReportB.Name = "viewWeeklyReportB";
+            this.viewWeeklyReportB.Size = new System.Drawing.Size(201, 40);
+            this.viewWeeklyReportB.TabIndex = 3;
+            this.viewWeeklyReportB.Text = "View Weekly Report";
+            this.viewWeeklyReportB.UseVisualStyleBackColor = true;
+            this.viewWeeklyReportB.Click += new System.EventHandler(this.viewWeeklyReportB_Click);
             // 
             // weeklyReportDataGrid
             // 
@@ -1138,7 +1138,7 @@ namespace recreation_centre
         private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.DataGridView dailyReportDataGrid;
         private System.Windows.Forms.Button dailyReportB;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button viewWeeklyReportB;
         private System.Windows.Forms.DataGridView weeklyReportDataGrid;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.ComboBox sortWeeklyReportCB;

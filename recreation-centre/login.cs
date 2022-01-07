@@ -57,10 +57,15 @@ namespace recreation_centre
                         (new Admin(visitorProcess, ticketProcess)).ShowDialog();
                         break;
                     case UserGroup.CheckinStaff:
-                        (new CheckinStaff(visitorProcess, user.UserName)).ShowDialog();
+                        if (loginBetweenTentoSix()) { 
+                            (new CheckinStaff(visitorProcess, user.UserName)).ShowDialog();
+                        }
                         break;
                     case UserGroup.CheckoutStaff:
-                        (new CheckoutStaff(visitorProcess, ticketProcess, user.UserName)).ShowDialog();
+                        if (loginBetweenTentoSix())
+                        {
+                            (new CheckoutStaff(visitorProcess, ticketProcess, user.UserName)).ShowDialog();
+                        }                        
                         break;
                 }
                 this.Close();
@@ -121,6 +126,20 @@ namespace recreation_centre
         private void closeB_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private bool loginBetweenTentoSix()
+        {
+            TimeSpan start = new TimeSpan(10, 0, 0); //10 AM o'clock
+            TimeSpan end = new TimeSpan(18, 0, 0); //6 PM o'clock
+            TimeSpan now = DateTime.Now.TimeOfDay;
+
+            if ((now >= start) && (now <= end))
+            {
+                return true;
+            }
+            MessageBox.Show($"Please, Login at Office Time Only!\n\"10:00AM - 6:00PM\"", "IO Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return false;           
         }
 
         //Generate User for testing
