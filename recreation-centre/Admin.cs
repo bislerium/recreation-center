@@ -521,22 +521,26 @@ namespace recreation_centre
                 return;
             }
             var currList = visitors.Values.ToList().Where(x => x.Bill != null && x.InTime.Date.Equals(DateTime.Now.Date));
-            var groupByGroup = currList.GroupBy(x => x.Bill.GroupRate)
-                                      .Select(g => new { visitorGroupOf = g.Key,
-                                          Total_Visitors = g.Count()})
-                                      .ToList();
-/*            var groupByAge = new List<dynamic>(currList.Select(g => g.GroupOf
-                                                    .Select(x => new {
-                                                                    ageGroup = x.Key,
-                                                                    groupCount = x.Value})).ToList())
-                                                    .GroupBy(x => x.ageGroup)
-                                                    .Select(g => new
-                                                    {
-                                                        ageGroup = g.Key,
-                                                        total_age = g.Sum(x => x.groupCount)
-                                                    })
-                                                    .ToList();*/
-            dailyReportDataGrid.DataSource = groupByGroup;
+            var dailyReport_ = currList.GroupBy(x => x.Bill.Group)
+                .Select(g => new
+                {
+                    ReportBy = $"GROUP OF {g.Key} OR MORE",
+                    Count = g.Count()
+                })                                      
+                .Append(new {
+                    ReportBy = AgeGroupE.CHILD.ToString(),
+                    Count = currList.Sum(x => x.GroupOf[AgeGroupE.CHILD]) })
+                .Append(new { 
+                    ReportBy = AgeGroupE.YOUNG_ADULT.ToString(),
+                    Count = currList.Sum(x => x.GroupOf[AgeGroupE.YOUNG_ADULT]) })
+                .Append(new {
+                    ReportBy = AgeGroupE.MIDDLE_ADULT.ToString(),
+                    Count = currList.Sum(x => x.GroupOf[AgeGroupE.MIDDLE_ADULT]) })
+                .Append(new {
+                    ReportBy = AgeGroupE.OLD_ADULT.ToString(),
+                    Count = currList.Sum(x => x.GroupOf[AgeGroupE.OLD_ADULT]) })
+                .ToList();
+            dailyReportDataGrid.DataSource = dailyReport_;
         }
 
         // Fill data in Visitors Data Grid

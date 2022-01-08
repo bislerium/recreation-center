@@ -437,7 +437,6 @@ namespace Backend
         public Bill GenerateBill(Visitor visitor)
         {
             /*(   ,decimal Rate, decimal Rating, decimal RatedPrice)*/
-
             decimal initialPrice = ticket.BasePrice;
             var cad = ticket.GetAgePricing((short)AgeGroupE.CHILD, initialPrice * visitor.GroupOf[AgeGroupE.CHILD]);
             decimal c_AgeDrate = cad.Item2;

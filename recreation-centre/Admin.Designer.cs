@@ -30,10 +30,10 @@ namespace recreation_centre
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1 = new System.Windows.Forms.Label();
             this.logoutB = new System.Windows.Forms.Button();
             this.minimizeB = new System.Windows.Forms.Button();
@@ -149,7 +149,7 @@ namespace recreation_centre
             // 
             this.logoutB.BackColor = System.Drawing.Color.WhiteSmoke;
             this.logoutB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logoutB.Image = global::recreation_centre.Properties.Resources.icons8_logout_24;
+            this.logoutB.Image = ((System.Drawing.Image)(resources.GetObject("logoutB.Image")));
             this.logoutB.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.logoutB.Location = new System.Drawing.Point(586, 12);
             this.logoutB.Name = "logoutB";
@@ -162,7 +162,7 @@ namespace recreation_centre
             // 
             // minimizeB
             // 
-            this.minimizeB.BackgroundImage = global::recreation_centre.Properties.Resources.download;
+            this.minimizeB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("minimizeB.BackgroundImage")));
             this.minimizeB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.minimizeB.Location = new System.Drawing.Point(702, 12);
             this.minimizeB.Name = "minimizeB";
@@ -173,7 +173,7 @@ namespace recreation_centre
             // 
             // closeB
             // 
-            this.closeB.BackgroundImage = global::recreation_centre.Properties.Resources._31631915371lyniu2zkjrlmbmhkqxc9kvtfx68cnz2xlt2rjuj76epxi2rwewm7g83rnuzcvyqnedbb3dxjrxiqtvtbdegg7gqjqanaebkz3zb4_removebg_preview__1_;
+            this.closeB.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("closeB.BackgroundImage")));
             this.closeB.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.closeB.Location = new System.Drawing.Point(748, 12);
             this.closeB.Name = "closeB";
@@ -981,6 +981,7 @@ namespace recreation_centre
             // weeklyReportDataGrid
             // 
             this.weeklyReportDataGrid.AllowUserToDeleteRows = false;
+            this.weeklyReportDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.weeklyReportDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.weeklyReportDataGrid.Location = new System.Drawing.Point(22, 346);
             this.weeklyReportDataGrid.Name = "weeklyReportDataGrid";
@@ -1004,6 +1005,7 @@ namespace recreation_centre
             // dailyReportDataGrid
             // 
             this.dailyReportDataGrid.AllowUserToDeleteRows = false;
+            this.dailyReportDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dailyReportDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dailyReportDataGrid.Location = new System.Drawing.Point(22, 68);
             this.dailyReportDataGrid.Name = "dailyReportDataGrid";
@@ -1026,21 +1028,21 @@ namespace recreation_centre
             // 
             // weeklyReportChart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.weeklyReportChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.weeklyReportChart.Legends.Add(legend1);
-            this.weeklyReportChart.Location = new System.Drawing.Point(3, 6);
+            chartArea3.Name = "ChartArea1";
+            this.weeklyReportChart.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.weeklyReportChart.Legends.Add(legend3);
+            this.weeklyReportChart.Location = new System.Drawing.Point(6, 6);
             this.weeklyReportChart.Name = "weeklyReportChart";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Total_Visitors";
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Total_Earnings";
-            this.weeklyReportChart.Series.Add(series1);
-            this.weeklyReportChart.Series.Add(series2);
-            this.weeklyReportChart.Size = new System.Drawing.Size(765, 395);
+            series5.ChartArea = "ChartArea1";
+            series5.Legend = "Legend1";
+            series5.Name = "Total_Visitors";
+            series6.ChartArea = "ChartArea1";
+            series6.Legend = "Legend1";
+            series6.Name = "Total_Earnings";
+            this.weeklyReportChart.Series.Add(series5);
+            this.weeklyReportChart.Series.Add(series6);
+            this.weeklyReportChart.Size = new System.Drawing.Size(756, 626);
             this.weeklyReportChart.TabIndex = 0;
             this.weeklyReportChart.Text = "Weekly Report Chart";
             // 

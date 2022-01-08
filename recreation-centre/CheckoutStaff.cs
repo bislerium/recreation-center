@@ -70,7 +70,7 @@ namespace recreation_centre
             visitor = visitorProcess.GetVisitor(visitorTicketCode);
             if (checkoutDateTime.Value <= visitor.InTime)
             {
-                MessageBox.Show($"DateTime must be Recent!\"Check-in time: {visitor.InTime}\"", "Error: Old DateTime", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show($"DateTime must be Recent!\n\"Check-in time: {visitor.InTime}\"", "Error: Old DateTime", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             if (visitor.Bill != null)
@@ -228,14 +228,12 @@ namespace recreation_centre
             loadVisitors();
         }
 
-
-
         private void loadVisitors()
         {
             checkedOutDataGrid.DataSource = visitorProcess.GetVisitors()
                                                           .Values
                                                           .Where(x => x.Bill != null)
-                                                          .ToArray();
+                                                          .ToList();
                                                           
         }
 

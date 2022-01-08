@@ -25,6 +25,8 @@ namespace recreation_centre
             initializeVisitors();
         }
 
+
+        //Sync Current DateTime
         private void syncCurTimeB_Click(object sender, EventArgs e)
         {
             syncDateTime();
@@ -35,6 +37,7 @@ namespace recreation_centre
             clearFields();
         }
 
+        //Calculates the bill for given visitor ticket id
         private void checkoutB_Click(object sender, EventArgs e)
         {
             String name = nameTB.Text.Trim();
