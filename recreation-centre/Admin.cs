@@ -606,7 +606,27 @@ namespace recreation_centre
 
             if (sortByVisitor)
             {
-                //Implementation of Bubble Sort
+                //Implementation of Bubble Sort for sorting weekly report as per total visitors or earnings.
+                for (int i = 0; i < max; i++)
+                {
+                    int nrLeft = max - i;
+                    for (int j = 0; j < nrLeft; j++)
+                    {
+                        if (weeklyList[j + 1] == null)
+                        {
+                            break;
+                        }
+                        else if (weeklyList[j].Total_Visitors > weeklyList[j + 1].Total_Visitors)
+                        {
+                            var temp = weeklyList[j];
+                            weeklyList[j] = weeklyList[j + 1];
+                            weeklyList[j + 1] = temp;
+                        }
+                    }
+                }                
+            }
+            else
+            {
                 for (int i = 0; i < max; i++)
                 {
                     int nrLeft = max - i;
@@ -625,44 +645,29 @@ namespace recreation_centre
                     }
                 }
             }
-            else
-            {
-                for (int i = 0; i < max; i++)
-                {
-                    int nrLeft = max - i;
-                    for (int j = 0; j < nrLeft; j++)
-                    {
-                        if (weeklyList[j + 1] == null)
-                        {
-                            break;
-                        }
-                        else if (weeklyList[j].Total_Visitors > weeklyList[j + 1].Total_Visitors)
-                        {
-                            var temp = weeklyList[j];
-                            weeklyList[j] = weeklyList[j + 1];
-                            weeklyList[j + 1] = temp;
-                        }
-                    }
-                }
-            }
             weeklyReportDataGrid.DataSource = weeklyList.ToList();
             foreach (var series in weeklyReportChart.Series)
             {
                 series.Points.Clear();
             }
+            // Plotting chart for total visitors and earnings per weekdays
             for (int i = 0; i < weeklyList.Count; i++)
             {
                 var row = weeklyList[i];
-                weeklyReportChart.Series["Total_Visitors"].Points.AddXY(row.Day.ToString(), weeklyList[i].Total_Visitors);
+                weeklyReportChart.Series["Total_Visitors"].Points.AddXY(row.Day.ToString(), row.Total_Visitors);
                 weeklyReportChart.Series["Total_Earnings"].Points.AddXY(row.Day.ToString(), row.Total_Earnings);
+                weeklyReportChart.Series["Total_Visitors"].Points[i].Label = row.Total_Visitors.ToString();
+                weeklyReportChart.Series["Total_Earnings"].Points[i].Label = row.Total_Earnings.ToString();
             }
         }
 
+        //Generates Daily Report
         private void dailyReportB_Click(object sender, EventArgs e)
         {
             generateDailyReport();
         }
 
+        //Generates Weekkly Report in sorted order per earnings or visitors
         private void sortWeeklyReportCB_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -676,6 +681,7 @@ namespace recreation_centre
             }
         }
 
+        //Check if visitors data is available
         private bool hasEmptyVisitorsData()
         {
             if (visitorProcess.HasEmptyData())
@@ -686,6 +692,7 @@ namespace recreation_centre
             return false;
         }
 
+        // Generates Weekly Report
         private void viewWeeklyReportB_Click(object sender, EventArgs e)
         {
             sortWeeklyReportCB.SelectedIndex = 0;

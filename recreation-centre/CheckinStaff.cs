@@ -59,11 +59,11 @@ namespace recreation_centre
                 MessageBox.Show("Please, enter Valid PhoneNumber!", "Error: Invalid PhoneNumber)", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (inTime.AddMinutes(5) < DateTime.Now)
+/*            if (inTime.AddMinutes(5) < DateTime.Now)
             {
                 MessageBox.Show("DateTime must be Recent!", "Error: Old DateTime", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
-            }
+            }*/
             var ageGroup = new Dictionary<AgeGroupE, short>() {
                 { AgeGroupE.CHILD, short.Parse(string.IsNullOrWhiteSpace(numChild) ? "0" : numChild) },
                 { AgeGroupE.YOUNG_ADULT, short.Parse(string.IsNullOrWhiteSpace(numYAdult) ? "0" : numYAdult) },

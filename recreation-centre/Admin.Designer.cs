@@ -30,10 +30,10 @@ namespace recreation_centre
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series6 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.label1 = new System.Windows.Forms.Label();
             this.logoutB = new System.Windows.Forms.Button();
             this.minimizeB = new System.Windows.Forms.Button();
@@ -1028,20 +1028,20 @@ namespace recreation_centre
             // 
             // weeklyReportChart
             // 
-            chartArea3.Name = "ChartArea1";
-            this.weeklyReportChart.ChartAreas.Add(chartArea3);
-            legend3.Name = "Legend1";
-            this.weeklyReportChart.Legends.Add(legend3);
+            chartArea1.Name = "ChartArea1";
+            this.weeklyReportChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.weeklyReportChart.Legends.Add(legend1);
             this.weeklyReportChart.Location = new System.Drawing.Point(6, 6);
             this.weeklyReportChart.Name = "weeklyReportChart";
-            series5.ChartArea = "ChartArea1";
-            series5.Legend = "Legend1";
-            series5.Name = "Total_Visitors";
-            series6.ChartArea = "ChartArea1";
-            series6.Legend = "Legend1";
-            series6.Name = "Total_Earnings";
-            this.weeklyReportChart.Series.Add(series5);
-            this.weeklyReportChart.Series.Add(series6);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Total_Visitors";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Total_Earnings";
+            this.weeklyReportChart.Series.Add(series1);
+            this.weeklyReportChart.Series.Add(series2);
             this.weeklyReportChart.Size = new System.Drawing.Size(756, 626);
             this.weeklyReportChart.TabIndex = 0;
             this.weeklyReportChart.Text = "Weekly Report Chart";
